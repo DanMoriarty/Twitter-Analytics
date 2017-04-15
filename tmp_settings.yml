@@ -1,0 +1,7 @@
+num_nodes: <how-many-nodes>
+node_flavor: <type-of-instance>
+nectar_username: <your-username>@student.unimelb.edu.au
+nectar_password: <your-password>
+keypair_name: <name-of-keypair-on-nectar>
+secret_key: <ssh-secret-key-that-you-generated>
+project_name: CCC2017-Team11

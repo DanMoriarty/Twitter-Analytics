@@ -1,0 +1,27 @@
+- name: launch all compute instances
+  hosts: localhost
+  tasks:
+    - name: get configuration settings
+      include_vars:
+        file: settings.yml
+        name: settings
+    - name: launch an instance
+      os_server:
+        state: present
+        auth_type: password
+        auth:
+          auth_url: https://keystone.rc.nectar.org.au:5000/v2.0/
+          # tenant_id: c49c26fa132348f9bc8d04a1c47223ba
+          # tenant_name: CCC2017-Team11
+          project_name: "{{ settings.project_name }}"
+          username: "{{ settings.nectar_username }}"
+          password: "{{ settings.nectar_password }}"
+        name: "VM{{ item }}"
+        region_name: Melbourne
+        image: NeCTAR Ubuntu 14.04 (Trusty) amd64
+        key_name: "{{ settings.keypair_name }}"
+        timeout: 200
+        flavor: m2.medium
+        security_groups: default, ssh
+        auto_ip: yes
+      with_sequence: "start=1 end={{ settings.num_nodes }}"
