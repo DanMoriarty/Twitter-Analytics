@@ -21,7 +21,7 @@ access_token=test.access_token
 access_token_secret=test.access_token_secret
 
 class listener(StreamListener):
-    
+
     def on_status(self,status):
         try:
             print status.text
@@ -41,7 +41,3 @@ auth.set_access_token(access_token,access_token_secret)
 
 twitterStream=  Stream(auth, listener(count))
 twitterStream.filter(locations=[144.252215,-38.256574,145.659838,-37.280438])
-
-
-
-        
