@@ -13,18 +13,25 @@ import re
 
 count=0
 
-import test
+import test2
 
-consumer_key=test.consumer_key
-consumer_secret=test.consumer_secret
-access_token=test.access_token
-access_token_secret=test.access_token_secret
+consumer_key=test2.consumer_key
+consumer_secret=test2.consumer_secret
+access_token=test2.access_token
+access_token_secret=test2.access_token_secret
 
 class listener(StreamListener):
 
     def on_status(self,status):
         try:
+            # option 1
             print status.text
+            print status.id
+            print status.coordinates
+
+            #  option 2
+            print status
+
             # tweet = json.loads(data)
             # print tweet['text']
             # print tweet['']
