@@ -37,6 +37,8 @@ for i in range(loops):
         break
     last_id = results['statuses'][-1]['id']
 
-    for element in results['statuses']:
-        print element
-        db.save(element)
+    db.update(results['statuses'])
+
+    # for element in results['statuses']:
+    #     print element
+    #     db.save(element)

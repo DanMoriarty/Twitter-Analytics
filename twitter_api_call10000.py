@@ -6,38 +6,33 @@ import tweepy
 import json
 import re
 import test
+import couchdb
+
+couch = couchdb.Server('http://115.146.93.56:8888')
+db = couch['melbtweets2']
 
 consumer_key=test.consumer_key
 consumer_secret=test.consumer_secret
 access_token=test.access_token
 access_token_secret=test.access_token_secret
 
-outfile = open('/mnt/tweets_melb1000000.json','w')
-
-class listener(StreamListener):
-    
-    def on_status(self,status):
-        try:
-            print status.text
-            # tweet = json.loads(data)
-            # print tweet['text']
-            # print tweet['']
-            # print "\n\n"
-        except KeyError:
-            print("Tossed it out cause it was trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------trash-------------------------------------------------\n\n")
-
-    def on_error(self,status):
-        print status
-
-
 auth=OAuthHandler(consumer_key,consumer_secret)
 auth.set_access_token(access_token,access_token_secret)
 
 twitterAPI=  API(auth, wait_on_rate_limit_notify=True , wait_on_rate_limit=True, parser=tweepy.parsers.JSONParser())
-outfile.write('[')
-# twitterStream.filter(locations=[144.252215,-38.256574,145.659838,-37.280438])
-# for word in small_words.queries:
+
+def insert_tweet(tweet):
+    if tweet['id_str'] in db:
+        print('Duplicate ignored')
+    else:
+        if tweet['coordinates']:
+            entry = dict(tweet)
+            del entry['id']
+            del entry['id_str']
+            db[tweet['id_str']] = entry
+
 last_id = 2
+last_id_t = 2
 loops = 10000
 for i in range(loops):
     try:
@@ -46,11 +41,16 @@ for i in range(loops):
             break
         last_id = results['statuses'][-1]['id']
         # print last_id
-        if(i!=loops-1):    
-            outfile.write(json.dumps(results['statuses'])[1:-1] + ',')
-        else:
-            outfile.write(json.dumps(results['statuses'])[1:-1])
+        for tweet in results['statuses']:
+            insert_tweet(tweet)
+            for j in range(100):
+                timeline = twitterAPI.user_timeline(id=tweet['user']['id'], count=200, max_id=str(last_id_t-1))
+                if not timeline:
+                    break
+                last_id_t = timeline[-1]['id']
+                for timeline_tweet in timeline:
+                    insert_tweet(timeline_tweet)
     except:
         print 'Oops'
         break
-outfile.write(']')
+# outfile.write(']')
