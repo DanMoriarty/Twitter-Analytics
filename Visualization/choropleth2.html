@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Choropleth2</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+		width: 50%;
+		background-color: grey;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+	  
+	  
+		
+      function initMap() {
+	  var Melbourne = {lat: -37.796473, lng: 144.977661};
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: Melbourne,
+          zoom: 12
+        });
+
+
+		
+		  //  Loading data
+		var suburbLayer = new google.maps.Data();
+		suburbLayer.loadGeoJson('./SuburbOutputDONOTALTER.json');
+		//suburbLayer.loadGeoJson('http://data.gov.au/geoserver/vic-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=af33dd8c_0534_4e18_9245_fc64440f742e&outputFormat=json');
+		
+		  // Set a blank infoWindow to be used for each to state on click
+		var infoWindow = new google.maps.InfoWindow({
+			content: ""
+		});
+		
+		  // Set and apply styling to the Suburb Layer
+		suburbLayer.setStyle(function(feature) {
+			return {
+			//try
+				fillColor: getColor(feature.getProperty('WorkingAgeEmployment')['Female_par']), // call function to get color for state based on the ...
+			//catch
+			//	fillColor: '#b3b3b3',
+			fillOpacity: 0.8,
+			strokeColor: '#b3b3b3',
+			strokeWeight: 1,
+			zIndex: 1
+			};
+		  });
+		  // returns a color based on the value given when the function is called
+		  function getColor(property) {
+			var colors = [
+			  '#d1ccad',
+			  '#c2c083',
+			  '#cbd97c',
+			  '#acd033',
+			  '#89a844'
+			];
+			 return property >= 0.8 ? colors[4] :
+			property > 0.6 ? colors[3] :
+			property > 0.4 ? colors[2] :
+			property > 0.2 ? colors[1] :
+			colors[0];
+			}
+		  
+		// Add mouseover and mouse out styling for the GeoJSON State data
+		suburbLayer.addListener('mouseover', function(e) {
+			suburbLayer.overrideStyle(e.feature, {
+			strokeColor: '#2a2a2a',
+			strokeWeight: 2,
+			zIndex: 2
+			});
+		});
+		
+		suburbLayer.addListener('mouseout', function(e) {
+			suburbLayer.revertStyle();
+		});
+		
+		// Adds an info window on click with in a state that includes the state name and COLI
+		setTimeout(function() {
+			suburbLayer.addListener('click', function(e) {
+				console.log(e);
+				infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
+				e.feature.getProperty('name') + '<br> Female Working %: ' +
+				e.feature.getProperty('WorkingAgeEmployment')['Female_par'] + '</div>');
+
+			var anchor = new google.maps.MVCObject();
+			anchor.set("position", e.latLng);
+			infoWindow.open(map, anchor);
+			});
+		}, 1000);
+
+		// Final step here sets the Suburb Layer GeoJSON data onto the map
+		suburbLayer.setMap(map);
+		
+		
+		
+		
+		
+		
+		//var pubs = new google.maps.Data();
+		//pubs.loadGeoJson('https://raw.githubusercontent.com/DanMoriarty/json/master/pubs.json');
+		/*
+		 pubs.setStyle(function(feature) {
+          var magnitude = feature.getProperty('Number of patrons');
+          return {
+            icon: getCircle(magnitude)
+          };
+        });
+		pubs.setMap(map);*/
+		/*
+		setTimeout(function() {
+
+			markers = pubs.forEach(function(feature) {
+				console.log('a\n');
+				if (feature.getProperty('Number of patrons')>500) {
+					var latlng = feature.getGeometry().get();
+					return new google.maps.Marker({position: latlng, map: map});
+					}
+
+				});
+      
+		}, 2000);
+		*/
+		
+      }
+	  	
+
+		
+
+
+/*
+		markers = pubs.forEach(function(feature) {
+			var latLng = feature.getGeometry();
+			console.log(latlng);
+			return new google.maps.marker({position: latlng, map: map})
+		});
+		
+		var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: './m'});
+      */
+
+	
+		//pubs.setMap(map);
+      
+
+		
+		//var suburbLayer = new google.maps.Data();
+		//suburbLayer.loadGeoJson('http://data.gov.au/geoserver/vic-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=af33dd8c_0534_4e18_9245_fc64440f742e&outputFormat=json');
+		//suburbLayer.setMap(map);
+
+      
+
+	  function customizeLayer(layer) {
+	  
+	  }
+	  
+    </script>
+	</script>
+    <script src="./markerclusterer.js">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrXsh6sZYoCurN67TR0015R93biestUis&callback=initMap"
+    async defer></script>
+  </body>
+</html>
