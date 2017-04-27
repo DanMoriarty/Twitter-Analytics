@@ -1,23 +1,18 @@
 import ijson
 import couchdb
 
-
-from ijson import common, yajl2
-from itertools import imap
-
-def floaten(event):
-    if event[1] == 'number':
-        return (event[0], event[1], float(event[2]))
-    else:
-        return event
+def parse(events):
+    for prefix, event, value in events:
+        if event == 'number':
+            value = float(value)
+        yield prefix, event, value
 
 couch = couchdb.Server('http://115.146.93.56:8888')
 db = couch['melbtweets2']
 
 f = open('/mnt/tweets_melb1000000.json','r')
 
-events = imap(floaten, yajl2.parse(f))
-tweets = common.items(events, 'item')
+tweets = ijson.common.items(parse(ijson.parse(f)), 'item'):
 
 # tweets = ijson.items(f,'item')
 

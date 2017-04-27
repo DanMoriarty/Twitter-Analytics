@@ -41,7 +41,7 @@ last_id = 2
 loops = 1
 for i in range(loops):
     try:
-        results = twitterAPI.search(q="",geocode="-37.904199,144.920201,70km", count=2, max_id=str(last_id-1))
+        results = twitterAPI.search(q="",geocode="-37.904199,144.920201,70km", count=100, max_id=str(last_id-1))
         if not results:
             break
         last_id = results['statuses'][-1]['id']

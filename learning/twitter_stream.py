@@ -30,7 +30,7 @@ class listener(StreamListener):
             print status.coordinates
 
             #  option 2
-            print status
+            # print status
 
             # tweet = json.loads(data)
             # print tweet['text']
@@ -46,5 +46,5 @@ class listener(StreamListener):
 auth=OAuthHandler(consumer_key,consumer_secret)
 auth.set_access_token(access_token,access_token_secret)
 
-twitterStream=  Stream(auth, listener(count))
+twitterStream = Stream(auth, listener(count))
 twitterStream.filter(locations=[144.252215,-38.256574,145.659838,-37.280438])
