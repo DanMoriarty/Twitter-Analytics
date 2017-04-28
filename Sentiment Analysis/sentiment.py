@@ -22,9 +22,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 #####----------------------------  CONSTANTS  ----------------------------#####
 
-POL_THRESHOLD = 0.5  #Minimum polarity for positive tweets.
+POS_THRESHOLD = 0.4  #Minimum polarity for positive tweets.
+NEG_THRESHOLD = 0.4  #Minimum polarity for positive tweets.
 NEU_THRESHOLD = 0.8  #Maximum subjectivity for objective tweets.
-POL_CSV       = "tweet_polarity_noRT_nltk.csv"  #Pre-built polarity set.
+POL_CSV       = "tweet_polarity_noRT_nltk_loose.csv"  #Pre-built polarity set.
 TWEETS        = "tweets_rebuild.json"           #Tweets for rebuilding POL_CSV.
 CLASSIFIER    = "classifier.pkl"                #Pickled classifier model.
 STOPWORDS     = set(stopwords.words('english')) #Set of English stopwords.
@@ -154,7 +155,7 @@ except (IOError, cPickle.UnpicklingError) as e:
         try:
             cap = 24000
             # Rebuild polarity file using (line-separated) tweet JSON and NLTK.
-            with open("tweets_rebuild.json") as f:
+            with open(TWEETS) as f:
                 sid = SentimentIntensityAnalyzer()
 
                 for line in f:
@@ -168,9 +169,9 @@ except (IOError, cPickle.UnpicklingError) as e:
                         ss = sid.polarity_scores(t)
 
                         # Sort tweet into positive/neutral/negative
-                        if ss["pos"] >= POL_THRESHOLD and len(pos_t) < cap:
+                        if ss["pos"] >= POS_THRESHOLD and len(pos_t) < cap:
                             pos_t.append(t)
-                        elif ss["neg"] >= POL_THRESHOLD and len(neg_t) < cap:
+                        elif ss["neg"] >= NEG_THRESHOLD and len(neg_t) < cap:
                             neg_t.append(t)
                         elif ss["neu"] >= NEU_THRESHOLD and len(obj_t) < cap:
                             obj_t.append(t)
@@ -193,7 +194,8 @@ except (IOError, cPickle.UnpicklingError) as e:
         except IOError:
             print("Fatal Error: Unable to locate tweet json. Exiting.")
             exit()
-            
+    
+    print len(pos_t), len(neg_t), len(obj_t)
     #Initialise train (X,Y) and test (x,y) data and labels, and vectorize.
     (X,Y), (x,y) = testTrainSplit(tokenize(pos_t), tokenize(neg_t), tokenize(obj_t))
     X,x,vect = getVects(X, x)
