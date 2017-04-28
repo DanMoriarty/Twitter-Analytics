@@ -1,0 +1,48 @@
+README
+
+The code I have used for visualization
+No shell script made (what's the point of automating this right now).
+But the general idea is
+-Process the data by suburb: run AddingData.py
+-Map tweets by suburbs: run MappingTweets.py
+-Visualize on google maps: Choropleth.html
+
+<<<<<Python Files>>>>>
+   AddingData
+To be used for integrating suburb data into a suburb file.
+Currently creates an empty suburbs json {EmptySuburbs} to place the data into, but this code can be used as a template 
+for adding data into a non-empty json suburb 'masterfile'
+Currently, it goes through SuburbWorkingAgeEmploymentByIncome dataset and records each suburb's data into an output json {suburbOutput}, a json file of VIC suburbs now with the working age data included.
+
+   MappingTweets
+Goes through a tweet file, in this case TinyTwitter.json, and
+counts each tweet, and stores this count as a property within
+an output {suburbOutputWithTweets}
+I used TinyTwitter because our tweets don't have newlines between them; ie. not Json (min) format
+Currently written to have MPI capabilities (but I have not tested)
+NOTE: MappingTweets saves all the streamed-in twitter data in a local 'data' variable. For large files, we will have to add an extra loop in the code, limiting how much data to stream into local memory before processing.
+
+<<<<<HTML/JS Files>>>>>
+   Choropleth
+Visualizes a specified json as a choropleth (currently suburb output with tweets) based off some property (numTweets in this case) via the Google Maps API
+Currently very basic, and code must be changed manually if we wish to visualize a different json and/or different properties; no front-end control as yet
+Must be opened in Firefox, chrome security settings do not allow downloading from local host to the google maps api.
+
+<<<<<JSON files>>>>>
+   SuburbWorkingAgeEmploymentByIncome
+VIC gov dataset
+
+   TinyTwitter
+Assignment 1, 1000 tweets (?almost? all with geo)
+
+   Suburbs
+VIC gov PSMA suburb dataset (coords dictating boundaries + names)
+
+   SuburbsExtended
+A scaled-down version of suburbs (Melbourne as opposed to VIC)
+
+   SuburbOutputDONOTALTER
+The empty suburb file with data from SuburbWorkingAgeEmploymentByIncome added in
+
+   suburbOutputWithTweets
+The empty suburb file with tweet counts obtained from TinyTwitter
