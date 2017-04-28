@@ -1,5 +1,5 @@
-# !/usr/bin/env python
-# coding: utf-8
+#!/usr/bin/env python
+#coding: utf-8
 #####---------------------------- DESCRIPTION ----------------------------#####
 
 #    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White

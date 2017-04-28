@@ -1,5 +1,5 @@
-# !/usr/bin/env python
-# coding: utf-8
+#!/usr/bin/env python
+#coding: utf-8
 #####---------------------------- DESCRIPTION ----------------------------#####
 
 #    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
@@ -13,18 +13,18 @@
 import re
 import cPickle
 
-from textblob    import TextBlob
 from string      import punctuation
 from nltk.corpus import stopwords
 from sklearn.svm import LinearSVC
 from sklearn     import metrics
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from sklearn.feature_extraction.text import CountVectorizer
 
 #####----------------------------  CONSTANTS  ----------------------------#####
 
 POL_THRESHOLD = 0.5  #Minimum polarity for positive tweets.
-SUB_THRESHOLD = 0.2  #Maximum subjectivity for objective tweets.
-POL_CSV       = "tweet_polarity_noRT.csv"       #Pre-built polarity set.
+NEU_THRESHOLD = 0.8  #Maximum subjectivity for objective tweets.
+POL_CSV       = "tweet_polarity_noRT_nltk.csv"  #Pre-built polarity set.
 TWEETS        = "tweets_rebuild.json"           #Tweets for rebuilding POL_CSV.
 CLASSIFIER    = "classifier.pkl"                #Pickled classifier model.
 STOPWORDS     = set(stopwords.words('english')) #Set of English stopwords.
@@ -66,7 +66,7 @@ def tokenize(tweets):
 
 #Function to split string arrays into training and test sets, including tweets
 #   of positive, negative, and objective/neutral sentiment.
-def testTrainSplit(pos, neg, obj, split=0.8):
+def testTrainSplit(pos, neg, obj, split=0.9):
     #Split sets up at the split mark.
     mark = lambda x: int(len(x)*split)
     sets = lambda x: ( x[ :mark(x)], x[mark(x): ] )
@@ -117,7 +117,7 @@ def classify(tweet):
 
 #To set up the module for use in sentiment classification, try loading the 
 #   model's pickle file from disk. If non-existent, rebuild.
-#   Create training and test sets using TextBlob's sentiment classifier on
+#   Create training and test sets using NLTK's sentiment classifier on
 #   Melbourne tweets.
 try:
     with open(CLASSIFIER, 'rb') as model_file:
@@ -153,23 +153,28 @@ except (IOError, cPickle.UnpicklingError) as e:
         print("Attempting to rebuild csv...")
         try:
             cap = 24000
-            # Rebuild polarity file using (line-separated) tweet JSON and textblob.
+            # Rebuild polarity file using (line-separated) tweet JSON and NLTK.
             with open("tweets_rebuild.json") as f:
+                sid = SentimentIntensityAnalyzer()
+
                 for line in f:
                     try:
                         # Extract text field and skip over re-tweets.
                         t = re.search(r"\"text\":\s\"(.*?)\",\s\"is_quote_status\"", line).group(1)
                         if t[:2] == "RT":
                             continue
-    
+
+                        # Use NLTK for ground truth labelling
+                        ss = sid.polarity_scores(t)
+
                         # Sort tweet into positive/neutral/negative
-                        sent = TextBlob(t).sentiment
-                        if sent.polarity >= POL_THRESHOLD and len(pos_t) < cap:
+                        if ss["pos"] >= POL_THRESHOLD and len(pos_t) < cap:
                             pos_t.append(t)
-                        elif sent.polarity <= (-1.0 * POL_THRESHOLD) and len(neg_t) < cap:
+                        elif ss["neg"] >= POL_THRESHOLD and len(neg_t) < cap:
                             neg_t.append(t)
-                        elif sent.polarity == 0 and sent.subjectivity < SUB_THRESHOLD and len(obj_t) < cap:
+                        elif ss["neu"] >= NEU_THRESHOLD and len(obj_t) < cap:
                             obj_t.append(t)
+
     
                         # Stop when each group of tweets is full
                         if len(pos_t) >= cap and len(neg_t) >= cap and len(obj_t) >= cap:
