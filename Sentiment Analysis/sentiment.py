@@ -25,9 +25,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 POS_THRESHOLD = 0.4  #Minimum polarity for positive tweets.
 NEG_THRESHOLD = 0.4  #Minimum polarity for positive tweets.
 NEU_THRESHOLD = 0.8  #Maximum subjectivity for objective tweets.
-POL_CSV       = "tweet_polarity.csv"  #Pre-built polarity set.
-TWEETS        = "tweets_rebuild.json"           #Tweets for rebuilding POL_CSV.
-CLASSIFIER    = "classifier.pkl"                #Pickled classifier model.
+FILE_PATH     = "sentiment_files/" 
+POL_CSV       = FILE_PATH + "tweet_polarity.csv"  #Pre-built polarity set.
+TWEETS        = FILE_PATH + "tweets_rebuild.json" #Tweets for rebuilding POL_CSV.
+CLASSIFIER    = FILE_PATH + "classifier.pkl"    #Pickled classifier model.
 STOPWORDS     = set(stopwords.words('english')) #Set of English stopwords.
 
 #####----------------------------  FUNCTIONS  ----------------------------#####
