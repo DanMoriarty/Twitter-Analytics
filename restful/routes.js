@@ -3,10 +3,10 @@
 //----------------------------   ROUTES   ----------------------------//
 
 module.exports = function(router) {
-	// Grab the controller
+	// Grab the controller functions
 	var controller = require('./controller');
 
-	// Define General Route middleware (Occurs on -every- request)
+	// Define general middleware (occurs on -every- request)
 	router.use(function(req, res, next) {
 		console.log(req.method + " request made to " + req.originalUrl);
 		next();
