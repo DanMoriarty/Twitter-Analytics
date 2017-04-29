@@ -11,11 +11,11 @@
 
 //----------------------------   PROGRAM   ----------------------------//
 // Initialise app
-var express 	= require('express'),
-	addRoutes 	= require('./routes'),
-	port 		= process.env.PORT || 3000,
-	app			= express()
-	;
+var express     = require('express'),
+    addRoutes   = require('./routes'),
+    port        = process.env.PORT || 3000,
+    app         = express()
+    ;
 
 // Get an instance of router
 var router = express.Router();
@@ -28,7 +28,7 @@ app.use('/api', router);
 
 // Listen
 app.listen(port, function() {
-	console.log("Listening on port " + port + "!");
+    console.log("Listening on port " + port + "!");
 });
 
 //----------------------------  END  FILE  ----------------------------//
