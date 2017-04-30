@@ -22,6 +22,8 @@ module.exports = function(router) {
 	router.get('/melbTweets/:key', controller.getMelbTweetsKey);
 	router.get('/userTweets', controller.getUserTweets);
 	router.get('/userTweets/:key', controller.getUserTweetsKey);
+	router.get('/speed', controller.getSpeed);
+	router.get('/speedStale', controller.getSpeedStale);
 };
 
 //----------------------------  END  FILE  ----------------------------//

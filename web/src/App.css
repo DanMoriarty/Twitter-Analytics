@@ -1,0 +1,61 @@
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.footer {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+}
+
+.center {
+  text-align: center;
+}
+
+#center {
+  position: center;
+}
+
+#cards {
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+.authorCard {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  width: 46%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.homeCard {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  width: 90%;
+  padding-left: 5%;
+}
+
+div.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+}
