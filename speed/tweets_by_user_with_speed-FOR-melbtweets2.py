@@ -35,7 +35,7 @@ def creating_user_docs(db):
 				this_coordinates = db[ID]['coordinates']['coordinates']
 
 				distance = haversine([last_coordinates[1],last_coordinates[0]],[this_coordinates[1],this_coordinates[0]])
-				d_time_hours = ((this_time - last_time).total_seconds())/60/60
+				
 				
 				tweetid = db[ID]['_id']
 				# abs_time_seconds = abs(d_time_hours)

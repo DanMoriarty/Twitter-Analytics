@@ -59,7 +59,12 @@ def creating_user_docs(db):
 
 				db[user] = doc
 			else:
-				db[user] = {'type':'userspeeds','tweetid':[db[ID]['_id']],'speed':[0],'text':[db[ID]['text']],'created_at':[db[ID]['created_at']],'coordinates':[db[ID]['coordinates']['coordinates']]}
+				db[user] = 
+				
+				speed = {'type':'userspeeds','tweetid':[db[ID]['_id']],'speed':[0],'text':[db[ID]['text']],'created_at':[db[ID]['created_at']],'coordinates':[db[ID]['coordinates']['coordinates']]}
+				
+				speeddata = {'speed': '0','tweetid1': null,'tweetid2': ,'created_at1': ,'created_at2': ,'coords1': ,'coords2': }
+				db[user] = {'speeds':[speed]}
 				# db[user] = {'type':'user','tweetid':[db[ID]['_id']]}
 				
 			tweet = db[ID]
