@@ -3,11 +3,9 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 
 const avatarPath = "./images/"
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
+const style = {
+  display: 'flex',
+  flexWrap: 'wrap'
 };
 
 function AuthorCards(props) {
@@ -16,7 +14,7 @@ function AuthorCards(props) {
   }
 
   return(
-    <div id="cards" style={styles.root}>
+    <div id="cards" style={style}>
       <AuthorCard
         name="Tim Glennan"
         role="NeCTAR / Sentiment / Node API / Web Design"

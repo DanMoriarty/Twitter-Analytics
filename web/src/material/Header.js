@@ -7,7 +7,7 @@ import IconGit from 'material-ui/svg-icons/file/cloud';
 
 const GitIcon = <IconGit />
 
-const Github = () => (
+const GithubButton = () => (
     <RaisedButton
       href="https://github.com/at-white/CCC_project2"
       target="_blank"
@@ -42,11 +42,13 @@ function Header(props) {
 }
 
   return (
-    <AppBar
-      title={t}
-      showMenuIconButton={false}
-      iconElementRight={<Github />}
-    />
+    <div className="center">
+      <AppBar
+        title={t}
+        showMenuIconButton={false}
+        iconElementRight={<GithubButton />}
+      />
+    </div>
   );
 }
 

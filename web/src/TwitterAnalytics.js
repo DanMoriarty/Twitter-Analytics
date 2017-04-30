@@ -31,15 +31,14 @@ class TwitterAnalytics extends Component {
   render() {
     return (
       <div className="App">
-          <div className="center">
-            <Header title={this.state.activeView}/>
-          </div>
+          <Header title={this.state.activeView}/>          
           
           <Sentiment active={this.state.activeView == Constants.SENTIMENT} />
           <Home active={this.state.activeView == Constants.HOME} />
           <AuthorCards active={this.state.activeView == Constants.AUTHORS} />
+          
+          <Navigation onClick={this.setActiveView} />
 
-        <Navigation onClick={this.setActiveView} />
       </div>
     );
   }
