@@ -95,3 +95,4 @@ ENV/
 
 # Node dependencies
 /restful/node_modules
+/web/node_modules
