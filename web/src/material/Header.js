@@ -4,8 +4,7 @@ import * as Constants from '../Constants.js';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import IconGit from 'material-ui/svg-icons/file/cloud';
-
-const GitIcon = <IconGit />
+import IconYoutube from 'material-ui/svg-icons/av/play-arrow';
 
 const GithubButton = () => (
     <RaisedButton
@@ -17,6 +16,22 @@ const GithubButton = () => (
     />
 );
 
+const YoutubeButton = () => (
+    <RaisedButton
+      href="http://youtube.com"
+      target="_blank"
+      label="Demo"
+      primary={true}
+      icon={<IconYoutube />}
+    />
+);
+
+const ElementRight = () => (
+  <div>
+    <GithubButton />
+    <YoutubeButton />
+  </div>
+);
 
 function Header(props) {
   var t = "Twitter Analytics"
@@ -42,11 +57,11 @@ function Header(props) {
 }
 
   return (
-    <div className="center">
+    <div>
       <AppBar
         title={t}
         showMenuIconButton={false}
-        iconElementRight={<GithubButton />}
+        iconElementRight={<ElementRight />}
       />
     </div>
   );
