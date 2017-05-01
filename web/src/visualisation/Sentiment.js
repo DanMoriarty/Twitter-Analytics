@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import RefreshIndicator from 'material-ui/RefreshIndicator';
 import InfoCard from '../material/InfoCard.js'
+
 class Sentiment extends Component {
   
   constructor(props) {
@@ -22,14 +22,6 @@ class Sentiment extends Component {
     return (
       <div className="container">
         <div className="left">
-          +++++++++++++ GOOGLE MAPS GOES HERE +++++++++++++++ 
-          ++++++++++++++++ ++++++++++++++++
-          +++++++++++++ +++++++++++++++ ++++++++++++++++ ++++++++++++++++
-          +++++++++++++ +++++++++++++++ ++++++++++++++++ ++++++++++++++++
-          +++++++++++++ +++++++++++++++ ++++++++++++++++ ++++++++++++++++
-          <br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+
-          <br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+
-          <br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+<br/>+
         </div>
         <div className="right">
           <InfoCard
@@ -58,18 +50,5 @@ class Sentiment extends Component {
       );
   }
 }
-
-
-// <div className="center">
-//   <RefreshIndicator
-//     size={100}
-//     left={0}
-//     top={50}
-//     loadingColor="#FF9800"
-//     status="loading"
-//     style={styles.refresh}
-//   />
-// </div>
-
 
 export default Sentiment;

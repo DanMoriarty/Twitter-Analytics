@@ -1,6 +1,5 @@
 import React from 'react';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
 import {List, ListItem} from 'material-ui/List';
 
 const styles = {
@@ -10,8 +9,8 @@ const styles = {
   },
   infoBox: {
     width: '99%',
-    'margin-top': '5px',
-    'margin-bottom': '5px',
+    'marginTop': '5px',
+    'marginBottom': '5px',
   }
 };
 

@@ -33,9 +33,9 @@ class TwitterAnalytics extends Component {
       <div className="App">
           <Header title={this.state.activeView}/>          
           
-          <Sentiment active={this.state.activeView == Constants.SENTIMENT} />
-          <Home active={this.state.activeView == Constants.HOME} />
-          <AuthorCards active={this.state.activeView == Constants.AUTHORS} />
+          <Sentiment active={this.state.activeView === Constants.SENTIMENT} />
+          <Home active={this.state.activeView === Constants.HOME} />
+          <AuthorCards active={this.state.activeView === Constants.AUTHORS} />
           
           <Navigation onClick={this.setActiveView} />
 

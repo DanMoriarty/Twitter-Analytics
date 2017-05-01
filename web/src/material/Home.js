@@ -14,7 +14,7 @@ function Home(props) {
     <div className="homeCard" id="cards">
       <Card>
         <CardMedia overlay={<CardTitle title="About this project..." subtitle="Cluster and Cloud Computing" />}>
-          <img src="images/melbourne.png" style={styles.img} />
+          <img src="images/melbourne.png" style={styles.img} alt="Melbourne Map"/>
         </CardMedia>
         <CardText style={styles.text}>
           In  development and delivery  of  non-trivial software  systems,  working as  part  of  a team  is  generally 

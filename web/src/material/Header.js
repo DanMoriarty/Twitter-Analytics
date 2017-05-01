@@ -36,9 +36,6 @@ const ElementRight = () => (
 function Header(props) {
   var t = "Twitter Analytics"
   switch(props.title) {
-    case Constants.HOME:
-      t = "Twitter in Melbourne"
-      break;
     case Constants.SENTIMENT:
       t = "Where are the happiest Melbournians?"
       break;
@@ -53,6 +50,10 @@ function Header(props) {
       break;
     case Constants.AUTHORS:
       t = "About The Creators..."
+      break;
+     case Constants.HOME:
+     default:
+      t = "Twitter in Melbourne"
       break;
 }
 

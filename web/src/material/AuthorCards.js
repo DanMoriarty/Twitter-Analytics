@@ -1,6 +1,5 @@
 import React from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 
 const avatarPath = "./images/"
 const style = {
@@ -17,31 +16,31 @@ function AuthorCards(props) {
     <div id="cards" style={style}>
       <AuthorCard
         name="Tim Glennan"
-        role="NeCTAR / Sentiment / Node API / Web Design"
+        mainroles="NeCTAR / Sentiment / Node API / Web Design"
         avatar="tim.jpg"
         bio="Placeholder bio."
       />
       <AuthorCard
         name="Tom Lynch"
-        role="NeCTAR / Tweet Scraping / Database Management / Analytics"
+        mainroles="NeCTAR / Tweet Scraping / Database Management / Analytics"
         avatar="tom.jpg"
         bio="Placeholder bio."
       />
       <AuthorCard
         name="Daniel Moriarty"
-        role="Maps Visualisation / Analytics"
+        mainroles="Maps Visualisation / Analytics"
         avatar="dan.jpg"
         bio="Placeholder bio."
       />
       <AuthorCard
         name="Steven Spratley"
-        role="Sentiment / Language Modelling"
+        mainroles="Sentiment / Language Modelling"
         avatar="steve.jpg"
         bio="Placeholder bio."
       />
       <AuthorCard
         name="Angus White"
-        role="NeCTAR / Tweet Scraping / Database Management / Automation"
+        mainroles="NeCTAR / Tweet Scraping / Database Management / Automation"
         avatar="angus.jpg"
         bio="Placeholder bio."
       />
@@ -54,7 +53,7 @@ function AuthorCard(props) {
         <Card>
           <CardHeader
             title={props.name}
-            subtitle={props.role}
+            subtitle={props.mainroles}
             avatar={avatarPath + props.avatar}
           />
           <CardText>
