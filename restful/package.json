@@ -19,6 +19,7 @@
   "author": "tglennan",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.3",
     "express": "^4.15.2",
     "nano": "^6.2.0"
   }

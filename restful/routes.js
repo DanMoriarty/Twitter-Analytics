@@ -24,6 +24,27 @@ module.exports = function(router) {
 	router.get('/userTweets/:key', controller.getUserTweetsKey);
 	router.get('/speed', controller.getSpeed);
 	router.get('/speedStale', controller.getSpeedStale);
+
+	//--------------- PLAYING WITH KEYS ---------------//
+	// router middleware to handle key
+	router.param('key', function(req, res, next, key) {
+		// update key
+		req.key = key.split("&");
+		next();
+	})
+
+	router.get('/modKey/', function(req, res) {
+		res.send('view with no key');
+	});
+
+	router.get('/modKey/:key', function(req, res) {
+		res.send('view with modded key: ' + req.key);
+	});
+
+	router.get('/noModKey/:inp', function(req, res) {
+		res.send('view with the key: ' + req.params.inp);
+	});
+	//------------------ END PLAYING ------------------//
 };
 
 //----------------------------  END  FILE  ----------------------------//

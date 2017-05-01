@@ -13,9 +13,13 @@
 // Initialise app
 var express     = require('express'),
     addRoutes   = require('./routes'),
+    cors		= require('cors'),
     port        = process.env.PORT || 3000,
     app         = express()
     ;
+
+// Allow cross domain access
+app.use(cors())
 
 // Get an instance of router
 var router = express.Router();

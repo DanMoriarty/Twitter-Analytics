@@ -2,17 +2,8 @@ import React, {Component} from 'react';
 import InfoCard from '../material/InfoCard.js'
 import GMap from './GMap.js'
 
-class Sentiment extends Component {
-  
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedIndex: 0,
-    };
-  }
-
-  render() {
-    if (!this.props.active) return null;
+function Sentiment(props) {
+    if (!props.active) return null;
     
     const placeholderData = 
       [
@@ -50,7 +41,6 @@ class Sentiment extends Component {
       </div>
 
       );
-  }
 }
 
 export default Sentiment;

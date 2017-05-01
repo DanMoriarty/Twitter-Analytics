@@ -8,7 +8,8 @@
 // Initialise connection to CouchDB database
 var nano		= require('nano')('http://115.146.93.56:8888/'),
 	db_name 	= 'melbtweets2',
-	db 			= nano.use(db_name),
+	test_db_name = 'melbtweets_sentiment',
+	db 			= nano.use(test_db_name),
 	design		= 'viewsfile',
 	speeddesign = 'speed'
 	;
@@ -53,7 +54,7 @@ exports.getUserTweets = function(req, res) {
 
 // get view containing number of tweets and filter by user
 exports.getUserTweetsKey = function(req, res) {
-	db.view(design, 'all-tweets-by-user', {stale: "update_after", group: true, 'keys': req.key}, function(err, body) {
+	db.view(design, 'all-tweets-by-user', { group: true, 'keys': req.key }, function(err, body) {
 		res.send(body);
 	});
 }

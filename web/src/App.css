@@ -6,12 +6,11 @@
     height: 55px;
 }
 
-.center {
-  text-align: center;
-}
-
-#center {
-  position: center;
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #cards {
