@@ -8,7 +8,7 @@ const styles = {
     position: 'relative',
   },
   infoBox: {
-    width: '99%',
+    width: '100%',
     'marginTop': '5px',
     'marginBottom': '5px',
   }

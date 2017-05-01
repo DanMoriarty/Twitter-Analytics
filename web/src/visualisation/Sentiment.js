@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import InfoCard from '../material/InfoCard.js'
+import GMap from './GMap.js'
 
 class Sentiment extends Component {
   
@@ -22,6 +23,7 @@ class Sentiment extends Component {
     return (
       <div className="container">
         <div className="left">
+          <GMap/>
         </div>
         <div className="right">
           <InfoCard

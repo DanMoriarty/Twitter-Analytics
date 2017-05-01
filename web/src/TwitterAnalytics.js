@@ -31,6 +31,8 @@ class TwitterAnalytics extends Component {
   render() {
     return (
       <div className="App">
+
+          
           <Header title={this.state.activeView}/>          
           
           <Sentiment active={this.state.activeView === Constants.SENTIMENT} />

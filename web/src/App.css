@@ -19,24 +19,24 @@
   padding-bottom: 100px;
 }
 
-.container {
-    width: 100%;
-    margin: auto;
-    padding-bottom: 60px;
-}
 
 div.left {
-  /*z-index: 1;*/
-  /*width: 100%;*/
-  float: left;
+  z-index: 1;
+  width: 100%;
 }
 
-div.right {
-  position: absolute;
-  margin-left: 75%;
-  width: 25%;
-  padding-bottom: 60px;
+.container {
+  position: relative;
 }
+
+div.right { 
+  position: absolute; 
+  top: 10px; 
+  width: 30%;
+  margin-left: 68%;
+  z-index: 99;
+}
+
 
 .authorCard {
   padding-top: 5px;
