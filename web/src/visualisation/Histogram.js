@@ -4,7 +4,7 @@ import {XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, VerticalBa
 function Histogram(props) {
     // Map each set of data to a VerticalBarSeries
     const verticalBars = props.data.map(
-        data => (<VerticalBarSeries key={Math.random()} data={data}/>)
+        (data, i) => (<VerticalBarSeries key={i} data={data}/>)
     );
 
     return (
