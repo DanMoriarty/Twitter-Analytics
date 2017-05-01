@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import InfoCard from '../material/InfoCard.js'
 import GMap from './GMap.js'
 
