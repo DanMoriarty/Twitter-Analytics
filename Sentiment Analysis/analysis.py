@@ -19,7 +19,7 @@ USER = "clustercloud"
 PSWD = "pineapple"
 HOST = "115.146.92.136"
 PORT = "8888"
-DB   = "melbtweets_sentiment"   #The main tweets database.
+DB   = "melbtweets2"   #The main tweets database.
 
 #####----------------------------  FUNCTIONS  ----------------------------#####
 
