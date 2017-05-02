@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Loading from '../material/Loading.js';
-import Histogram from './Histogram.js'
+import SingleHistogram from './SingleHistogram.js'
 
 class GraphicalAnalysis extends Component {
   
@@ -37,18 +37,10 @@ class GraphicalAnalysis extends Component {
 
     const tweetsPerUser = this.state.items.map(
         item => ({x: item.key, y: item.value}));
-    const tpu2 = this.state.items.map(
-        item => ({x: item.key, y: item.value-1}));
-
-    // const listItems = this.state.items.map(
-    //     item => 
-    //     (
-    //       <li key={item.key}>{item.key}</li>
-    //     ));
     
     return (<div>Number of Tweets Per User
-                <Histogram
-                    data={[tweetsPerUser, tpu2]}
+                <SingleHistogram
+                    data={tweetsPerUser}
                     Y="Number of Tweets"
                     X="Username"
                     width="800"
