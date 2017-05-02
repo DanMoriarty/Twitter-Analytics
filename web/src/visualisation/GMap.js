@@ -33,7 +33,7 @@ class GMap extends Component {
     console.log("Clicked map at" + event.latLng)
   }
 
-  render() {
+  render() {    
     return (
       <div style={{height: this.state.windowheight}}>
         <MelbourneMap

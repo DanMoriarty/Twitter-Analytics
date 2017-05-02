@@ -9,9 +9,10 @@
 var nano		= require('nano')('http://115.146.93.56:8888/'),
 	db_name 	= 'melbtweets2',
 	test_db_name = 'melbtweets_sentiment',
-	db 			= nano.use(test_db_name),
+	db 			= nano.use(db_name),
 	design		= 'viewsfile',
-	speeddesign = 'speed'
+	speeddesign = 'speed',
+	sadesign	= 'sa2'
 	;
 
 exports.getMelbTweets = function(req, res) {
@@ -55,6 +56,18 @@ exports.getUserTweets = function(req, res) {
 // get view containing number of tweets and filter by user
 exports.getUserTweetsKey = function(req, res) {
 	db.view(design, 'all-tweets-by-user', { group: true, 'keys': req.key }, function(err, body) {
+		res.send(body);
+	});
+}
+
+exports.getSuburbSentiment = function(req, res) {
+	db.view(sadesign, 'sa2-sentiment', { stale: "update_after", group_level: 1 }, function(err, body) {
+		res.send(body);
+	});
+}
+
+exports.getSuburbSentimentTime = function(req, res) {
+	db.view(sadesign, 'sa2-timeofday', { stale: "update_after", group_level: 1 }, function(err, body) {
 		res.send(body);
 	});
 }

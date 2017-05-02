@@ -24,6 +24,8 @@ module.exports = function(router) {
 	router.get('/userTweets/:key', controller.getUserTweetsKey);
 	router.get('/speed', controller.getSpeed);
 	router.get('/speedStale', controller.getSpeedStale);
+	router.get('/suburbSentiment', controller.getSuburbSentiment);
+	router.get('/suburbSentimentTime', controller.getSuburbSentimentTime);
 
 	//--------------- PLAYING WITH KEYS ---------------//
 	// router middleware to handle key

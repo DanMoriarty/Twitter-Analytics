@@ -20,9 +20,16 @@ class TwitterAnalytics extends Component {
 
     this.state = {
       activeView: Constants.HOME,
+      suburbSentiment: null,
     };
 
     this.setActiveView = this.setActiveView.bind(this);
+  }
+  componentDidMount() {
+    fetch('http://localhost:4444/api/suburbSentiment', Constants.INIT)
+        .then(result=>result.json()) 
+        .then(items=> this.setState({suburbSentiment: items.rows}))
+        .catch(error => this.setState({error: true}))
   }
 
   setActiveView(view) {
@@ -37,8 +44,14 @@ class TwitterAnalytics extends Component {
           <Header title={this.state.activeView}/>          
           
           <Home active={this.state.activeView === Constants.HOME} />
-          <Sentiment active={this.state.activeView === Constants.SENTIMENT} />
-          <GraphicalAnalysis active={this.state.activeView === Constants.GRAPHS} />
+          <Sentiment
+            active={this.state.activeView === Constants.SENTIMENT}
+            suburbSentiment={this.state.suburbSentiment} 
+          />
+          <GraphicalAnalysis
+            active={this.state.activeView === Constants.GRAPHS}
+            suburbSentiment={this.state.suburbSentiment}
+          />
           <AuthorCards active={this.state.activeView === Constants.AUTHORS} />
           
           <Navigation onClick={this.setActiveView} />

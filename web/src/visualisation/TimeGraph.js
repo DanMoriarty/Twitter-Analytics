@@ -12,24 +12,9 @@ import {
 class TimeGraph extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: null};
-
-        this.trackVal = this.trackVal.bind(this);
-        this.removeVal = this.removeVal.bind(this);
     }
 
-    trackVal(value) {
-    	console.log(value);
-        this.setState({value: value});
-    }
-
-    removeVal() {
-        this.setState({value: null});
-    }
-
-    render() {
-        const {value} = this.state;
-    
+    render() {    
         return (    
           <XYPlot
             margin={{ bottom: 70 }}
@@ -40,12 +25,7 @@ class TimeGraph extends Component {
             <HorizontalGridLines/>
             <XAxis title={ this.props.X ? this.props.X : null } tickLabelAngle={ -45 } />
             <YAxis title={ this.props.Y ? this.props.Y : null } />
-            <LineSeries
-                onValueMouseOver={ this.trackVal }
-                onValueMouseOut={ this.removeVal }
-                data={ this.props.data }
-            />
-            { value ? <Hint value={ value } /> : null }
+            <LineSeries data={ this.props.data } />
           </XYPlot>
         );
     }

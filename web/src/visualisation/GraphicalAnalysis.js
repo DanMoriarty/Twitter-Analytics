@@ -4,39 +4,46 @@ import AutoComplete from 'material-ui/AutoComplete';
 import Paper from 'material-ui/Card';
 import SingleHistogram from './SingleHistogram.js'
 import TimeGraph from './TimeGraph.js'
+import * as Constants from '../Constants.js'
 
 class GraphicalAnalysis extends Component {
   
-  constructor(props) {
-    super(props);
-    this.state = {
-        items: null,
-        error: false,
-        width: '0',
-        height: '0'
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            suburbSentiment: null,
+            suburbSentimentTime: null,
+            error: false,
+            width: '0',
+            height: '0'
+        };
+
+        this.selectSuburb = this.selectSuburb.bind(this);
+    }
+
+    componentDidMount() {
+        this.setState({height:window.innerHeight, width: window.innerWidth})
+
+        fetch('http://localhost:4444/api/suburbSentimentTime', Constants.INIT)
+            .then(result=>result.json()) 
+            .then(items=> this.setState({suburbSentimentTime: items.rows, error:false}))
+            .catch(error => this.setState({error: true}))
+    }
+
+  selectSuburb(chosenRequest, index) {
+    if (index === -1)
+        return null;
+
+    console.log("Clicked " + chosenRequest);
   }
 
-  componentDidMount() {
-    this.setState({height:window.innerHeight, width: window.innerWidth})
-
-    // Load Data from the API
-    var myHeaders = new Headers();
-    var myInit = { method: 'GET',
-                   headers: myHeaders,
-                   mode: 'cors',
-                   cache: 'default' };
-    fetch('http://localhost:4444/api/userTweets', myInit)
-        .then(result=>result.json()) 
-        .then(items=> this.setState({items: items.rows, error:false}))
-        .catch(error => this.setState({error: true}))
-  }
-
-  render() {
+    render() {
+    // Set width for each graph element
     const   minWidth = 350,
             dynamicWidth = (Number(this.state.width) * 0.46).toFixed(0),
             w = dynamicWidth > minWidth ? dynamicWidth : Number(this.state.width);
     
+    // Set style for paper wrappers
     const paperStyle = {
       width: w,
       margin: '1%',
@@ -50,15 +57,17 @@ class GraphicalAnalysis extends Component {
     if (this.state.error)
         return (<p>    Failed retrieving data. Please try refreshing the page.</p>);
 
-    if (!this.state.items)
+    if (!this.props.suburbSentiment)
         return (<Loading />);
 
-    const tweetsPerUser = this.state.items.map(
-        item => ({x: item.key, y: item.value}));
+    const tweetsPerSuburb = this.props.suburbSentiment.slice(0,10).map(
+        item => ({x: item.key, y: item.value["1"]}));
 
-    const allUsers = this.state.items.map(
+    const allSuburbs = this.props.suburbSentiment.map(
         item => (item.key));
 
+    
+    
     // PLACEHOLDER times
     const placeholder_times = 
         [
@@ -110,28 +119,30 @@ class GraphicalAnalysis extends Component {
                             Y="Percent of Positive Tweets"
                             width={paperStyle.width}
                         />
-                        <sub>Time of Day</sub>
+                        <sub>Time of Day</sub><br/>
                         <AutoComplete
                             floatingLabelText="Suburb 1"
-                            filter={ AutoComplete.fuzzyFilter }
-                            dataSource={ allUsers }
+                            filter={ AutoComplete.caseInsensitiveFilter }
+                            dataSource={ allSuburbs }
                             maxSearchResults={ 5 }
+                            onNewRequest={ this.selectSuburb }
                         />
-                        &nbsp&nbsp&nbsp
+                        &nbsp;&nbsp;&nbsp;
                         <AutoComplete
                             floatingLabelText="Suburb 2"
-                            filter={ AutoComplete.fuzzyFilter }
-                            dataSource={ allUsers }
+                            filter={ AutoComplete.caseInsensitiveFilter }
+                            dataSource={ allSuburbs }
                             maxSearchResults={ 5 }
+                            onNewRequest={ this.selectSuburb }
                         />
                     </div>
                 </Paper>
 
                 <Paper style={paperStyle}>
                     <div>
-                        <h3>Number of Tweets Per User</h3>
+                        <h3>Number of Positive Tweets</h3>
                         <SingleHistogram
-                            data={tweetsPerUser}
+                            data={tweetsPerSuburb}
                             Y="Number of Tweets"
                             width={paperStyle.width}
                         />
