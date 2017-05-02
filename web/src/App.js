@@ -9,6 +9,7 @@ injectTapEventPlugin();
 
 class App extends Component {
   render() {
+  	console.ignoredYellowBox = ['Warning:'];
     return (
       <div className="App">
           <MuiThemeProvider>

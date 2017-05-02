@@ -4,13 +4,12 @@ import {
     XAxis, 
     YAxis, 
     VerticalGridLines, 
-    HorizontalGridLines, 
-    VerticalBarSeries, 
+    HorizontalGridLines,  
     LineSeries, 
     Hint
 } from 'react-vis';
 
-class SingleHistogram extends Component {
+class TimeGraph extends Component {
     constructor(props) {
         super(props);
         this.state = {value: null};
@@ -20,6 +19,7 @@ class SingleHistogram extends Component {
     }
 
     trackVal(value) {
+    	console.log(value);
         this.setState({value: value});
     }
 
@@ -29,12 +29,6 @@ class SingleHistogram extends Component {
 
     render() {
         const {value} = this.state;
-        // Map each set of data to a VerticalBarSeries
-        // const verticalBars = this.props.data.map(
-        //     (data, i) => (<VerticalBarSeries key={i} data={data}/>)
-        // );
-        
-        const yMax = getYMax(this.props.data);
     
         return (    
           <XYPlot
@@ -46,43 +40,15 @@ class SingleHistogram extends Component {
             <HorizontalGridLines/>
             <XAxis title={ this.props.X ? this.props.X : null } tickLabelAngle={ -45 } />
             <YAxis title={ this.props.Y ? this.props.Y : null } />
-            <VerticalBarSeries
+            <LineSeries
                 onValueMouseOver={ this.trackVal }
                 onValueMouseOut={ this.removeVal }
                 data={ this.props.data }
             />
-            
-            { 
-                // Snap to
-                // value ? 
-                // <LineSeries data={[{x: value.x, y: value.y}, {x: value.x, y: yMax}]} stroke="black"/> 
-                // : null
-            }
-
-            { 
-                // Display text
-                value ? 
-                <Hint
-                    value={ value }
-                    // Uncomment the align if we want to align it to the top edge
-                    // align={ { horizontal: Hint.AUTO, vertical: Hint.ALIGN.TOP_EDGE } } 
-                />
-                : null
-            }
-
+            { value ? <Hint value={ value } /> : null }
           </XYPlot>
         );
     }
 }
 
-function getYMax(data) {
-    let yVals = [] 
-    for (var d in data) 
-    {
-        yVals.push(data[d]['y']);
-    }
-
-    return Math.max(...yVals);
-}
-
-export default SingleHistogram;
+export default TimeGraph;

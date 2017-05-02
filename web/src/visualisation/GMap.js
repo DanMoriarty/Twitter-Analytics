@@ -1,6 +1,6 @@
-import _ from "lodash";
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap } from "react-google-maps";
+import _ from "lodash";
 
 const MelbourneMap = withGoogleMap(props => (
   <GoogleMap
@@ -13,8 +13,17 @@ const MelbourneMap = withGoogleMap(props => (
 ));
 
 class GMap extends Component {
-  handleMapLoad = this.handleMapLoad.bind(this);
-  handleMapClick = this.handleMapClick.bind(this);
+  constructor(props) {
+    super(props);
+    this.state = { windowheight: '700px', 'windowwidth': '700px' };
+
+    this.handleMapLoad = this.handleMapLoad.bind(this);
+    this.handleMapClick = this.handleMapClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ windowheight: window.innerHeight + 'px', windowwidth: window.innerWidth + 'px'})
+  }
 
   handleMapLoad(map) {
     this._mapComponent = map;
@@ -26,13 +35,13 @@ class GMap extends Component {
 
   render() {
     return (
-      <div style={{height: '100%'}}>
+      <div style={{height: this.state.windowheight}}>
         <MelbourneMap
           containerElement={
-            <div style={{width: '100%', height: '100%'}} />
+            <div style={{width: this.state.windowwidth, height: this.state.windowheight }} />
           }
           mapElement={
-            <div style={{ height: '700px' }} />
+            <div style={{ height: this.state.windowheight }} />
           }
           onMapLoad={this.handleMapLoad}
           onMapClick={this.handleMapClick}
