@@ -26,6 +26,7 @@ module.exports = function(router) {
 	router.get('/speedStale', controller.getSpeedStale);
 	router.get('/suburbSentiment', controller.getSuburbSentiment);
 	router.get('/suburbSentimentTime', controller.getSuburbSentimentTime);
+	router.get('/sentimentTime', controller.getSentimentTime);
 
 	//--------------- PLAYING WITH KEYS ---------------//
 	// router middleware to handle key

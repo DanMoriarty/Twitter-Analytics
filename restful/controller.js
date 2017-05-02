@@ -72,4 +72,10 @@ exports.getSuburbSentimentTime = function(req, res) {
 	});
 }
 
+exports.getSentimentTime = function(req, res) {
+	db.view(sadesign, 'sa2-timeofday', { stale: "update_after", group_level: 0 }, function(err, body) {
+		res.send(body);
+	});
+}
+
 //------------------------------  END  FILE  ------------------------------//

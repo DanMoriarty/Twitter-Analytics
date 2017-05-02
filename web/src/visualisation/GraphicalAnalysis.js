@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Loading from '../material/Loading.js';
 import AutoComplete from 'material-ui/AutoComplete';
 import Paper from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
 import SingleHistogram from './SingleHistogram.js'
 import TimeGraph from './TimeGraph.js'
 import * as Constants from '../Constants.js'
@@ -11,14 +12,18 @@ class GraphicalAnalysis extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            suburbSentiment: null,
             suburbSentimentTime: null,
+            sentimentTime: null,
+            selectedSuburbs: [],
             error: false,
             width: '0',
-            height: '0'
+            height: '0',
+            zoomMelbTweets: false,
         };
 
         this.selectSuburb = this.selectSuburb.bind(this);
+        this.clearSuburb = this.clearSuburb.bind(this);
+        this.toggleMTweetsZoom = this.toggleMTweetsZoom.bind(this);
     }
 
     componentDidMount() {
@@ -26,21 +31,35 @@ class GraphicalAnalysis extends Component {
 
         fetch('http://localhost:4444/api/suburbSentimentTime', Constants.INIT)
             .then(result=>result.json()) 
-            .then(items=> this.setState({suburbSentimentTime: items.rows, error:false}))
+            .then(items=> this.setState({suburbSentimentTime: processSuburbTimes(items.rows), error:false}))
             .catch(error => this.setState({error: true}))
+
+        fetch('http://localhost:4444/api/sentimentTime', Constants.INIT)
+            .then(result=>result.json()) 
+            .then(items=> this.setState({sentimentTime: processSuburbTimes(items.rows), error:false}))
+            .catch(error => this.setState({error: true}))
+        
     }
 
-  selectSuburb(chosenRequest, index) {
-    if (index === -1)
-        return null;
+    selectSuburb(chosenRequest, index) {
+        if (index === -1 || this.state.selectedSuburbs.includes(chosenRequest))
+            return null;
 
-    console.log("Clicked " + chosenRequest);
-  }
+        this.setState({selectedSuburbs: this.state.selectedSuburbs.concat(chosenRequest)});
+    }
+
+    clearSuburb(chosenRequest, index) {
+        this.setState({selectedSuburbs: []});
+    }
+
+    toggleMTweetsZoom() {
+        this.setState({zoomMelbTweets: !this.state.zoomMelbTweets});
+    }
 
     render() {
     // Set width for each graph element
     const   minWidth = 350,
-            dynamicWidth = (Number(this.state.width) * 0.46).toFixed(0),
+            dynamicWidth = (Number(this.state.width) * 0.96).toFixed(0),
             w = dynamicWidth > minWidth ? dynamicWidth : Number(this.state.width);
     
     // Set style for paper wrappers
@@ -55,10 +74,13 @@ class GraphicalAnalysis extends Component {
         return null;
     
     if (this.state.error)
-        return (<p>    Failed retrieving data. Please try refreshing the page.</p>);
+        return (<p>&nbsp;Failed retrieving data. Please try refreshing the page.</p>);
 
-    if (!this.props.suburbSentiment)
+    if (!this.props.suburbSentiment || !this.state.suburbSentimentTime || !!this.state.suburbSentiment)
         return (<Loading />);
+
+
+    console.log(this.state.sentimentTime)
 
     const tweetsPerSuburb = this.props.suburbSentiment.slice(0,10).map(
         item => ({x: item.key, y: item.value["1"]}));
@@ -66,48 +88,19 @@ class GraphicalAnalysis extends Component {
     const allSuburbs = this.props.suburbSentiment.map(
         item => (item.key));
 
-    
-    
-    // PLACEHOLDER times
-    const placeholder_times = 
-        [
-            {x: "00:00", y: 3},
-            {x: "01:00", y: 3},
-            {x: "02:00", y: 3},
-            {x: "03:00", y: 3},
-            {x: "04:00", y: 3},
-            {x: "05:00", y: 5},
-            {x: "06:00", y: 15},
-            {x: "07:00", y: 12},
-            {x: "08:00", y: 7},
-            {x: "09:00", y: 9},
-            {x: "10:00", y: 15},
-            {x: "11:00", y: 16},
-            {x: "12:00", y: 17},
-            {x: "13:00", y: 18},
-            {x: "14:00", y: 19},
-            {x: "15:00", y: 19},
-            {x: "16:00", y: 19},
-            {x: "17:00", y: 25},
-            {x: "18:00", y: 27},
-            {x: "19:00", y: 20},
-            {x: "20:00", y: 15},
-            {x: "21:00", y: 12},
-            {x: "22:00", y: 8},
-            {x: "23:00", y: 6},
-            {x: "24:00", y: 3}
-        ]
-    
     return (<div className="GraphPage">
                 <Paper style={paperStyle}>
                     <div>
-                        <h3>Sentiment vs Time</h3>
+                        <h3>Sentiment vs Time </h3>
                         <TimeGraph
-                            data={ placeholder_times }
-                            Y="Percent of Positive Tweets"
+                            series={["Melbourne Tweets"]}
+                            data={this.state.sentimentTime}
+                            X="Time of Day"
+                            Y="Proportion of Positive Tweets"
                             width={paperStyle.width}
+                            zoom = {this.state.zoomMelbTweets}
                         />
-                        <sub>Time of Day</sub>
+                        <RaisedButton label="Toggle Zoom" secondary={true} onTouchTap={this.toggleMTweetsZoom} />
                     </div>
                 </Paper>
 
@@ -115,26 +108,20 @@ class GraphicalAnalysis extends Component {
                     <div>
                         <h3>Sentiment vs Time (Suburbs)</h3>
                         <TimeGraph
-                            data={ placeholder_times }
-                            Y="Percent of Positive Tweets"
+                            series={this.state.selectedSuburbs}
+                            data={this.state.suburbSentimentTime}
+                            X="Time of Day"
+                            Y="Proportion of Positive Tweets"
                             width={paperStyle.width}
                         />
-                        <sub>Time of Day</sub><br/>
                         <AutoComplete
-                            floatingLabelText="Suburb 1"
+                            floatingLabelText="Add Suburb"
                             filter={ AutoComplete.caseInsensitiveFilter }
                             dataSource={ allSuburbs }
                             maxSearchResults={ 5 }
                             onNewRequest={ this.selectSuburb }
                         />
-                        &nbsp;&nbsp;&nbsp;
-                        <AutoComplete
-                            floatingLabelText="Suburb 2"
-                            filter={ AutoComplete.caseInsensitiveFilter }
-                            dataSource={ allSuburbs }
-                            maxSearchResults={ 5 }
-                            onNewRequest={ this.selectSuburb }
-                        />
+                        <RaisedButton label="Clear All" secondary={true} onTouchTap={this.clearSuburb} />
                     </div>
                 </Paper>
 
@@ -152,6 +139,28 @@ class GraphicalAnalysis extends Component {
 
             </div>);
   }
+}
+
+function processSuburbTimes(data) {
+    let formattedSuburbs = {};
+    for (var suburb in data) {
+        let suburbName = data[suburb].key;
+        let vals = data[suburb].value;
+        let suburbArr = []
+        for (var time in vals) {
+            let formattedTime = time.length > 1 ? time + ":00" : "0" + time + ":00" 
+            if (vals.hasOwnProperty(Number(time)) && (vals[Number(time)]["1"] > 0 || vals[Number(time)]["-1"] > 0)) {
+                suburbArr.push({x: formattedTime, y: vals[Number(time)]["1"] / (vals[Number(time)]["1"] + vals[Number(time)]["-1"])});
+            } 
+        }
+
+        if (suburbName != null) {
+            formattedSuburbs[suburbName] = suburbArr;
+        } else {
+            formattedSuburbs["Melbourne Tweets"] = suburbArr;
+        }
+    }
+    return formattedSuburbs;
 }
 
 export default GraphicalAnalysis;

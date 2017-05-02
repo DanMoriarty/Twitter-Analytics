@@ -9,6 +9,7 @@ import {
     LineSeries, 
     Hint
 } from 'react-vis';
+import * as Constants from '../Constants.js'
 
 class SingleHistogram extends Component {
     constructor(props) {
@@ -50,6 +51,7 @@ class SingleHistogram extends Component {
                 onValueMouseOver={ this.trackVal }
                 onValueMouseOut={ this.removeVal }
                 data={ this.props.data }
+                color={ Constants.COLOURWHEEL[0] }
             />
             
             { 

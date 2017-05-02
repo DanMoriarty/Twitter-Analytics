@@ -14,7 +14,7 @@ function Sentiment(props) {
     return (
       <div className="container">
         <div className="left">
-          <GMap suburbs={props.suburbSentiment}/>
+          <GMap suburbs={props.suburbs}/>
         </div>
         <div className="right">
           <InfoCard
