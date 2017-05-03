@@ -16,7 +16,7 @@ function AuthorCards(props) {
     <div id="cards" style={style}>
       <AuthorCard
         name="Tim Glennan"
-        mainroles="NeCTAR / Sentiment / Node API / Web Design"
+        mainroles="NeCTAR / Sentiment / Node API / Web Design / Analytics"
         avatar="tim.jpg"
         bio="Placeholder bio."
       />
