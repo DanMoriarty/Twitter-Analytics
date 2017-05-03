@@ -1,0 +1,26 @@
+{
+  "name": "restful",
+  "version": "1.0.0",
+  "description": "Simple API layer for connecting CouchDB to web front end",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "couchdb",
+    "expressjs",
+    "express",
+    "couch",
+    "node",
+    "nodejs",
+    "RESTful",
+    "api"
+  ],
+  "author": "tglennan",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "nano": "^6.2.0"
+  }
+}

@@ -11,35 +11,37 @@
 #####----------------------------   IMPORTS   ----------------------------#####
 
 import couchdb
-import sentiment
+import reverseGeo
 
 #####----------------------------  CONSTANTS  ----------------------------#####
 
 USER = "clustercloud"
 PSWD = "pineapple"
-HOST = "115.146.95.86" #Sherlock
+HOST = "115.146.92.136"
 PORT = "8888"
-
-# DB   = "melbtweets2"   #The main tweets database.
-DB   = "melbtweets_sentiment" #100-tweet database for development.
+DB   = "melbtweets2"   #The main tweets database.
 
 #####----------------------------  FUNCTIONS  ----------------------------#####
 
-#Function to read in tweets and assign sentiment labels to an entire database.
-def assign_sentiments(database):
+#Function to read in a database of tweets and assign labels for analysis.
+def assign_labels(database):
     for tweetID in database:
-        tweet = database[tweetID]
-        print tweet["doc"]["text"]
-        tweet["doc"]["sentiment"] = sentiment.classify(tweet["doc"]["text"])
-        print tweet["doc"]["sentiment"]
-        # database[tweetID] = tweet
+        tweet  = database[tweetID]
+        try:
+            coords = tweet["geo"]["coordinates"]
+            sa2_code = reverseGeo.sa2_code(coords[0], coords[1])
+            tweet["sa2_code"] = sa2_code
+            tweet["sa2_name"] = reverseGeo.sa2_name(sa2_code)
+            database[tweetID] = tweet
+        except KeyError:
+            continue
 
 #####----------------------------   PROGRAM   ----------------------------#####
 
-#Initialise the server variable and assign sentiments to each tweet in the db.
-#Use following comment line to connect to server when credentials are required.
+#Initialise the server variable and assign labels to each tweet in the db.
 #server = couchdb.Server("http://{0}:{1}@{2}:{3}".format(USER,PSWD,HOST,PORT))
-server = couchdb.Server("http://{0}:{1}".format(HOST,PORT))
-assign_sentiments(server[DB])
+
+server = couchdb.Server("http://{2}:{3}".format(USER,PSWD,HOST,PORT))
+assign_labels(server[DB])
 
 #####----------------------------  END  FILE  ----------------------------#####

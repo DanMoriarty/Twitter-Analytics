@@ -1,0 +1,69 @@
+@import "../node_modules/react-vis/dist/style.css";
+
+.footer {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center {
+  left: 50%;
+  transform: translate(25%, 0%);
+}
+
+#cards {
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+/*.GraphPage {
+  padding-bottom: 100px;
+}
+*/
+
+div.left {
+  z-index: 1;
+  width: 100%;
+}
+
+.container {
+  position: relative;
+}
+
+div.right { 
+  position: absolute; 
+  top: 10px; 
+  width: 30%;
+  margin-left: 68%;
+  z-index: 99;
+}
+
+
+.authorCard {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  width: 46%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.homeCard {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  width: 90%;
+  padding-left: 5%;
+}
+
+div.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+}
