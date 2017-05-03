@@ -1,0 +1,1382 @@
+ _____________________________________
+< PLAY [launch all compute instances] >
+ -------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ ________________________
+< TASK [Gathering Facts] >
+ ------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ok: [localhost]
+ _____________________________
+< TASK [get ansible settings] >
+ -----------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ok: [localhost]
+ ____________________________________
+< TASK [configure security settings] >
+ ------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ok: [localhost]
+ __________________________________
+< TASK [create ssh security group] >
+ ----------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ok: [localhost]
+ ___________________________________________
+< TASK [create rules of ssh security group] >
+ -------------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ok: [localhost]
+ ______________________________________________
+< TASK [alter rules of default security group] >
+ ----------------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ok: [localhost]
+ _________________________
+< TASK [launch instances] >
+ -------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+changed: [localhost] => (item=1)
+changed: [localhost] => (item=2)
+ ___________________
+< TASK [print shit] >
+ -------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ok: [localhost] => (item={'_ansible_parsed': True, u'changed': True, '_ansible_no_log': False, '_ansible_item_result': True, u'server': {u'vm_state': u'active', u'OS-EXT-STS:task_state': None, u'addresses': {u'noblepark': [{u'OS-EXT-IPS-MAC:mac_addr': u'fa:16:3e:b0:66:1d', u'version': 4, u'addr': u'115.146.93.34', u'OS-EXT-IPS:type': u'fixed'}]}, u'terminated_at': None, u'image': {u'id': u'8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c', u'name': u'NeCTAR Ubuntu 14.04 (Trusty) amd64'}, u'OS-EXT-AZ:availability_zone': u'melbourne-np', u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:02:55.000000', u'flavor': {u'id': u'cba9ea52-8e90-468b-b8c2-777a94d81ed3', u'name': u'm2.tiny'}, u'az': u'melbourne-np', u'networks': {u'noblepark': [u'115.146.93.34']}, u'cloud': u'envvars', u'has_config_drive': False, u'user_id': u'7f3a575e61be479cb3fbe9493177a7b8', u'disk_config': u'MANUAL', u'OS-DCF:diskConfig': u'MANUAL', u'id': u'49087226-9c64-4aca-8c17-f0875731fb89', u'accessIPv4': u'115.146.93.34', u'accessIPv6': u'', u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': u'melbourne-np', u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'power_state': 1, u'public_v4': u'115.146.93.34', u'progress': 0, u'OS-EXT-STS:power_state': 1, u'project_id': u'fd901e0c620342459be4737578bda7be', u'launched_at': u'2017-05-02T11:02:55.000000', u'config_drive': u'', u'status': u'ACTIVE', u'updated': u'2017-05-02T11:27:49Z', u'hostId': u'a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104', u'OS-SRV-USG:terminated_at': None, u'key_name': u'testkey', u'public_v6': u'', u'request_ids': [], u'private_v4': u'', u'host_id': u'a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104', u'task_state': None, u'properties': {u'OS-EXT-STS:task_state': None, u'OS-SRV-USG:terminated_at': None, u'OS-DCF:diskConfig': u'MANUAL', u'request_ids': [], u'os-extended-volumes:volumes_attached': [], u'x_openstack_request_ids': [], u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:02:55.000000', u'OS-EXT-STS:power_state': 1, u'OS-EXT-AZ:availability_zone': u'melbourne-np'}, u'security_groups': [{u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'Default security group', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'5505d549-3e51-4a6a-bdf3-3b5fb069e483'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 8890, u'port_range_min': 8888, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'72319996-58e9-4488-91e2-9b5f601024b3'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'7cde655b-84f1-461d-a321-b666a0d1ebc9'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'request_ids': [], u'HUMAN_ID': False, u'name': u'default'}, {u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'allow connections over ssh', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 22, u'port_range_min': 22, u'security_group_id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'7f027f2b-fad7-4157-880b-6685e2ebb6bb'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'request_ids': [], u'HUMAN_ID': False, u'name': u'ssh'}], u'interface_ip': u'115.146.93.34', u'name': u'node1', u'created': u'2017-05-02T11:02:32Z', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'region': u'Melbourne', u'adminPass': None, u'x_openstack_request_ids': [], u'os-extended-volumes:volumes_attached': [], u'volumes': [], u'metadata': {u'hostname': u'node1'}}, 'item': u'1', u'invocation': {u'module_args': {u'auth_type': None, u'availability_zone': u'melbourne-np', u'image': u'NeCTAR Ubuntu 14.04 (Trusty) amd64', u'image_exclude': u'(deprecated)', u'flavor_include': None, u'meta': {u'hostname': u'node1'}, u'flavor': u'm2.tiny', u'cloud': None, u'scheduler_hints': None, u'boot_from_volume': False, u'userdata': None, u'network': None, u'terminate_volume': False, u'nics': [], u'floating_ips': None, u'flavor_ram': None, u'volume_size': False, u'state': u'present', u'auto_ip': True, u'security_groups': [u'default', u'ssh'], u'config_drive': False, u'region_name': None, u'key_name': u'testkey', u'api_timeout': None, u'auth': None, u'endpoint_type': u'public', u'boot_volume': None, u'key': None, u'cacert': None, u'volumes': [], u'wait': True, u'name': u'node1', u'delete_fip': False, u'cert': None, u'timeout': 200, u'verify': None, u'floating_ip_pools': None, u'reuse_ips': True}}, u'openstack': {u'vm_state': u'active', u'OS-EXT-STS:task_state': None, u'addresses': {u'noblepark': [{u'OS-EXT-IPS-MAC:mac_addr': u'fa:16:3e:b0:66:1d', u'version': 4, u'addr': u'115.146.93.34', u'OS-EXT-IPS:type': u'fixed'}]}, u'terminated_at': None, u'image': {u'id': u'8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c', u'name': u'NeCTAR Ubuntu 14.04 (Trusty) amd64'}, u'OS-EXT-AZ:availability_zone': u'melbourne-np', u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:02:55.000000', u'flavor': {u'id': u'cba9ea52-8e90-468b-b8c2-777a94d81ed3', u'name': u'm2.tiny'}, u'az': u'melbourne-np', u'networks': {u'noblepark': [u'115.146.93.34']}, u'cloud': u'envvars', u'has_config_drive': False, u'user_id': u'7f3a575e61be479cb3fbe9493177a7b8', u'disk_config': u'MANUAL', u'OS-DCF:diskConfig': u'MANUAL', u'id': u'49087226-9c64-4aca-8c17-f0875731fb89', u'accessIPv4': u'115.146.93.34', u'accessIPv6': u'', u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': u'melbourne-np', u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'power_state': 1, u'public_v4': u'115.146.93.34', u'progress': 0, u'OS-EXT-STS:power_state': 1, u'project_id': u'fd901e0c620342459be4737578bda7be', u'launched_at': u'2017-05-02T11:02:55.000000', u'config_drive': u'', u'status': u'ACTIVE', u'updated': u'2017-05-02T11:27:49Z', u'hostId': u'a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104', u'OS-SRV-USG:terminated_at': None, u'key_name': u'testkey', u'public_v6': u'', u'request_ids': [], u'private_v4': u'', u'host_id': u'a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104', u'task_state': None, u'properties': {u'OS-EXT-STS:task_state': None, u'OS-SRV-USG:terminated_at': None, u'OS-DCF:diskConfig': u'MANUAL', u'request_ids': [], u'os-extended-volumes:volumes_attached': [], u'x_openstack_request_ids': [], u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:02:55.000000', u'OS-EXT-STS:power_state': 1, u'OS-EXT-AZ:availability_zone': u'melbourne-np'}, u'security_groups': [{u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'Default security group', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'5505d549-3e51-4a6a-bdf3-3b5fb069e483'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 8890, u'port_range_min': 8888, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'72319996-58e9-4488-91e2-9b5f601024b3'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'7cde655b-84f1-461d-a321-b666a0d1ebc9'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'request_ids': [], u'HUMAN_ID': False, u'name': u'default'}, {u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'allow connections over ssh', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 22, u'port_range_min': 22, u'security_group_id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'7f027f2b-fad7-4157-880b-6685e2ebb6bb'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'request_ids': [], u'HUMAN_ID': False, u'name': u'ssh'}], u'interface_ip': u'115.146.93.34', u'name': u'node1', u'created': u'2017-05-02T11:02:32Z', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'region': u'Melbourne', u'adminPass': None, u'x_openstack_request_ids': [], u'os-extended-volumes:volumes_attached': [], u'volumes': [], u'metadata': {u'hostname': u'node1'}}, u'id': u'49087226-9c64-4aca-8c17-f0875731fb89'}) => {
+    "item": {
+        "changed": true, 
+        "id": "49087226-9c64-4aca-8c17-f0875731fb89", 
+        "invocation": {
+            "module_args": {
+                "api_timeout": null, 
+                "auth": null, 
+                "auth_type": null, 
+                "auto_ip": true, 
+                "availability_zone": "melbourne-np", 
+                "boot_from_volume": false, 
+                "boot_volume": null, 
+                "cacert": null, 
+                "cert": null, 
+                "cloud": null, 
+                "config_drive": false, 
+                "delete_fip": false, 
+                "endpoint_type": "public", 
+                "flavor": "m2.tiny", 
+                "flavor_include": null, 
+                "flavor_ram": null, 
+                "floating_ip_pools": null, 
+                "floating_ips": null, 
+                "image": "NeCTAR Ubuntu 14.04 (Trusty) amd64", 
+                "image_exclude": "(deprecated)", 
+                "key": null, 
+                "key_name": "testkey", 
+                "meta": {
+                    "hostname": "node1"
+                }, 
+                "name": "node1", 
+                "network": null, 
+                "nics": [], 
+                "region_name": null, 
+                "reuse_ips": true, 
+                "scheduler_hints": null, 
+                "security_groups": [
+                    "default", 
+                    "ssh"
+                ], 
+                "state": "present", 
+                "terminate_volume": false, 
+                "timeout": 200, 
+                "userdata": null, 
+                "verify": null, 
+                "volume_size": false, 
+                "volumes": [], 
+                "wait": true
+            }
+        }, 
+        "item": "1", 
+        "openstack": {
+            "OS-DCF:diskConfig": "MANUAL", 
+            "OS-EXT-AZ:availability_zone": "melbourne-np", 
+            "OS-EXT-STS:power_state": 1, 
+            "OS-EXT-STS:task_state": null, 
+            "OS-EXT-STS:vm_state": "active", 
+            "OS-SRV-USG:launched_at": "2017-05-02T11:02:55.000000", 
+            "OS-SRV-USG:terminated_at": null, 
+            "accessIPv4": "115.146.93.34", 
+            "accessIPv6": "", 
+            "addresses": {
+                "noblepark": [
+                    {
+                        "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:b0:66:1d", 
+                        "OS-EXT-IPS:type": "fixed", 
+                        "addr": "115.146.93.34", 
+                        "version": 4
+                    }
+                ]
+            }, 
+            "adminPass": null, 
+            "az": "melbourne-np", 
+            "cloud": "envvars", 
+            "config_drive": "", 
+            "created": "2017-05-02T11:02:32Z", 
+            "disk_config": "MANUAL", 
+            "flavor": {
+                "id": "cba9ea52-8e90-468b-b8c2-777a94d81ed3", 
+                "name": "m2.tiny"
+            }, 
+            "has_config_drive": false, 
+            "hostId": "a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104", 
+            "host_id": "a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104", 
+            "id": "49087226-9c64-4aca-8c17-f0875731fb89", 
+            "image": {
+                "id": "8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c", 
+                "name": "NeCTAR Ubuntu 14.04 (Trusty) amd64"
+            }, 
+            "interface_ip": "115.146.93.34", 
+            "key_name": "testkey", 
+            "launched_at": "2017-05-02T11:02:55.000000", 
+            "location": {
+                "cloud": "envvars", 
+                "project": {
+                    "domain_id": null, 
+                    "domain_name": null, 
+                    "id": "fd901e0c620342459be4737578bda7be", 
+                    "name": "pt-27657"
+                }, 
+                "region_name": "Melbourne", 
+                "zone": "melbourne-np"
+            }, 
+            "metadata": {
+                "hostname": "node1"
+            }, 
+            "name": "node1", 
+            "networks": {
+                "noblepark": [
+                    "115.146.93.34"
+                ]
+            }, 
+            "os-extended-volumes:volumes_attached": [], 
+            "power_state": 1, 
+            "private_v4": "", 
+            "progress": 0, 
+            "project_id": "fd901e0c620342459be4737578bda7be", 
+            "properties": {
+                "OS-DCF:diskConfig": "MANUAL", 
+                "OS-EXT-AZ:availability_zone": "melbourne-np", 
+                "OS-EXT-STS:power_state": 1, 
+                "OS-EXT-STS:task_state": null, 
+                "OS-EXT-STS:vm_state": "active", 
+                "OS-SRV-USG:launched_at": "2017-05-02T11:02:55.000000", 
+                "OS-SRV-USG:terminated_at": null, 
+                "os-extended-volumes:volumes_attached": [], 
+                "request_ids": [], 
+                "x_openstack_request_ids": []
+            }, 
+            "public_v4": "115.146.93.34", 
+            "public_v6": "", 
+            "region": "Melbourne", 
+            "request_ids": [], 
+            "security_groups": [
+                {
+                    "HUMAN_ID": false, 
+                    "NAME_ATTR": "name", 
+                    "description": "Default security group", 
+                    "human_id": null, 
+                    "id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                    "location": {
+                        "cloud": "envvars", 
+                        "project": {
+                            "domain_id": null, 
+                            "domain_name": null, 
+                            "id": "fd901e0c620342459be4737578bda7be", 
+                            "name": "pt-27657"
+                        }, 
+                        "region_name": "Melbourne", 
+                        "zone": null
+                    }, 
+                    "name": "default", 
+                    "project_id": "fd901e0c620342459be4737578bda7be", 
+                    "properties": {
+                        "HUMAN_ID": false, 
+                        "NAME_ATTR": "name", 
+                        "human_id": null, 
+                        "request_ids": [], 
+                        "x_openstack_request_ids": []
+                    }, 
+                    "request_ids": [], 
+                    "security_group_rules": [
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {
+                                "name": "default", 
+                                "tenant_id": "fd901e0c620342459be4737578bda7be"
+                            }, 
+                            "id": "5505d549-3e51-4a6a-bdf3-3b5fb069e483", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": null, 
+                            "port_range_min": null, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {
+                                    "name": "default", 
+                                    "tenant_id": "fd901e0c620342459be4737578bda7be"
+                                }
+                            }, 
+                            "protocol": null, 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": null, 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }, 
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {}, 
+                            "id": "72319996-58e9-4488-91e2-9b5f601024b3", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": 8890, 
+                            "port_range_min": 8888, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {}
+                            }, 
+                            "protocol": "tcp", 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": "0.0.0.0/0", 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }, 
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {
+                                "name": "default", 
+                                "tenant_id": "fd901e0c620342459be4737578bda7be"
+                            }, 
+                            "id": "7cde655b-84f1-461d-a321-b666a0d1ebc9", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": null, 
+                            "port_range_min": null, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {
+                                    "name": "default", 
+                                    "tenant_id": "fd901e0c620342459be4737578bda7be"
+                                }
+                            }, 
+                            "protocol": null, 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": null, 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }
+                    ], 
+                    "tenant_id": "fd901e0c620342459be4737578bda7be", 
+                    "x_openstack_request_ids": []
+                }, 
+                {
+                    "HUMAN_ID": false, 
+                    "NAME_ATTR": "name", 
+                    "description": "allow connections over ssh", 
+                    "human_id": null, 
+                    "id": "9e32c1e6-4190-4823-9b6a-ca2aa79e2089", 
+                    "location": {
+                        "cloud": "envvars", 
+                        "project": {
+                            "domain_id": null, 
+                            "domain_name": null, 
+                            "id": "fd901e0c620342459be4737578bda7be", 
+                            "name": "pt-27657"
+                        }, 
+                        "region_name": "Melbourne", 
+                        "zone": null
+                    }, 
+                    "name": "ssh", 
+                    "project_id": "fd901e0c620342459be4737578bda7be", 
+                    "properties": {
+                        "HUMAN_ID": false, 
+                        "NAME_ATTR": "name", 
+                        "human_id": null, 
+                        "request_ids": [], 
+                        "x_openstack_request_ids": []
+                    }, 
+                    "request_ids": [], 
+                    "security_group_rules": [
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {}, 
+                            "id": "7f027f2b-fad7-4157-880b-6685e2ebb6bb", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": 22, 
+                            "port_range_min": 22, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {}
+                            }, 
+                            "protocol": "tcp", 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": "0.0.0.0/0", 
+                            "security_group_id": "9e32c1e6-4190-4823-9b6a-ca2aa79e2089", 
+                            "tenant_id": ""
+                        }
+                    ], 
+                    "tenant_id": "fd901e0c620342459be4737578bda7be", 
+                    "x_openstack_request_ids": []
+                }
+            ], 
+            "status": "ACTIVE", 
+            "task_state": null, 
+            "tenant_id": "fd901e0c620342459be4737578bda7be", 
+            "terminated_at": null, 
+            "updated": "2017-05-02T11:27:49Z", 
+            "user_id": "7f3a575e61be479cb3fbe9493177a7b8", 
+            "vm_state": "active", 
+            "volumes": [], 
+            "x_openstack_request_ids": []
+        }, 
+        "server": {
+            "OS-DCF:diskConfig": "MANUAL", 
+            "OS-EXT-AZ:availability_zone": "melbourne-np", 
+            "OS-EXT-STS:power_state": 1, 
+            "OS-EXT-STS:task_state": null, 
+            "OS-EXT-STS:vm_state": "active", 
+            "OS-SRV-USG:launched_at": "2017-05-02T11:02:55.000000", 
+            "OS-SRV-USG:terminated_at": null, 
+            "accessIPv4": "115.146.93.34", 
+            "accessIPv6": "", 
+            "addresses": {
+                "noblepark": [
+                    {
+                        "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:b0:66:1d", 
+                        "OS-EXT-IPS:type": "fixed", 
+                        "addr": "115.146.93.34", 
+                        "version": 4
+                    }
+                ]
+            }, 
+            "adminPass": null, 
+            "az": "melbourne-np", 
+            "cloud": "envvars", 
+            "config_drive": "", 
+            "created": "2017-05-02T11:02:32Z", 
+            "disk_config": "MANUAL", 
+            "flavor": {
+                "id": "cba9ea52-8e90-468b-b8c2-777a94d81ed3", 
+                "name": "m2.tiny"
+            }, 
+            "has_config_drive": false, 
+            "hostId": "a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104", 
+            "host_id": "a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104", 
+            "id": "49087226-9c64-4aca-8c17-f0875731fb89", 
+            "image": {
+                "id": "8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c", 
+                "name": "NeCTAR Ubuntu 14.04 (Trusty) amd64"
+            }, 
+            "interface_ip": "115.146.93.34", 
+            "key_name": "testkey", 
+            "launched_at": "2017-05-02T11:02:55.000000", 
+            "location": {
+                "cloud": "envvars", 
+                "project": {
+                    "domain_id": null, 
+                    "domain_name": null, 
+                    "id": "fd901e0c620342459be4737578bda7be", 
+                    "name": "pt-27657"
+                }, 
+                "region_name": "Melbourne", 
+                "zone": "melbourne-np"
+            }, 
+            "metadata": {
+                "hostname": "node1"
+            }, 
+            "name": "node1", 
+            "networks": {
+                "noblepark": [
+                    "115.146.93.34"
+                ]
+            }, 
+            "os-extended-volumes:volumes_attached": [], 
+            "power_state": 1, 
+            "private_v4": "", 
+            "progress": 0, 
+            "project_id": "fd901e0c620342459be4737578bda7be", 
+            "properties": {
+                "OS-DCF:diskConfig": "MANUAL", 
+                "OS-EXT-AZ:availability_zone": "melbourne-np", 
+                "OS-EXT-STS:power_state": 1, 
+                "OS-EXT-STS:task_state": null, 
+                "OS-EXT-STS:vm_state": "active", 
+                "OS-SRV-USG:launched_at": "2017-05-02T11:02:55.000000", 
+                "OS-SRV-USG:terminated_at": null, 
+                "os-extended-volumes:volumes_attached": [], 
+                "request_ids": [], 
+                "x_openstack_request_ids": []
+            }, 
+            "public_v4": "115.146.93.34", 
+            "public_v6": "", 
+            "region": "Melbourne", 
+            "request_ids": [], 
+            "security_groups": [
+                {
+                    "HUMAN_ID": false, 
+                    "NAME_ATTR": "name", 
+                    "description": "Default security group", 
+                    "human_id": null, 
+                    "id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                    "location": {
+                        "cloud": "envvars", 
+                        "project": {
+                            "domain_id": null, 
+                            "domain_name": null, 
+                            "id": "fd901e0c620342459be4737578bda7be", 
+                            "name": "pt-27657"
+                        }, 
+                        "region_name": "Melbourne", 
+                        "zone": null
+                    }, 
+                    "name": "default", 
+                    "project_id": "fd901e0c620342459be4737578bda7be", 
+                    "properties": {
+                        "HUMAN_ID": false, 
+                        "NAME_ATTR": "name", 
+                        "human_id": null, 
+                        "request_ids": [], 
+                        "x_openstack_request_ids": []
+                    }, 
+                    "request_ids": [], 
+                    "security_group_rules": [
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {
+                                "name": "default", 
+                                "tenant_id": "fd901e0c620342459be4737578bda7be"
+                            }, 
+                            "id": "5505d549-3e51-4a6a-bdf3-3b5fb069e483", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": null, 
+                            "port_range_min": null, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {
+                                    "name": "default", 
+                                    "tenant_id": "fd901e0c620342459be4737578bda7be"
+                                }
+                            }, 
+                            "protocol": null, 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": null, 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }, 
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {}, 
+                            "id": "72319996-58e9-4488-91e2-9b5f601024b3", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": 8890, 
+                            "port_range_min": 8888, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {}
+                            }, 
+                            "protocol": "tcp", 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": "0.0.0.0/0", 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }, 
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {
+                                "name": "default", 
+                                "tenant_id": "fd901e0c620342459be4737578bda7be"
+                            }, 
+                            "id": "7cde655b-84f1-461d-a321-b666a0d1ebc9", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": null, 
+                            "port_range_min": null, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {
+                                    "name": "default", 
+                                    "tenant_id": "fd901e0c620342459be4737578bda7be"
+                                }
+                            }, 
+                            "protocol": null, 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": null, 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }
+                    ], 
+                    "tenant_id": "fd901e0c620342459be4737578bda7be", 
+                    "x_openstack_request_ids": []
+                }, 
+                {
+                    "HUMAN_ID": false, 
+                    "NAME_ATTR": "name", 
+                    "description": "allow connections over ssh", 
+                    "human_id": null, 
+                    "id": "9e32c1e6-4190-4823-9b6a-ca2aa79e2089", 
+                    "location": {
+                        "cloud": "envvars", 
+                        "project": {
+                            "domain_id": null, 
+                            "domain_name": null, 
+                            "id": "fd901e0c620342459be4737578bda7be", 
+                            "name": "pt-27657"
+                        }, 
+                        "region_name": "Melbourne", 
+                        "zone": null
+                    }, 
+                    "name": "ssh", 
+                    "project_id": "fd901e0c620342459be4737578bda7be", 
+                    "properties": {
+                        "HUMAN_ID": false, 
+                        "NAME_ATTR": "name", 
+                        "human_id": null, 
+                        "request_ids": [], 
+                        "x_openstack_request_ids": []
+                    }, 
+                    "request_ids": [], 
+                    "security_group_rules": [
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {}, 
+                            "id": "7f027f2b-fad7-4157-880b-6685e2ebb6bb", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": 22, 
+                            "port_range_min": 22, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {}
+                            }, 
+                            "protocol": "tcp", 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": "0.0.0.0/0", 
+                            "security_group_id": "9e32c1e6-4190-4823-9b6a-ca2aa79e2089", 
+                            "tenant_id": ""
+                        }
+                    ], 
+                    "tenant_id": "fd901e0c620342459be4737578bda7be", 
+                    "x_openstack_request_ids": []
+                }
+            ], 
+            "status": "ACTIVE", 
+            "task_state": null, 
+            "tenant_id": "fd901e0c620342459be4737578bda7be", 
+            "terminated_at": null, 
+            "updated": "2017-05-02T11:27:49Z", 
+            "user_id": "7f3a575e61be479cb3fbe9493177a7b8", 
+            "vm_state": "active", 
+            "volumes": [], 
+            "x_openstack_request_ids": []
+        }
+    }, 
+    "msg": "115.146.93.34"
+}
+ok: [localhost] => (item={'_ansible_parsed': True, u'changed': True, '_ansible_no_log': False, '_ansible_item_result': True, u'server': {u'vm_state': u'active', u'OS-EXT-STS:task_state': None, u'addresses': {u'noblepark': [{u'OS-EXT-IPS-MAC:mac_addr': u'fa:16:3e:47:bb:98', u'version': 4, u'addr': u'115.146.93.91', u'OS-EXT-IPS:type': u'fixed'}]}, u'terminated_at': None, u'image': {u'id': u'8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c', u'name': u'NeCTAR Ubuntu 14.04 (Trusty) amd64'}, u'OS-EXT-AZ:availability_zone': u'melbourne-np', u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:04:08.000000', u'flavor': {u'id': u'cba9ea52-8e90-468b-b8c2-777a94d81ed3', u'name': u'm2.tiny'}, u'az': u'melbourne-np', u'networks': {u'noblepark': [u'115.146.93.91']}, u'cloud': u'envvars', u'has_config_drive': False, u'user_id': u'7f3a575e61be479cb3fbe9493177a7b8', u'disk_config': u'MANUAL', u'OS-DCF:diskConfig': u'MANUAL', u'id': u'2403b9c6-3129-4d2f-b4b9-585da5dae9ed', u'accessIPv4': u'115.146.93.91', u'accessIPv6': u'', u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': u'melbourne-np', u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'power_state': 1, u'public_v4': u'115.146.93.91', u'progress': 0, u'OS-EXT-STS:power_state': 1, u'project_id': u'fd901e0c620342459be4737578bda7be', u'launched_at': u'2017-05-02T11:04:08.000000', u'config_drive': u'', u'status': u'ACTIVE', u'updated': u'2017-05-02T11:29:49Z', u'hostId': u'b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a', u'OS-SRV-USG:terminated_at': None, u'key_name': u'testkey', u'public_v6': u'', u'request_ids': [], u'private_v4': u'', u'host_id': u'b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a', u'task_state': None, u'properties': {u'OS-EXT-STS:task_state': None, u'OS-SRV-USG:terminated_at': None, u'OS-DCF:diskConfig': u'MANUAL', u'request_ids': [], u'os-extended-volumes:volumes_attached': [], u'x_openstack_request_ids': [], u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:04:08.000000', u'OS-EXT-STS:power_state': 1, u'OS-EXT-AZ:availability_zone': u'melbourne-np'}, u'security_groups': [{u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'Default security group', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'5505d549-3e51-4a6a-bdf3-3b5fb069e483'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 8890, u'port_range_min': 8888, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'72319996-58e9-4488-91e2-9b5f601024b3'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'7cde655b-84f1-461d-a321-b666a0d1ebc9'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'request_ids': [], u'HUMAN_ID': False, u'name': u'default'}, {u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'allow connections over ssh', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 22, u'port_range_min': 22, u'security_group_id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'7f027f2b-fad7-4157-880b-6685e2ebb6bb'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'request_ids': [], u'HUMAN_ID': False, u'name': u'ssh'}], u'interface_ip': u'115.146.93.91', u'name': u'node2', u'created': u'2017-05-02T11:03:45Z', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'region': u'Melbourne', u'adminPass': None, u'x_openstack_request_ids': [], u'os-extended-volumes:volumes_attached': [], u'volumes': [], u'metadata': {u'hostname': u'node2'}}, 'item': u'2', u'invocation': {u'module_args': {u'auth_type': None, u'availability_zone': u'melbourne-np', u'image': u'NeCTAR Ubuntu 14.04 (Trusty) amd64', u'image_exclude': u'(deprecated)', u'flavor_include': None, u'meta': {u'hostname': u'node2'}, u'flavor': u'm2.tiny', u'cloud': None, u'scheduler_hints': None, u'boot_from_volume': False, u'userdata': None, u'network': None, u'terminate_volume': False, u'nics': [], u'floating_ips': None, u'flavor_ram': None, u'volume_size': False, u'state': u'present', u'auto_ip': True, u'security_groups': [u'default', u'ssh'], u'config_drive': False, u'region_name': None, u'key_name': u'testkey', u'api_timeout': None, u'auth': None, u'endpoint_type': u'public', u'boot_volume': None, u'key': None, u'cacert': None, u'volumes': [], u'wait': True, u'name': u'node2', u'delete_fip': False, u'cert': None, u'timeout': 200, u'verify': None, u'floating_ip_pools': None, u'reuse_ips': True}}, u'openstack': {u'vm_state': u'active', u'OS-EXT-STS:task_state': None, u'addresses': {u'noblepark': [{u'OS-EXT-IPS-MAC:mac_addr': u'fa:16:3e:47:bb:98', u'version': 4, u'addr': u'115.146.93.91', u'OS-EXT-IPS:type': u'fixed'}]}, u'terminated_at': None, u'image': {u'id': u'8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c', u'name': u'NeCTAR Ubuntu 14.04 (Trusty) amd64'}, u'OS-EXT-AZ:availability_zone': u'melbourne-np', u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:04:08.000000', u'flavor': {u'id': u'cba9ea52-8e90-468b-b8c2-777a94d81ed3', u'name': u'm2.tiny'}, u'az': u'melbourne-np', u'networks': {u'noblepark': [u'115.146.93.91']}, u'cloud': u'envvars', u'has_config_drive': False, u'user_id': u'7f3a575e61be479cb3fbe9493177a7b8', u'disk_config': u'MANUAL', u'OS-DCF:diskConfig': u'MANUAL', u'id': u'2403b9c6-3129-4d2f-b4b9-585da5dae9ed', u'accessIPv4': u'115.146.93.91', u'accessIPv6': u'', u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': u'melbourne-np', u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'power_state': 1, u'public_v4': u'115.146.93.91', u'progress': 0, u'OS-EXT-STS:power_state': 1, u'project_id': u'fd901e0c620342459be4737578bda7be', u'launched_at': u'2017-05-02T11:04:08.000000', u'config_drive': u'', u'status': u'ACTIVE', u'updated': u'2017-05-02T11:29:49Z', u'hostId': u'b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a', u'OS-SRV-USG:terminated_at': None, u'key_name': u'testkey', u'public_v6': u'', u'request_ids': [], u'private_v4': u'', u'host_id': u'b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a', u'task_state': None, u'properties': {u'OS-EXT-STS:task_state': None, u'OS-SRV-USG:terminated_at': None, u'OS-DCF:diskConfig': u'MANUAL', u'request_ids': [], u'os-extended-volumes:volumes_attached': [], u'x_openstack_request_ids': [], u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:04:08.000000', u'OS-EXT-STS:power_state': 1, u'OS-EXT-AZ:availability_zone': u'melbourne-np'}, u'security_groups': [{u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'Default security group', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'5505d549-3e51-4a6a-bdf3-3b5fb069e483'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 8890, u'port_range_min': 8888, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'72319996-58e9-4488-91e2-9b5f601024b3'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'7cde655b-84f1-461d-a321-b666a0d1ebc9'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'request_ids': [], u'HUMAN_ID': False, u'name': u'default'}, {u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'allow connections over ssh', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 22, u'port_range_min': 22, u'security_group_id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'7f027f2b-fad7-4157-880b-6685e2ebb6bb'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'request_ids': [], u'HUMAN_ID': False, u'name': u'ssh'}], u'interface_ip': u'115.146.93.91', u'name': u'node2', u'created': u'2017-05-02T11:03:45Z', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'region': u'Melbourne', u'adminPass': None, u'x_openstack_request_ids': [], u'os-extended-volumes:volumes_attached': [], u'volumes': [], u'metadata': {u'hostname': u'node2'}}, u'id': u'2403b9c6-3129-4d2f-b4b9-585da5dae9ed'}) => {
+    "item": {
+        "changed": true, 
+        "id": "2403b9c6-3129-4d2f-b4b9-585da5dae9ed", 
+        "invocation": {
+            "module_args": {
+                "api_timeout": null, 
+                "auth": null, 
+                "auth_type": null, 
+                "auto_ip": true, 
+                "availability_zone": "melbourne-np", 
+                "boot_from_volume": false, 
+                "boot_volume": null, 
+                "cacert": null, 
+                "cert": null, 
+                "cloud": null, 
+                "config_drive": false, 
+                "delete_fip": false, 
+                "endpoint_type": "public", 
+                "flavor": "m2.tiny", 
+                "flavor_include": null, 
+                "flavor_ram": null, 
+                "floating_ip_pools": null, 
+                "floating_ips": null, 
+                "image": "NeCTAR Ubuntu 14.04 (Trusty) amd64", 
+                "image_exclude": "(deprecated)", 
+                "key": null, 
+                "key_name": "testkey", 
+                "meta": {
+                    "hostname": "node2"
+                }, 
+                "name": "node2", 
+                "network": null, 
+                "nics": [], 
+                "region_name": null, 
+                "reuse_ips": true, 
+                "scheduler_hints": null, 
+                "security_groups": [
+                    "default", 
+                    "ssh"
+                ], 
+                "state": "present", 
+                "terminate_volume": false, 
+                "timeout": 200, 
+                "userdata": null, 
+                "verify": null, 
+                "volume_size": false, 
+                "volumes": [], 
+                "wait": true
+            }
+        }, 
+        "item": "2", 
+        "openstack": {
+            "OS-DCF:diskConfig": "MANUAL", 
+            "OS-EXT-AZ:availability_zone": "melbourne-np", 
+            "OS-EXT-STS:power_state": 1, 
+            "OS-EXT-STS:task_state": null, 
+            "OS-EXT-STS:vm_state": "active", 
+            "OS-SRV-USG:launched_at": "2017-05-02T11:04:08.000000", 
+            "OS-SRV-USG:terminated_at": null, 
+            "accessIPv4": "115.146.93.91", 
+            "accessIPv6": "", 
+            "addresses": {
+                "noblepark": [
+                    {
+                        "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:47:bb:98", 
+                        "OS-EXT-IPS:type": "fixed", 
+                        "addr": "115.146.93.91", 
+                        "version": 4
+                    }
+                ]
+            }, 
+            "adminPass": null, 
+            "az": "melbourne-np", 
+            "cloud": "envvars", 
+            "config_drive": "", 
+            "created": "2017-05-02T11:03:45Z", 
+            "disk_config": "MANUAL", 
+            "flavor": {
+                "id": "cba9ea52-8e90-468b-b8c2-777a94d81ed3", 
+                "name": "m2.tiny"
+            }, 
+            "has_config_drive": false, 
+            "hostId": "b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a", 
+            "host_id": "b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a", 
+            "id": "2403b9c6-3129-4d2f-b4b9-585da5dae9ed", 
+            "image": {
+                "id": "8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c", 
+                "name": "NeCTAR Ubuntu 14.04 (Trusty) amd64"
+            }, 
+            "interface_ip": "115.146.93.91", 
+            "key_name": "testkey", 
+            "launched_at": "2017-05-02T11:04:08.000000", 
+            "location": {
+                "cloud": "envvars", 
+                "project": {
+                    "domain_id": null, 
+                    "domain_name": null, 
+                    "id": "fd901e0c620342459be4737578bda7be", 
+                    "name": "pt-27657"
+                }, 
+                "region_name": "Melbourne", 
+                "zone": "melbourne-np"
+            }, 
+            "metadata": {
+                "hostname": "node2"
+            }, 
+            "name": "node2", 
+            "networks": {
+                "noblepark": [
+                    "115.146.93.91"
+                ]
+            }, 
+            "os-extended-volumes:volumes_attached": [], 
+            "power_state": 1, 
+            "private_v4": "", 
+            "progress": 0, 
+            "project_id": "fd901e0c620342459be4737578bda7be", 
+            "properties": {
+                "OS-DCF:diskConfig": "MANUAL", 
+                "OS-EXT-AZ:availability_zone": "melbourne-np", 
+                "OS-EXT-STS:power_state": 1, 
+                "OS-EXT-STS:task_state": null, 
+                "OS-EXT-STS:vm_state": "active", 
+                "OS-SRV-USG:launched_at": "2017-05-02T11:04:08.000000", 
+                "OS-SRV-USG:terminated_at": null, 
+                "os-extended-volumes:volumes_attached": [], 
+                "request_ids": [], 
+                "x_openstack_request_ids": []
+            }, 
+            "public_v4": "115.146.93.91", 
+            "public_v6": "", 
+            "region": "Melbourne", 
+            "request_ids": [], 
+            "security_groups": [
+                {
+                    "HUMAN_ID": false, 
+                    "NAME_ATTR": "name", 
+                    "description": "Default security group", 
+                    "human_id": null, 
+                    "id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                    "location": {
+                        "cloud": "envvars", 
+                        "project": {
+                            "domain_id": null, 
+                            "domain_name": null, 
+                            "id": "fd901e0c620342459be4737578bda7be", 
+                            "name": "pt-27657"
+                        }, 
+                        "region_name": "Melbourne", 
+                        "zone": null
+                    }, 
+                    "name": "default", 
+                    "project_id": "fd901e0c620342459be4737578bda7be", 
+                    "properties": {
+                        "HUMAN_ID": false, 
+                        "NAME_ATTR": "name", 
+                        "human_id": null, 
+                        "request_ids": [], 
+                        "x_openstack_request_ids": []
+                    }, 
+                    "request_ids": [], 
+                    "security_group_rules": [
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {
+                                "name": "default", 
+                                "tenant_id": "fd901e0c620342459be4737578bda7be"
+                            }, 
+                            "id": "5505d549-3e51-4a6a-bdf3-3b5fb069e483", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": null, 
+                            "port_range_min": null, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {
+                                    "name": "default", 
+                                    "tenant_id": "fd901e0c620342459be4737578bda7be"
+                                }
+                            }, 
+                            "protocol": null, 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": null, 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }, 
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {}, 
+                            "id": "72319996-58e9-4488-91e2-9b5f601024b3", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": 8890, 
+                            "port_range_min": 8888, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {}
+                            }, 
+                            "protocol": "tcp", 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": "0.0.0.0/0", 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }, 
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {
+                                "name": "default", 
+                                "tenant_id": "fd901e0c620342459be4737578bda7be"
+                            }, 
+                            "id": "7cde655b-84f1-461d-a321-b666a0d1ebc9", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": null, 
+                            "port_range_min": null, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {
+                                    "name": "default", 
+                                    "tenant_id": "fd901e0c620342459be4737578bda7be"
+                                }
+                            }, 
+                            "protocol": null, 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": null, 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }
+                    ], 
+                    "tenant_id": "fd901e0c620342459be4737578bda7be", 
+                    "x_openstack_request_ids": []
+                }, 
+                {
+                    "HUMAN_ID": false, 
+                    "NAME_ATTR": "name", 
+                    "description": "allow connections over ssh", 
+                    "human_id": null, 
+                    "id": "9e32c1e6-4190-4823-9b6a-ca2aa79e2089", 
+                    "location": {
+                        "cloud": "envvars", 
+                        "project": {
+                            "domain_id": null, 
+                            "domain_name": null, 
+                            "id": "fd901e0c620342459be4737578bda7be", 
+                            "name": "pt-27657"
+                        }, 
+                        "region_name": "Melbourne", 
+                        "zone": null
+                    }, 
+                    "name": "ssh", 
+                    "project_id": "fd901e0c620342459be4737578bda7be", 
+                    "properties": {
+                        "HUMAN_ID": false, 
+                        "NAME_ATTR": "name", 
+                        "human_id": null, 
+                        "request_ids": [], 
+                        "x_openstack_request_ids": []
+                    }, 
+                    "request_ids": [], 
+                    "security_group_rules": [
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {}, 
+                            "id": "7f027f2b-fad7-4157-880b-6685e2ebb6bb", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": 22, 
+                            "port_range_min": 22, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {}
+                            }, 
+                            "protocol": "tcp", 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": "0.0.0.0/0", 
+                            "security_group_id": "9e32c1e6-4190-4823-9b6a-ca2aa79e2089", 
+                            "tenant_id": ""
+                        }
+                    ], 
+                    "tenant_id": "fd901e0c620342459be4737578bda7be", 
+                    "x_openstack_request_ids": []
+                }
+            ], 
+            "status": "ACTIVE", 
+            "task_state": null, 
+            "tenant_id": "fd901e0c620342459be4737578bda7be", 
+            "terminated_at": null, 
+            "updated": "2017-05-02T11:29:49Z", 
+            "user_id": "7f3a575e61be479cb3fbe9493177a7b8", 
+            "vm_state": "active", 
+            "volumes": [], 
+            "x_openstack_request_ids": []
+        }, 
+        "server": {
+            "OS-DCF:diskConfig": "MANUAL", 
+            "OS-EXT-AZ:availability_zone": "melbourne-np", 
+            "OS-EXT-STS:power_state": 1, 
+            "OS-EXT-STS:task_state": null, 
+            "OS-EXT-STS:vm_state": "active", 
+            "OS-SRV-USG:launched_at": "2017-05-02T11:04:08.000000", 
+            "OS-SRV-USG:terminated_at": null, 
+            "accessIPv4": "115.146.93.91", 
+            "accessIPv6": "", 
+            "addresses": {
+                "noblepark": [
+                    {
+                        "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:47:bb:98", 
+                        "OS-EXT-IPS:type": "fixed", 
+                        "addr": "115.146.93.91", 
+                        "version": 4
+                    }
+                ]
+            }, 
+            "adminPass": null, 
+            "az": "melbourne-np", 
+            "cloud": "envvars", 
+            "config_drive": "", 
+            "created": "2017-05-02T11:03:45Z", 
+            "disk_config": "MANUAL", 
+            "flavor": {
+                "id": "cba9ea52-8e90-468b-b8c2-777a94d81ed3", 
+                "name": "m2.tiny"
+            }, 
+            "has_config_drive": false, 
+            "hostId": "b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a", 
+            "host_id": "b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a", 
+            "id": "2403b9c6-3129-4d2f-b4b9-585da5dae9ed", 
+            "image": {
+                "id": "8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c", 
+                "name": "NeCTAR Ubuntu 14.04 (Trusty) amd64"
+            }, 
+            "interface_ip": "115.146.93.91", 
+            "key_name": "testkey", 
+            "launched_at": "2017-05-02T11:04:08.000000", 
+            "location": {
+                "cloud": "envvars", 
+                "project": {
+                    "domain_id": null, 
+                    "domain_name": null, 
+                    "id": "fd901e0c620342459be4737578bda7be", 
+                    "name": "pt-27657"
+                }, 
+                "region_name": "Melbourne", 
+                "zone": "melbourne-np"
+            }, 
+            "metadata": {
+                "hostname": "node2"
+            }, 
+            "name": "node2", 
+            "networks": {
+                "noblepark": [
+                    "115.146.93.91"
+                ]
+            }, 
+            "os-extended-volumes:volumes_attached": [], 
+            "power_state": 1, 
+            "private_v4": "", 
+            "progress": 0, 
+            "project_id": "fd901e0c620342459be4737578bda7be", 
+            "properties": {
+                "OS-DCF:diskConfig": "MANUAL", 
+                "OS-EXT-AZ:availability_zone": "melbourne-np", 
+                "OS-EXT-STS:power_state": 1, 
+                "OS-EXT-STS:task_state": null, 
+                "OS-EXT-STS:vm_state": "active", 
+                "OS-SRV-USG:launched_at": "2017-05-02T11:04:08.000000", 
+                "OS-SRV-USG:terminated_at": null, 
+                "os-extended-volumes:volumes_attached": [], 
+                "request_ids": [], 
+                "x_openstack_request_ids": []
+            }, 
+            "public_v4": "115.146.93.91", 
+            "public_v6": "", 
+            "region": "Melbourne", 
+            "request_ids": [], 
+            "security_groups": [
+                {
+                    "HUMAN_ID": false, 
+                    "NAME_ATTR": "name", 
+                    "description": "Default security group", 
+                    "human_id": null, 
+                    "id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                    "location": {
+                        "cloud": "envvars", 
+                        "project": {
+                            "domain_id": null, 
+                            "domain_name": null, 
+                            "id": "fd901e0c620342459be4737578bda7be", 
+                            "name": "pt-27657"
+                        }, 
+                        "region_name": "Melbourne", 
+                        "zone": null
+                    }, 
+                    "name": "default", 
+                    "project_id": "fd901e0c620342459be4737578bda7be", 
+                    "properties": {
+                        "HUMAN_ID": false, 
+                        "NAME_ATTR": "name", 
+                        "human_id": null, 
+                        "request_ids": [], 
+                        "x_openstack_request_ids": []
+                    }, 
+                    "request_ids": [], 
+                    "security_group_rules": [
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {
+                                "name": "default", 
+                                "tenant_id": "fd901e0c620342459be4737578bda7be"
+                            }, 
+                            "id": "5505d549-3e51-4a6a-bdf3-3b5fb069e483", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": null, 
+                            "port_range_min": null, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {
+                                    "name": "default", 
+                                    "tenant_id": "fd901e0c620342459be4737578bda7be"
+                                }
+                            }, 
+                            "protocol": null, 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": null, 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }, 
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {}, 
+                            "id": "72319996-58e9-4488-91e2-9b5f601024b3", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": 8890, 
+                            "port_range_min": 8888, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {}
+                            }, 
+                            "protocol": "tcp", 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": "0.0.0.0/0", 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }, 
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {
+                                "name": "default", 
+                                "tenant_id": "fd901e0c620342459be4737578bda7be"
+                            }, 
+                            "id": "7cde655b-84f1-461d-a321-b666a0d1ebc9", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": null, 
+                            "port_range_min": null, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {
+                                    "name": "default", 
+                                    "tenant_id": "fd901e0c620342459be4737578bda7be"
+                                }
+                            }, 
+                            "protocol": null, 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": null, 
+                            "security_group_id": "11512bc7-4a1d-4412-a508-b923a5ce292e", 
+                            "tenant_id": ""
+                        }
+                    ], 
+                    "tenant_id": "fd901e0c620342459be4737578bda7be", 
+                    "x_openstack_request_ids": []
+                }, 
+                {
+                    "HUMAN_ID": false, 
+                    "NAME_ATTR": "name", 
+                    "description": "allow connections over ssh", 
+                    "human_id": null, 
+                    "id": "9e32c1e6-4190-4823-9b6a-ca2aa79e2089", 
+                    "location": {
+                        "cloud": "envvars", 
+                        "project": {
+                            "domain_id": null, 
+                            "domain_name": null, 
+                            "id": "fd901e0c620342459be4737578bda7be", 
+                            "name": "pt-27657"
+                        }, 
+                        "region_name": "Melbourne", 
+                        "zone": null
+                    }, 
+                    "name": "ssh", 
+                    "project_id": "fd901e0c620342459be4737578bda7be", 
+                    "properties": {
+                        "HUMAN_ID": false, 
+                        "NAME_ATTR": "name", 
+                        "human_id": null, 
+                        "request_ids": [], 
+                        "x_openstack_request_ids": []
+                    }, 
+                    "request_ids": [], 
+                    "security_group_rules": [
+                        {
+                            "direction": "ingress", 
+                            "ethertype": "IPv4", 
+                            "group": {}, 
+                            "id": "7f027f2b-fad7-4157-880b-6685e2ebb6bb", 
+                            "location": {
+                                "cloud": "envvars", 
+                                "project": {
+                                    "domain_id": null, 
+                                    "domain_name": null, 
+                                    "id": "fd901e0c620342459be4737578bda7be", 
+                                    "name": "pt-27657"
+                                }, 
+                                "region_name": "Melbourne", 
+                                "zone": null
+                            }, 
+                            "port_range_max": 22, 
+                            "port_range_min": 22, 
+                            "project_id": "", 
+                            "properties": {
+                                "group": {}
+                            }, 
+                            "protocol": "tcp", 
+                            "remote_group_id": null, 
+                            "remote_ip_prefix": "0.0.0.0/0", 
+                            "security_group_id": "9e32c1e6-4190-4823-9b6a-ca2aa79e2089", 
+                            "tenant_id": ""
+                        }
+                    ], 
+                    "tenant_id": "fd901e0c620342459be4737578bda7be", 
+                    "x_openstack_request_ids": []
+                }
+            ], 
+            "status": "ACTIVE", 
+            "task_state": null, 
+            "tenant_id": "fd901e0c620342459be4737578bda7be", 
+            "terminated_at": null, 
+            "updated": "2017-05-02T11:29:49Z", 
+            "user_id": "7f3a575e61be479cb3fbe9493177a7b8", 
+            "vm_state": "active", 
+            "volumes": [], 
+            "x_openstack_request_ids": []
+        }
+    }, 
+    "msg": "115.146.93.91"
+}
+ _________________________
+< TASK [update inventory] >
+ -------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+changed: [localhost] => (item={'_ansible_parsed': True, u'changed': True, '_ansible_no_log': False, '_ansible_item_result': True, u'server': {u'vm_state': u'active', u'OS-EXT-STS:task_state': None, u'addresses': {u'noblepark': [{u'OS-EXT-IPS-MAC:mac_addr': u'fa:16:3e:b0:66:1d', u'version': 4, u'addr': u'115.146.93.34', u'OS-EXT-IPS:type': u'fixed'}]}, u'terminated_at': None, u'image': {u'id': u'8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c', u'name': u'NeCTAR Ubuntu 14.04 (Trusty) amd64'}, u'OS-EXT-AZ:availability_zone': u'melbourne-np', u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:02:55.000000', u'flavor': {u'id': u'cba9ea52-8e90-468b-b8c2-777a94d81ed3', u'name': u'm2.tiny'}, u'az': u'melbourne-np', u'networks': {u'noblepark': [u'115.146.93.34']}, u'cloud': u'envvars', u'has_config_drive': False, u'user_id': u'7f3a575e61be479cb3fbe9493177a7b8', u'disk_config': u'MANUAL', u'OS-DCF:diskConfig': u'MANUAL', u'id': u'49087226-9c64-4aca-8c17-f0875731fb89', u'accessIPv4': u'115.146.93.34', u'accessIPv6': u'', u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': u'melbourne-np', u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'power_state': 1, u'public_v4': u'115.146.93.34', u'progress': 0, u'OS-EXT-STS:power_state': 1, u'project_id': u'fd901e0c620342459be4737578bda7be', u'launched_at': u'2017-05-02T11:02:55.000000', u'config_drive': u'', u'status': u'ACTIVE', u'updated': u'2017-05-02T11:27:49Z', u'hostId': u'a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104', u'OS-SRV-USG:terminated_at': None, u'key_name': u'testkey', u'public_v6': u'', u'request_ids': [], u'private_v4': u'', u'host_id': u'a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104', u'task_state': None, u'properties': {u'OS-EXT-STS:task_state': None, u'OS-SRV-USG:terminated_at': None, u'OS-DCF:diskConfig': u'MANUAL', u'request_ids': [], u'os-extended-volumes:volumes_attached': [], u'x_openstack_request_ids': [], u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:02:55.000000', u'OS-EXT-STS:power_state': 1, u'OS-EXT-AZ:availability_zone': u'melbourne-np'}, u'security_groups': [{u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'Default security group', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'5505d549-3e51-4a6a-bdf3-3b5fb069e483'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 8890, u'port_range_min': 8888, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'72319996-58e9-4488-91e2-9b5f601024b3'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'7cde655b-84f1-461d-a321-b666a0d1ebc9'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'request_ids': [], u'HUMAN_ID': False, u'name': u'default'}, {u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'allow connections over ssh', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 22, u'port_range_min': 22, u'security_group_id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'7f027f2b-fad7-4157-880b-6685e2ebb6bb'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'request_ids': [], u'HUMAN_ID': False, u'name': u'ssh'}], u'interface_ip': u'115.146.93.34', u'name': u'node1', u'created': u'2017-05-02T11:02:32Z', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'region': u'Melbourne', u'adminPass': None, u'x_openstack_request_ids': [], u'os-extended-volumes:volumes_attached': [], u'volumes': [], u'metadata': {u'hostname': u'node1'}}, 'item': u'1', u'invocation': {u'module_args': {u'auth_type': None, u'availability_zone': u'melbourne-np', u'image': u'NeCTAR Ubuntu 14.04 (Trusty) amd64', u'image_exclude': u'(deprecated)', u'flavor_include': None, u'meta': {u'hostname': u'node1'}, u'flavor': u'm2.tiny', u'cloud': None, u'scheduler_hints': None, u'boot_from_volume': False, u'userdata': None, u'network': None, u'terminate_volume': False, u'nics': [], u'floating_ips': None, u'flavor_ram': None, u'volume_size': False, u'state': u'present', u'auto_ip': True, u'security_groups': [u'default', u'ssh'], u'config_drive': False, u'region_name': None, u'key_name': u'testkey', u'api_timeout': None, u'auth': None, u'endpoint_type': u'public', u'boot_volume': None, u'key': None, u'cacert': None, u'volumes': [], u'wait': True, u'name': u'node1', u'delete_fip': False, u'cert': None, u'timeout': 200, u'verify': None, u'floating_ip_pools': None, u'reuse_ips': True}}, u'openstack': {u'vm_state': u'active', u'OS-EXT-STS:task_state': None, u'addresses': {u'noblepark': [{u'OS-EXT-IPS-MAC:mac_addr': u'fa:16:3e:b0:66:1d', u'version': 4, u'addr': u'115.146.93.34', u'OS-EXT-IPS:type': u'fixed'}]}, u'terminated_at': None, u'image': {u'id': u'8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c', u'name': u'NeCTAR Ubuntu 14.04 (Trusty) amd64'}, u'OS-EXT-AZ:availability_zone': u'melbourne-np', u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:02:55.000000', u'flavor': {u'id': u'cba9ea52-8e90-468b-b8c2-777a94d81ed3', u'name': u'm2.tiny'}, u'az': u'melbourne-np', u'networks': {u'noblepark': [u'115.146.93.34']}, u'cloud': u'envvars', u'has_config_drive': False, u'user_id': u'7f3a575e61be479cb3fbe9493177a7b8', u'disk_config': u'MANUAL', u'OS-DCF:diskConfig': u'MANUAL', u'id': u'49087226-9c64-4aca-8c17-f0875731fb89', u'accessIPv4': u'115.146.93.34', u'accessIPv6': u'', u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': u'melbourne-np', u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'power_state': 1, u'public_v4': u'115.146.93.34', u'progress': 0, u'OS-EXT-STS:power_state': 1, u'project_id': u'fd901e0c620342459be4737578bda7be', u'launched_at': u'2017-05-02T11:02:55.000000', u'config_drive': u'', u'status': u'ACTIVE', u'updated': u'2017-05-02T11:27:49Z', u'hostId': u'a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104', u'OS-SRV-USG:terminated_at': None, u'key_name': u'testkey', u'public_v6': u'', u'request_ids': [], u'private_v4': u'', u'host_id': u'a88799d5114247f785e4adb1efc6cda46a1cf2786b962a3b6dfca104', u'task_state': None, u'properties': {u'OS-EXT-STS:task_state': None, u'OS-SRV-USG:terminated_at': None, u'OS-DCF:diskConfig': u'MANUAL', u'request_ids': [], u'os-extended-volumes:volumes_attached': [], u'x_openstack_request_ids': [], u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:02:55.000000', u'OS-EXT-STS:power_state': 1, u'OS-EXT-AZ:availability_zone': u'melbourne-np'}, u'security_groups': [{u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'Default security group', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'5505d549-3e51-4a6a-bdf3-3b5fb069e483'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 8890, u'port_range_min': 8888, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'72319996-58e9-4488-91e2-9b5f601024b3'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'7cde655b-84f1-461d-a321-b666a0d1ebc9'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'request_ids': [], u'HUMAN_ID': False, u'name': u'default'}, {u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'allow connections over ssh', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 22, u'port_range_min': 22, u'security_group_id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'7f027f2b-fad7-4157-880b-6685e2ebb6bb'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'request_ids': [], u'HUMAN_ID': False, u'name': u'ssh'}], u'interface_ip': u'115.146.93.34', u'name': u'node1', u'created': u'2017-05-02T11:02:32Z', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'region': u'Melbourne', u'adminPass': None, u'x_openstack_request_ids': [], u'os-extended-volumes:volumes_attached': [], u'volumes': [], u'metadata': {u'hostname': u'node1'}}, u'id': u'49087226-9c64-4aca-8c17-f0875731fb89'})
+changed: [localhost] => (item={'_ansible_parsed': True, u'changed': True, '_ansible_no_log': False, '_ansible_item_result': True, u'server': {u'vm_state': u'active', u'OS-EXT-STS:task_state': None, u'addresses': {u'noblepark': [{u'OS-EXT-IPS-MAC:mac_addr': u'fa:16:3e:47:bb:98', u'version': 4, u'addr': u'115.146.93.91', u'OS-EXT-IPS:type': u'fixed'}]}, u'terminated_at': None, u'image': {u'id': u'8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c', u'name': u'NeCTAR Ubuntu 14.04 (Trusty) amd64'}, u'OS-EXT-AZ:availability_zone': u'melbourne-np', u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:04:08.000000', u'flavor': {u'id': u'cba9ea52-8e90-468b-b8c2-777a94d81ed3', u'name': u'm2.tiny'}, u'az': u'melbourne-np', u'networks': {u'noblepark': [u'115.146.93.91']}, u'cloud': u'envvars', u'has_config_drive': False, u'user_id': u'7f3a575e61be479cb3fbe9493177a7b8', u'disk_config': u'MANUAL', u'OS-DCF:diskConfig': u'MANUAL', u'id': u'2403b9c6-3129-4d2f-b4b9-585da5dae9ed', u'accessIPv4': u'115.146.93.91', u'accessIPv6': u'', u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': u'melbourne-np', u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'power_state': 1, u'public_v4': u'115.146.93.91', u'progress': 0, u'OS-EXT-STS:power_state': 1, u'project_id': u'fd901e0c620342459be4737578bda7be', u'launched_at': u'2017-05-02T11:04:08.000000', u'config_drive': u'', u'status': u'ACTIVE', u'updated': u'2017-05-02T11:29:49Z', u'hostId': u'b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a', u'OS-SRV-USG:terminated_at': None, u'key_name': u'testkey', u'public_v6': u'', u'request_ids': [], u'private_v4': u'', u'host_id': u'b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a', u'task_state': None, u'properties': {u'OS-EXT-STS:task_state': None, u'OS-SRV-USG:terminated_at': None, u'OS-DCF:diskConfig': u'MANUAL', u'request_ids': [], u'os-extended-volumes:volumes_attached': [], u'x_openstack_request_ids': [], u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:04:08.000000', u'OS-EXT-STS:power_state': 1, u'OS-EXT-AZ:availability_zone': u'melbourne-np'}, u'security_groups': [{u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'Default security group', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'5505d549-3e51-4a6a-bdf3-3b5fb069e483'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 8890, u'port_range_min': 8888, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'72319996-58e9-4488-91e2-9b5f601024b3'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'7cde655b-84f1-461d-a321-b666a0d1ebc9'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'request_ids': [], u'HUMAN_ID': False, u'name': u'default'}, {u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'allow connections over ssh', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 22, u'port_range_min': 22, u'security_group_id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'7f027f2b-fad7-4157-880b-6685e2ebb6bb'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'request_ids': [], u'HUMAN_ID': False, u'name': u'ssh'}], u'interface_ip': u'115.146.93.91', u'name': u'node2', u'created': u'2017-05-02T11:03:45Z', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'region': u'Melbourne', u'adminPass': None, u'x_openstack_request_ids': [], u'os-extended-volumes:volumes_attached': [], u'volumes': [], u'metadata': {u'hostname': u'node2'}}, 'item': u'2', u'invocation': {u'module_args': {u'auth_type': None, u'availability_zone': u'melbourne-np', u'image': u'NeCTAR Ubuntu 14.04 (Trusty) amd64', u'image_exclude': u'(deprecated)', u'flavor_include': None, u'meta': {u'hostname': u'node2'}, u'flavor': u'm2.tiny', u'cloud': None, u'scheduler_hints': None, u'boot_from_volume': False, u'userdata': None, u'network': None, u'terminate_volume': False, u'nics': [], u'floating_ips': None, u'flavor_ram': None, u'volume_size': False, u'state': u'present', u'auto_ip': True, u'security_groups': [u'default', u'ssh'], u'config_drive': False, u'region_name': None, u'key_name': u'testkey', u'api_timeout': None, u'auth': None, u'endpoint_type': u'public', u'boot_volume': None, u'key': None, u'cacert': None, u'volumes': [], u'wait': True, u'name': u'node2', u'delete_fip': False, u'cert': None, u'timeout': 200, u'verify': None, u'floating_ip_pools': None, u'reuse_ips': True}}, u'openstack': {u'vm_state': u'active', u'OS-EXT-STS:task_state': None, u'addresses': {u'noblepark': [{u'OS-EXT-IPS-MAC:mac_addr': u'fa:16:3e:47:bb:98', u'version': 4, u'addr': u'115.146.93.91', u'OS-EXT-IPS:type': u'fixed'}]}, u'terminated_at': None, u'image': {u'id': u'8ba2e536-34e2-4cbf-b4bd-9aa65311cb9c', u'name': u'NeCTAR Ubuntu 14.04 (Trusty) amd64'}, u'OS-EXT-AZ:availability_zone': u'melbourne-np', u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:04:08.000000', u'flavor': {u'id': u'cba9ea52-8e90-468b-b8c2-777a94d81ed3', u'name': u'm2.tiny'}, u'az': u'melbourne-np', u'networks': {u'noblepark': [u'115.146.93.91']}, u'cloud': u'envvars', u'has_config_drive': False, u'user_id': u'7f3a575e61be479cb3fbe9493177a7b8', u'disk_config': u'MANUAL', u'OS-DCF:diskConfig': u'MANUAL', u'id': u'2403b9c6-3129-4d2f-b4b9-585da5dae9ed', u'accessIPv4': u'115.146.93.91', u'accessIPv6': u'', u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': u'melbourne-np', u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'power_state': 1, u'public_v4': u'115.146.93.91', u'progress': 0, u'OS-EXT-STS:power_state': 1, u'project_id': u'fd901e0c620342459be4737578bda7be', u'launched_at': u'2017-05-02T11:04:08.000000', u'config_drive': u'', u'status': u'ACTIVE', u'updated': u'2017-05-02T11:29:49Z', u'hostId': u'b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a', u'OS-SRV-USG:terminated_at': None, u'key_name': u'testkey', u'public_v6': u'', u'request_ids': [], u'private_v4': u'', u'host_id': u'b2a0436670dce0434ddad03863aa51e135fd40d171a54fb83f266c1a', u'task_state': None, u'properties': {u'OS-EXT-STS:task_state': None, u'OS-SRV-USG:terminated_at': None, u'OS-DCF:diskConfig': u'MANUAL', u'request_ids': [], u'os-extended-volumes:volumes_attached': [], u'x_openstack_request_ids': [], u'OS-EXT-STS:vm_state': u'active', u'OS-SRV-USG:launched_at': u'2017-05-02T11:04:08.000000', u'OS-EXT-STS:power_state': 1, u'OS-EXT-AZ:availability_zone': u'melbourne-np'}, u'security_groups': [{u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'Default security group', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'5505d549-3e51-4a6a-bdf3-3b5fb069e483'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 8890, u'port_range_min': 8888, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'72319996-58e9-4488-91e2-9b5f601024b3'}, {u'remote_group_id': None, u'direction': u'ingress', u'protocol': None, u'ethertype': u'IPv4', u'port_range_max': None, u'port_range_min': None, u'security_group_id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'tenant_id': u'', u'properties': {u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': None, u'group': {u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'name': u'default'}, u'project_id': u'', u'id': u'7cde655b-84f1-461d-a321-b666a0d1ebc9'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'11512bc7-4a1d-4412-a508-b923a5ce292e', u'request_ids': [], u'HUMAN_ID': False, u'name': u'default'}, {u'properties': {u'x_openstack_request_ids': [], u'human_id': None, u'NAME_ATTR': u'name', u'HUMAN_ID': False, u'request_ids': []}, u'project_id': u'fd901e0c620342459be4737578bda7be', u'NAME_ATTR': u'name', u'description': u'allow connections over ssh', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'human_id': None, u'security_group_rules': [{u'remote_group_id': None, u'direction': u'ingress', u'protocol': u'tcp', u'ethertype': u'IPv4', u'port_range_max': 22, u'port_range_min': 22, u'security_group_id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'tenant_id': u'', u'properties': {u'group': {}}, u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'remote_ip_prefix': u'0.0.0.0/0', u'group': {}, u'project_id': u'', u'id': u'7f027f2b-fad7-4157-880b-6685e2ebb6bb'}], u'x_openstack_request_ids': [], u'location': {u'project': {u'domain_id': None, u'id': u'fd901e0c620342459be4737578bda7be', u'name': u'pt-27657', u'domain_name': None}, u'zone': None, u'region_name': u'Melbourne', u'cloud': u'envvars'}, u'id': u'9e32c1e6-4190-4823-9b6a-ca2aa79e2089', u'request_ids': [], u'HUMAN_ID': False, u'name': u'ssh'}], u'interface_ip': u'115.146.93.91', u'name': u'node2', u'created': u'2017-05-02T11:03:45Z', u'tenant_id': u'fd901e0c620342459be4737578bda7be', u'region': u'Melbourne', u'adminPass': None, u'x_openstack_request_ids': [], u'os-extended-volumes:volumes_attached': [], u'volumes': [], u'metadata': {u'hostname': u'node2'}}, u'id': u'2403b9c6-3129-4d2f-b4b9-585da5dae9ed'})
+ ___________________________
+< PLAY [configure database] >
+ ---------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ ________________________
+< TASK [Gathering Facts] >
+ ------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ok: [115.146.93.34]
+ok: [115.146.93.91]
+ _____________________
+< TASK [update repos] >
+ ---------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ok: [115.146.93.91]
+ok: [115.146.93.34]
+ ____________
+< PLAY RECAP >
+ ------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+115.146.93.34              : ok=2    changed=0    unreachable=0    failed=0   
+115.146.93.91              : ok=2    changed=0    unreachable=0    failed=0   
+localhost                  : ok=9    changed=2    unreachable=0    failed=0   
+
