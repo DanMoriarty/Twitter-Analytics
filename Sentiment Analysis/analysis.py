@@ -36,7 +36,7 @@ def assign_labels(database):
         except KeyError:
             continue
 
-#####----------------------------   PROGRAM   ----------------------------#####  
+#####----------------------------   PROGRAM   ----------------------------#####
 
 #Initialise the server variable and assign labels to each tweet in the db.
 #server = couchdb.Server("http://{0}:{1}@{2}:{3}".format(USER,PSWD,HOST,PORT))

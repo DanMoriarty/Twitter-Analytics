@@ -1,0 +1,158 @@
+- name: launch all compute instances
+  hosts: localhost
+  tasks:
+    - name: get ansible settings
+      include_vars:
+        file: settings.yml
+        name: settings
+    - name: configure security settings
+      os_keypair:
+        state: present
+        name: "{{ settings.keypair_name }}"
+        public_key_file: "{{ settings.publickey }}"
+    - name: create ssh security group
+      os_security_group:
+        state: present
+        name: ssh
+        description: allow connections over ssh
+    - name: create rules of ssh security group
+      os_security_group_rule:
+        security_group: ssh
+        protocol: tcp
+        port_range_min: 22
+        port_range_max: 22
+        remote_ip_prefix: 0.0.0.0/0
+    - name: alter rules of default security group
+      os_security_group_rule:
+        security_group: default
+        protocol: tcp
+        port_range_min: 8888
+        port_range_max: 8890
+        remote_ip_prefix: 0.0.0.0/0
+    - name: launch instances
+      os_server:
+        state: present
+        name: "node{{ item }}"
+        availability_zone: melbourne-np
+        image: NeCTAR Ubuntu 14.04 (Trusty) amd64
+        key_name: "{{ settings.keypair_name }}"
+        timeout: 200
+        flavor: m2.tiny
+        security_groups: default,ssh
+        auto_ip: yes
+        meta:
+          hostname: "node{{ item }}"
+      register: os_hosts
+      with_sequence: "start=1 end={{ settings.num_nodes }}"
+    # - name: print shit
+    #   debug: msg="{{ item.server.public_v4 }}"
+    #   with_items: "{{ os_hosts.results }}"
+    - name: update inventory
+      add_host:
+        groupname: webservers
+        hostname: "{{ item.server.public_v4 }}"
+      with_items: "{{ os_hosts.results }}"
+    # - name: create volume for each node
+    #   os_volume:
+    #     state: present
+    #     availability_zone: melbourne-np
+    #     size: 50
+    #     display_name: "volume{{ item }}"
+    #   with_sequence: "start=1 end={{ settings.num_nodes }}"
+    # - name: attach volume to host
+    #   os_server_volume:
+    #     state: present
+    #     server: "node{{ item }}"
+    #     volume: "volume{{ item }}"
+    #     device: /dev/vdb
+    #   with_sequence: "start=1 end={{ settings.num_nodes }}"
+
+- name: configure database
+  hosts: webservers
+  remote_user: ubuntu
+  tasks:
+    - name: update repos
+      become: true
+      become_method: sudo
+      apt:
+        upgrade: dist
+    - name: install couchdb dependencies
+      become: true
+      become_method: sudo
+      apt:
+        install_recommends: no
+        name: "{{ item }}"
+        update_cache: yes
+      with_items:
+        - build-essential
+        - pkg-config
+        - erlang
+        - libicu-dev
+        - libmozjs185-dev
+        - libcurl4-openssl-dev
+        - tmux
+    - name: download and untar couchdb2.0 source
+      unarchive:
+        remote_src: yes
+        src: http://apache.mirror.amaze.com.au/couchdb/source/2.0.0/apache-couchdb-2.0.0.tar.gz
+        dest: ~/
+    - name: configure build
+      command: ./configure make release
+      args:
+        chdir: ./apache-couchdb-2.0.0
+    - name: build couchdb2.0
+      make:
+        chdir: ./apache-couchdb-2.0.0
+        target: release
+    - name: move couchdb files
+      command: mv ./apache-couchdb-2.0.0/rel /etc/couchdb
+      args:
+        creates: /etc/couchdb/*
+      become: true
+      become_method: sudo
+    - name: make couch tmux session
+      command: tmux new-session -d -s couch
+      ignore_errors: yes
+    - name: couchdb vm.args
+      become: true
+      become_method: sudo
+      replace:
+        path: /etc/couchdb/couchdb/etc/vm.args
+        regexp: '-name couchdb@localhost$'
+        replace: '-name couchdb@{{ inventory_hostname }}'
+    - name: couchdb cluster bind address
+      become: true
+      become_method: sudo
+      blockinfile:
+        path: /etc/couchdb/couchdb/etc/local.ini
+        insertafter: '^\[chttpd\]$'
+        marker: "; {mark} ANSIBLE CONFIGURED CLUSTER ADDRESS"
+        block: |
+          port = 8888
+          bind_address = 0.0.0.0
+    - name: couchdb admin bind address
+      become: true
+      become_method: sudo
+      blockinfile:
+        path: /etc/couchdb/couchdb/etc/local.ini
+        insertafter: '^\[httpd\]$'
+        marker: "; {mark} ANSIBLE CONFIGURED ADMIN ADDRESS"
+        block: |
+          port = 8890
+          bind_address = 0.0.0.0
+    - name: couchdb database directory
+      become: true
+      become_method: sudo
+      replace:
+        path: /etc/couchdb/couchdb/etc/default.ini
+        regexp: '^database_dir = ./data$'
+        replace: 'database_dir = /mnt/couchdb/data'
+    - name: couchdb views directory
+      become: true
+      become_method: sudo
+      replace:
+        path: /etc/couchdb/couchdb/etc/default.ini
+        regexp: '^view_index_dir = ./data$'
+        replace: 'view_index_dir = /mnt/couchdb/data'
+    - name: run couchdb in session
+      command: tmux send -t couch 'sudo /etc/couchdb/couchdb/bin/couchdb' C-m
