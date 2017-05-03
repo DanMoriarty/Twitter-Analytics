@@ -39,8 +39,8 @@ HI_MODEL  = kenlm.LanguageModel(FILE_PATH + "hi.klm")
 LO_MODEL  = kenlm.LanguageModel(FILE_PATH + "lo.klm")
 
 #Language model settings.
-N   = 2         #N-gram length.
-PAD = 8       #Vocabulary padding.
+N   = 2   #N-gram length.
+PAD = 8e5 #Vocabulary padding.
 
 #####----------------------------  FUNCTIONS  ----------------------------#####
 
@@ -99,7 +99,6 @@ def classify(text):
     txt = sentiment.cleanTweet(text)
     hi_score = HI_MODEL.score(txt)
     lo_score = LO_MODEL.score(txt)
-    return (hi_score, lo_score)
     if hi_score > lo_score:
         return 1
     return 0
