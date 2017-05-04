@@ -45,7 +45,6 @@ exports.getSpeedStale = function(req, res) {
 	});
 }
 
-
 // get view containing number of tweets by each user
 exports.getUserTweets = function(req, res) {
 	db.view(design, 'all-tweets-by-user', { stale: "ok", group_level: 1 }, function(err, body) {

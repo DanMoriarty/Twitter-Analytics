@@ -11,6 +11,7 @@ import AuthorCards from "./material/AuthorCards.js"
 // Import Visualisation Components
 import Sentiment from "./visualisation/Sentiment.js"
 import GraphicalAnalysis from "./visualisation/GraphicalAnalysis.js"
+import Speed from "./visualisation/Speed.js"
 
 import * as Constants from './Constants.js';
 
@@ -25,6 +26,7 @@ class TwitterAnalytics extends Component {
 
     this.setActiveView = this.setActiveView.bind(this);
   }
+  
   componentDidMount() {
     fetch('http://localhost:4444/api/suburbSentiment', Constants.INIT)
         .then(result=>result.json()) 
@@ -51,6 +53,9 @@ class TwitterAnalytics extends Component {
           <GraphicalAnalysis
             active={this.state.activeView === Constants.GRAPHS}
             suburbSentiment={this.state.suburbSentiment}
+          />
+          <Speed
+            active={this.state.activeView === Constants.SPEED}
           />
           <AuthorCards active={this.state.activeView === Constants.AUTHORS} />
           

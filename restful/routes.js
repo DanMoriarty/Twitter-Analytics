@@ -36,6 +36,12 @@ module.exports = function(router) {
 		next();
 	})
 
+	router.param('text', function(req, res, next, key) {
+		// update key
+		req.text = text.split("&");
+		next();
+	})
+
 	router.get('/modKey/', function(req, res) {
 		res.send('view with no key');
 	});

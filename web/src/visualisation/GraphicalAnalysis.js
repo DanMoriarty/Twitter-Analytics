@@ -57,87 +57,87 @@ class GraphicalAnalysis extends Component {
     }
 
     render() {
-    // Set width for each graph element
-    const   minWidth = 350,
-            dynamicWidth = (Number(this.state.width) * 0.96).toFixed(0),
-            w = dynamicWidth > minWidth ? dynamicWidth : Number(this.state.width);
-    
-    // Set style for paper wrappers
-    const paperStyle = {
-      width: w,
-      margin: '1%',
-      textAlign: 'center',
-      display: 'inline-block',
-    };
+        // Set width for each graph element
+        const   minWidth = 350,
+                dynamicWidth = (Number(this.state.width) * 0.96).toFixed(0),
+                w = dynamicWidth > minWidth ? dynamicWidth : Number(this.state.width);
+        
+        // Set style for paper wrappers
+        const paperStyle = {
+          width: w,
+          margin: '1%',
+          textAlign: 'center',
+          display: 'inline-block',
+        };
 
-    if (!this.props.active)
-        return null;
-    
-    if (this.state.error)
-        return (<p>&nbsp;Failed retrieving data. Please try refreshing the page.</p>);
+        if (!this.props.active)
+            return null;
+        
+        if (this.state.error)
+            return (<p>&nbsp;Failed retrieving data. Please try refreshing the page.</p>);
 
-    if (!this.props.suburbSentiment || !this.state.suburbSentimentTime || !!this.state.suburbSentiment)
-        return (<Loading />);
+        if (!this.props.suburbSentiment || !this.state.suburbSentimentTime || !!this.state.suburbSentiment)
+            return (<Loading />);
 
 
-    console.log(this.state.sentimentTime)
+        console.log(this.state.sentimentTime)
 
-    const tweetsPerSuburb = this.props.suburbSentiment.slice(0,10).map(
-        item => ({x: item.key, y: item.value["1"]}));
+        const tweetsPerSuburb = this.props.suburbSentiment.slice(0,10).map(
+            item => ({x: item.key, y: item.value["1"]}));
 
-    const allSuburbs = this.props.suburbSentiment.map(
-        item => (item.key));
+        const allSuburbs = this.props.suburbSentiment.map(
+            item => (item.key));
 
-    return (<div className="GraphPage">
-                <Paper style={paperStyle}>
-                    <div>
-                        <h3>Sentiment vs Time </h3>
-                        <TimeGraph
-                            series={["Melbourne Tweets"]}
-                            data={this.state.sentimentTime}
-                            X="Time of Day"
-                            Y="Proportion of Positive Tweets"
-                            width={paperStyle.width}
-                            zoom = {this.state.zoomMelbTweets}
-                        />
-                        <RaisedButton label="Toggle Zoom" secondary={true} onTouchTap={this.toggleMTweetsZoom} />
-                    </div>
-                </Paper>
+        return (<div className="GraphPage">
+                    <Paper style={paperStyle}>
+                        <div>
+                            <h3>Sentiment vs Time </h3>
+                            <TimeGraph
+                                series={["Melbourne Tweets"]}
+                                data={this.state.sentimentTime}
+                                X="Time of Day"
+                                Y="Proportion of Positive Tweets"
+                                width={paperStyle.width}
+                                zoom = {this.state.zoomMelbTweets}
+                            />
+                            <RaisedButton label="Toggle Zoom" secondary={true} onTouchTap={this.toggleMTweetsZoom} />
+                        </div>
+                    </Paper>
 
-                <Paper style={paperStyle}>
-                    <div>
-                        <h3>Sentiment vs Time (Suburbs)</h3>
-                        <TimeGraph
-                            series={this.state.selectedSuburbs}
-                            data={this.state.suburbSentimentTime}
-                            X="Time of Day"
-                            Y="Proportion of Positive Tweets"
-                            width={paperStyle.width}
-                        />
-                        <AutoComplete
-                            floatingLabelText="Add Suburb"
-                            filter={ AutoComplete.caseInsensitiveFilter }
-                            dataSource={ allSuburbs }
-                            maxSearchResults={ 5 }
-                            onNewRequest={ this.selectSuburb }
-                        />
-                        <RaisedButton label="Clear All" secondary={true} onTouchTap={this.clearSuburb} />
-                    </div>
-                </Paper>
+                    <Paper style={paperStyle}>
+                        <div>
+                            <h3>Sentiment vs Time (Suburbs)</h3>
+                            <TimeGraph
+                                series={this.state.selectedSuburbs}
+                                data={this.state.suburbSentimentTime}
+                                X="Time of Day"
+                                Y="Proportion of Positive Tweets"
+                                width={paperStyle.width}
+                            />
+                            <AutoComplete
+                                floatingLabelText="Add Suburb"
+                                filter={ AutoComplete.caseInsensitiveFilter }
+                                dataSource={ allSuburbs }
+                                maxSearchResults={ 5 }
+                                onNewRequest={ this.selectSuburb }
+                            />
+                            <RaisedButton label="Clear All" secondary={true} onTouchTap={this.clearSuburb} />
+                        </div>
+                    </Paper>
 
-                <Paper style={paperStyle}>
-                    <div>
-                        <h3>Number of Positive Tweets</h3>
-                        <SingleHistogram
-                            data={tweetsPerSuburb}
-                            Y="Number of Tweets"
-                            width={paperStyle.width}
-                        />
-                        <sub>Usernames</sub>
-                    </div>
-                </Paper>
+                    <Paper style={paperStyle}>
+                        <div>
+                            <h3>Number of Positive Tweets</h3>
+                            <SingleHistogram
+                                data={tweetsPerSuburb}
+                                Y="Number of Tweets"
+                                width={paperStyle.width}
+                            />
+                            <sub>Usernames</sub>
+                        </div>
+                    </Paper>
 
-            </div>);
+                </div>);
   }
 }
 

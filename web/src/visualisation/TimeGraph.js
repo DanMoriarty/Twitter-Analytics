@@ -53,7 +53,8 @@ class TimeGraph extends Component {
     	if (this.props.series.length > 0 && this.props.data) {
     		lines = [];
     		active = [];
-    		marks = []
+    		marks = [];
+            
     		let thisColourWheel = JSON.parse(JSON.stringify(Constants.COLOURWHEEL));
 
 	    	for (var s in this.props.series) {
