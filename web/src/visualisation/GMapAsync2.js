@@ -16,6 +16,7 @@ ISSUES:
 */
 
 //EXAMPLE 1
+//http://www.klaasnotfound.com/2016/11/06/making-google-maps-work-with-react/
 /*
 export default class GMapAsync2 = React.createClass({
     
@@ -78,8 +79,9 @@ function loadJS(src) {
 	  
   }
 */  
+//http://stackoverflow.com/questions/41709765/how-to-load-the-google-maps-api-script-in-my-react-app-only-when-it-is-require
 scriptLoader(['https://maps.googleapis.com/maps/api/js?key=AIzaSyDieZ7uAY4DPdT3Z4fp4KtykHl6dWryYdw'])
-class GMapAsync2 extends React.Component {
+export default class GMapAsync2 extends React.Component {
   constructor(props){
     super(props);  
 	this.map=null;
@@ -92,6 +94,7 @@ class GMapAsync2 extends React.Component {
           zoom: 20
         });
 	  }
+	   else this.props.onError()
 	}
   }
 
@@ -99,7 +102,7 @@ class GMapAsync2 extends React.Component {
     return ( 
 
 		//<div>
-		<div ref="map" style={{height: '800px', width: '1000px'}}></div>
+		<div ref="map" style={{height: '400px', width: '450px'}}></div>
 		//{ !this.map && <div className="center-md">Loading...</div> } 
 		//</div>
 
