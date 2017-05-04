@@ -15,6 +15,39 @@ var nano		= require('nano')('http://115.146.93.56:8888/'),
 	sadesign	= 'sa2'
 	;
 
+var PythonShell = require('python-shell'),
+	pyshell 	= new PythonShell('runLangModel.py'),
+	resBuffer 	= {},
+	SEP 		= "^^^&$&$&^^^"
+	;
+
+// Event listener
+pyshell.on('message', function(m) {
+	// resBuffer.shift().send(m);
+	let mjson = JSON.parse(m);
+
+	// Check the unique key is still in the buffer
+	if (resBuffer.hasOwnProperty(mjson.key)) {
+		// Respond to the res with the Python output
+		resBuffer[mjson.key].send(mjson.res);
+
+		// Remove key from buffer
+		delete resBuffer[mjson.key];
+	}
+})
+
+exports.runLanguageModel = function(req, res) {
+	// Make a unique key for this request
+	let key = req.tweet + SEP + new Date().getTime()
+
+	// Send the key to python
+	pyshell.send(key);
+
+	// add the key to the buffer
+	resBuffer[key] = res; 
+}
+
+
 exports.getMelbTweets = function(req, res) {
 	db.view(design, 'melb', {stale: "ok"}, function(err, body) {
 		// body.rows.forEach(function(doc) {

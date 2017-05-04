@@ -27,6 +27,7 @@ module.exports = function(router) {
 	router.get('/suburbSentiment', controller.getSuburbSentiment);
 	router.get('/suburbSentimentTime', controller.getSuburbSentimentTime);
 	router.get('/sentimentTime', controller.getSentimentTime);
+	router.get('/languageModel/:tweet', controller.runLanguageModel)
 
 	//--------------- PLAYING WITH KEYS ---------------//
 	// router middleware to handle key
@@ -36,9 +37,9 @@ module.exports = function(router) {
 		next();
 	})
 
-	router.param('text', function(req, res, next, key) {
+	router.param('tweet', function(req, res, next, tweet) {
 		// update key
-		req.text = text.split("&");
+		req.tweet = tweet.split("&");
 		next();
 	})
 
