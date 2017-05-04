@@ -41,11 +41,11 @@ exports.runLanguageModel = function(req, res) {
 	// Make a unique key for this request
 	let key = req.tweet + SEP + new Date().getTime()
 
-	// Send the key to python
-	pyshell.send(key);
-
 	// add the key to the buffer
 	resBuffer[key] = res; 
+
+	// Send the key to python
+	pyshell.send(key);
 }
 
 
