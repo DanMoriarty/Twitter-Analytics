@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChoroplethSLA2</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+	   
+      #map {
+		float: right;
+        height: 100%;
+		width: 80%;
+		background-color: grey;
+      }
+				/* Dropdown Button */
+				.dropbtn {
+					background-color: #4CAF50;
+					color: white;
+					padding: 16px;
+					font-size: 16px;
+					border: none;
+					cursor: pointer;
+				}
+
+				/* Dropdown button on hover & focus */
+				.dropbtn:hover, .dropbtn:focus {
+					background-color: #3e8e41;
+				}
+
+				/* The container - needed to position the dropdown content */
+				.dropdown {
+					float: left;
+					position: relative;
+					display: inline-block;
+				}
+
+				/* Dropdown Content (Hidden by Default) */
+				.dropdown-content {
+					display: none;
+					position: absolute;
+					background-color: #f9f9f9;
+					min-width: 160px;
+					box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+					z-index: 1;
+				}
+
+				/* Links inside the dropdown */
+				.dropdown-content a {
+					color: black;
+					padding: 12px 16px;
+					text-decoration: none;
+					display: block;
+				}
+
+				/* Change color of dropdown links on hover */
+				.dropdown-content a:hover {background-color: #f1f1f1}
+
+				/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+				.show {display:block;}
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+	<div class="dropdown">
+	  <button onclick="myFunction()" class="dropbtn">Dataset</button>
+	  <div id="myDropdown" class="dropdown-content">
+		<a href="#">Link 1</a>
+		<a href="#">Link 2</a>
+		<a href="#">Link 3</a>
+	  </div>
+	</div>
+    <script>
+      /* When the user clicks on the button, 
+		toggle between hiding and showing the dropdown content */
+		function myFunction() {
+			document.getElementById("myDropdown").classList.toggle("show");
+		}
+
+		// Close the dropdown menu if the user clicks outside of it
+		window.onclick = function(event) {
+		  if (!event.target.matches('.dropbtn')) {
+
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+			  var openDropdown = dropdowns[i];
+			  if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			  }
+			}
+		  }
+		}
+	  
+	      // INITIALIZING MAP //
+	    var map;
+
+		//TODO make this selectable from a drop-down
+		
+		var D1 = 'CountryOfBirth';
+		var A1 = 'Turkey_P';
+		var D2 = 'Education';
+		var A2 = '%u16Educated';
+		
+		//These will be defined by the drop down links
+		var DATASET = D1;
+		var ATTRIBUTE = A1;
+		
+		var toggle = false;
+		var max = 0.0;
+		var min = 0.0;
+		
+	    //initializes google map
+	    function initMap() {
+	    var Melbourne = {lat: -37.796473, lng: 144.977661};
+        map = new google.maps.Map(document.getElementById('map'), {
+			center: Melbourne,
+			zoom: 12
+        });
+
+		  // LOADING DATA //		
+		var suburbLayer = new google.maps.Data();
+		suburbLayer.loadGeoJson('./SA2Masterfile.json');
+		//suburbLayer.loadGeoJson('http://data.gov.au/geoserver/vic-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=af33dd8c_0534_4e18_9245_fc64440f742e&outputFormat=json');
+
+		  // GETTING MAX AND MIN VALUES OF DATA
+
+		//TODO make min function
+		//get the max value for the specified property for all suburbs
+		function getMax() {
+			max = 0.0
+				suburbLayer.forEach(function(feature){
+					if (feature.getProperty('Datasets')[DATASET][ATTRIBUTE]>max)
+						max = feature.getProperty('Datasets')[DATASET][ATTRIBUTE];
+						
+				});
+				console.log(max);
+			
+		};
+		setTimeout(function() {
+			getMax();
+		},1000);
+		
+		  // CREATING AN INFOWINDOW //
+		// Set a blank infoWindow to be used for each to suburb on click
+		var infoWindow = new google.maps.InfoWindow({
+			content: ""
+		});
+		
+		
+
+			//TODO, make this actually a switch to a new attribute, not a toggle
+			  // TOGGLE BETWEEN LAYERS//
+			function toggleProperty() {
+				toggle = !toggle;
+				if (toggle) {
+					DATASET = D2;
+					ATTRIBUTE = A2;
+				} else {
+					DATASET = D1;
+					ATTRIBUTE = A1;
+				}	
+
+				getMax();
+					
+			}
+			setTimeout(function() {
+			  // Set and apply styling to the Suburb Layer
+			suburbLayer.setStyle(function(feature) {
+				return {
+				//try
+					fillColor: getSmartColor(feature.getProperty('Datasets')), // call function to get color for state based on the ...
+				//catch
+				//	fillColor: '#b3b3b3',
+				fillOpacity: 0.9,
+				strokeColor: '#b3b3b3',
+				strokeWeight: 1,
+				zIndex: 1,
+				visible: checkValue(feature.getProperty('Datasets'))
+				};
+			  });
+			  },2000);
+			  
+			  //checks suburb attribute value, and if the suburb doesn't have one, makes it invisible
+			  function checkValue(datasets) {
+			  
+				var showRow = true;
+				var prop = datasets[DATASET][ATTRIBUTE]
+				console.log(prop);
+				if (!prop) {
+					showRow = false;
+					if(prop===0)
+						showRow=true;
+				}
+				return showRow;  
+				}
+			  
+			  // returns a color based on the value given when the function is called
+			  function getColor(alldatasets) {
+				var prop = alldatasets[DATASET][ATTRIBUTE]
+				var colors = [
+				  '#d1ccad',
+				  '#c2c083',
+				  '#cbd97c',
+				  '#acd033',
+				  '#89a844'
+				];
+				 return prop >= 80 ? colors[4] :
+				prop > 70 ? colors[3] :
+				prop > 60 ? colors[2] :
+				prop > 50 ? colors[1] :
+				colors[0];
+				}
+				
+				function getSmartColor(alldatasets) {
+					var prop = alldatasets[DATASET][ATTRIBUTE]
+					var low = [5, 69, 54];  // color of smallest datum
+					var high = [151, 83, 34];   // color of largest datum
+
+					// delta represents where the value sits between the min and max
+					var delta = (prop - min )/
+						(max - min);
+
+					var color = [];
+					for (var i = 0; i < 3; i++) {
+					  // calculate an integer color based on the delta
+					  color[i] = (high[i] - low[i]) * delta + low[i];
+					}
+					return 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)'
+					//return rgbToHex(color[0], color[1], color[2]);
+				}
+			  
+			// Add mouseover and mouse out styling for the GeoJSON State data
+			suburbLayer.addListener('mouseover', function(e) {
+				suburbLayer.overrideStyle(e.feature, {
+				strokeColor: '#2a2a2a',
+				strokeWeight: 2,
+				zIndex: 2
+				});
+			});
+			
+			//enact toggling upon a right click
+			suburbLayer.addListener('rightclick', function(e) {
+				console.log('right click');
+				toggleProperty();
+				
+				suburbLayer.setStyle(function(feature){
+				return {
+				//try
+					fillColor: getSmartColor(feature.getProperty('Datasets')), // call function to get color for state based on the ...
+				//catch
+				//	fillColor: '#b3b3b3',
+				fillOpacity: 0.9,
+				strokeColor: '#b3b3b3',
+				strokeWeight: 1,
+				zIndex: 1,
+				visible: checkValue(feature.getProperty('Datasets'))
+				};
+			  });
+			  
+			});
+			
+			
+			suburbLayer.addListener('mouseout', function(e) {
+				suburbLayer.revertStyle();
+			});
+		
+			//sets infowindow on a click
+			suburbLayer.addListener('click', function(e) {
+				console.log(e);
+				infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
+				e.feature.getProperty('SA2_NAME16')
+					+ '<br> ' + ATTRIBUTE + ': ' + e.feature.getProperty('Datasets')[DATASET][ATTRIBUTE] 
+					+ '</div>');
+			//sets position of infowindow
+			var anchor = new google.maps.MVCObject();
+			anchor.set("position", e.latLng);
+			infoWindow.open(map, anchor);
+			});
+
+
+		// Final step here sets the Suburb Layer GeoJSON data onto the map
+		suburbLayer.setMap(map);
+		
+      }
+
+	  function customizeLayer(layer) {
+	  //put stuff here
+	  }
+	  
+    </script>
+	</script>
+    <script src="./markerclusterer.js">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrXsh6sZYoCurN67TR0015R93biestUis&callback=initMap"
+    async defer></script>
+  </body>
+</html>
