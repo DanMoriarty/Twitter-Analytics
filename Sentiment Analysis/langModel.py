@@ -11,6 +11,7 @@
 #####----------------------------   IMPORTS   ----------------------------#####
 
 import os
+import sys
 import kenlm
 import json
 import reverseGeo
@@ -41,6 +42,9 @@ LO_MODEL  = kenlm.LanguageModel(FILE_PATH + "lo.klm")
 #Language model settings.
 N   = 2         #N-gram length.
 PAD = 8e5       #Vocabulary padding.
+
+#Separator to use when handling text from stdin.
+SEP = "^^^&$&$&^^^"
 
 #####----------------------------  FUNCTIONS  ----------------------------#####
 
@@ -127,12 +131,36 @@ def scores(text):
         sa2_code = model_file[:9]
         scores[sa2_code] = kenlm.LanguageModel(KLM_M_FP+model_file).score(text)
     return json.dumps({"scores" : scores})
+    
+#Read data from stdin.
+def runLanguageModel(line):
+    return line.upper() + "!"
+
+#Main process.
+def main():
+    line = ' '
+
+    # Wait for stdin forever
+    while line:
+
+        # Get next line (blocks until a newline)
+        line = sys.stdin.readline().rstrip('\n')
+
+        # Grab the tweet (split keySEPtweet)
+        tweet = line.split(SEP)[0] 
+
+        # Output JSON in {key: input line, "res": results of computation}
+        print json.dumps({"key": line, "res": runLanguageModel(tweet)})
+
+        # Flush stdout
+        sys.stdout.flush()
+    
+    return
 
 #####----------------------------   PROGRAM   ----------------------------##### 
 
-#Keep running and processing user input.
-while True:
-    text = raw_input()
-    print scores(text)
+#Start main process.
+if __name__ == '__main__':
+    main()
 
 #####----------------------------  END  FILE  ----------------------------#####
