@@ -119,6 +119,20 @@ def top_n_suburbs(text, n, name=True):
         return [reverseGeo.sa2_name(scores[i][0]) for i in range(n)]
     return [scores[i][0] for i in range(n)]
 
+#Function to return a .json of language model scores, one for every suburb.
+def scores(text):
+    text   = sentiment.cleanTweet(text)
+    scores = {}
+    for model_file in os.listdir(KLM_M_FP):
+        sa2_code = model_file[:9]
+        scores[sa2_code] = kenlm.LanguageModel(KLM_M_FP+model_file).score(text)
+    return json.dumps({"scores" : scores})
+
 #####----------------------------   PROGRAM   ----------------------------##### 
+
+#Keep running and processing user input.
+while True:
+    text = raw_input()
+    print scores(text)
 
 #####----------------------------  END  FILE  ----------------------------#####
