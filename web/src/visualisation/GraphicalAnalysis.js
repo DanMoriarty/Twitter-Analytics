@@ -3,9 +3,10 @@ import Loading from '../material/Loading.js';
 import AutoComplete from 'material-ui/AutoComplete';
 import Paper from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
-import SingleHistogram from './SingleHistogram.js'
-import TimeGraph from './TimeGraph.js'
-import * as Constants from '../Constants.js'
+import SingleHistogram from './SingleHistogram.js';
+import StackedBar from './StackedBar.js';
+import TimeGraph from './TimeGraph.js';
+import * as Constants from '../Constants.js';
 
 class GraphicalAnalysis extends Component {
   
@@ -70,6 +71,13 @@ class GraphicalAnalysis extends Component {
           display: 'inline-block',
         };
 
+        const halfPaperStyle = {
+          width: (w/2),
+          margin: '1%',
+          textAlign: 'center',
+          display: 'inline-block',
+        };
+
         if (!this.props.active)
             return null;
         
@@ -78,9 +86,6 @@ class GraphicalAnalysis extends Component {
 
         if (!this.props.suburbSentiment || !this.state.suburbSentimentTime || !!this.state.suburbSentiment)
             return (<Loading />);
-
-
-        console.log(this.state.sentimentTime)
 
         const tweetsPerSuburb = this.props.suburbSentiment.slice(0,10).map(
             item => ({x: item.key, y: item.value["1"]}));
@@ -127,7 +132,7 @@ class GraphicalAnalysis extends Component {
 
                     <Paper style={paperStyle}>
                         <div>
-                            <h3>Number of Positive Tweets</h3>
+                            <h3>HISTOGRMA EXAMPLE - Number of Positive Tweets</h3>
                             <SingleHistogram
                                 data={tweetsPerSuburb}
                                 Y="Number of Tweets"
@@ -137,6 +142,43 @@ class GraphicalAnalysis extends Component {
                         </div>
                     </Paper>
 
+                    <Paper style={halfPaperStyle}>
+                        <div>
+                            <h3>Stacked Bar Example</h3>
+                            <br/>
+                            <p>TODO: Make View in the Format:<br/>{"{Positive: [{x: Android, y: Android Positive Count}, {x: iPhone, y: iPhone Positive Count}, ...], {Negative: ...}, {Neutral: ...}}"}</p>
+                            <StackedBar
+                                series={["Neutral", "Positive", "Negative"]}
+                                data={
+                                    {
+                                    Positive:
+                                        [
+                                        {x: "Android", y: 3},
+                                        {x: "iPhone", y: 3},
+                                        {x: "Instagram", y: 5}
+                                        ],
+                                    Neutral:
+                                        [
+                                        {x: "Android", y: 5},
+                                        {x: "iPhone", y: 10},
+                                        {x: "Instagram", y: 3}
+                                        ],
+                                    Negative:
+                                        [
+                                        {x: "Android", y: 1},
+                                        {x: "iPhone", y: 5},
+                                        {x: "Instagram", y: 2}
+                                        ]
+                                    }
+                                }
+                                X="Device"
+                                Y="Number of Tweets"
+                                width={halfPaperStyle.width}
+                                stack={true}
+                            />
+                            <sub>Usernames</sub>
+                        </div>
+                    </Paper>
                 </div>);
   }
 }
