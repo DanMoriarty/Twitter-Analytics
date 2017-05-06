@@ -16,7 +16,7 @@ var nano		= require('nano')('http://115.146.93.56:8888/'),
 	;
 
 var PythonShell = require('python-shell'),
-	pyshell 	= new PythonShell('../Sentiment\ Analysis/langModel.py'),
+	pyshell 	= new PythonShell('../Sentiment\ Analysis/runLangModel.py'),
 	resBuffer 	= {},
 	SEP 		= "^^^&$&$&^^^"
 	;
