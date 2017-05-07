@@ -20,7 +20,8 @@ from   collections import defaultdict
 
 #####----------------------------  CONSTANTS  ----------------------------#####
 
-FILE_PATH = "langModel_files/"
+CURRENT_D = os.path.dirname(os.path.realpath(__file__))
+FILE_PATH = CURRENT_D + "/langModel_files/"
 TWEETS    = FILE_PATH + "melbTweets.json"
 
 #Paths to files/folder of cleaned tweets, for language modelling.
@@ -108,20 +109,16 @@ def classify(text):
     return 0
 
 #Function to return sorted list of language model scores, one for every suburb.
-def suburb_model_scores(text):
+def suburb_scores(text):
     text   = sentiment.cleanTweet(text)
     scores = []
     for model_file in os.listdir(KLM_M_FP):
-        sa2_code = model_file[:9]
-        scores.append((sa2_code, kenlm.LanguageModel(KLM_M_FP+model_file).score(text)))
-    return sorted(scores, key=lambda x: x[1], reverse=True)
-
-#Function to return the n suburbs most likely to be the location of the tweet.
-def top_n_suburbs(text, n, name=True):
-    scores = suburb_model_scores(text)
-    if name:
-        return [reverseGeo.sa2_name(scores[i][0]) for i in range(n)]
-    return [scores[i][0] for i in range(n)]
+        sa2 = model_file[:9]
+        scores.append((sa2, kenlm.LanguageModel(KLM_M_FP+model_file).score(text)))
+    scores  = sorted(scores, key=lambda x: x[1], reverse=True)
+    topfive = [reverseGeo.sa2_name(s[0]) for s in scores[:5]]
+    scores  = dict(scores)
+    return json.dumps({"topfive": topfive, "scores": scores})
     
 #Read data from stdin.
 def runLanguageModel(line):
@@ -137,16 +134,8 @@ def main():
         # Get next line (blocks until a newline)
         line = sys.stdin.readline().rstrip('\n')
 
-        # Grab the tweet (split keySEPtweet)
-        tweet = sentiment.cleanTweet(line.split(SEP)[0])
-
-        # Output JSON in {key: input line, "res": results of computation}
-        scores = {}
-        for model_file in os.listdir(KLM_M_FP):
-            sa2_code = model_file[:9]
-            scores[sa2_code] = kenlm.LanguageModel(KLM_M_FP+model_file).score(tweet)
-
-        print json.dumps({"key": line, "res": scores})
+        # Output JSON in {key: input line, "res": results of computation}        
+        print json.dumps({"key": line, "res": suburb_scores(line.split(SEP)[0])})
 
         # Flush stdout
         sys.stdout.flush()
