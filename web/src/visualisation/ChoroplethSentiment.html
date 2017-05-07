@@ -14,52 +14,7 @@
 		width: 80%;
 		background-color: grey;
       }
-				/* Dropdown Button */
-				.dropbtn {
-					background-color: #4CAF50;
-					color: white;
-					padding: 16px;
-					font-size: 16px;
-					border: none;
-					cursor: pointer;
-				}
-
-				/* Dropdown button on hover & focus */
-				.dropbtn:hover, .dropbtn:focus {
-					background-color: #3e8e41;
-				}
-
-				/* The container - needed to position the dropdown content */
-				.dropdown {
-					float: left;
-					position: relative;
-					display: inline-block;
-				}
-
-				/* Dropdown Content (Hidden by Default) */
-				.dropdown-content {
-					display: none;
-					position: absolute;
-					background-color: #f9f9f9;
-					min-width: 160px;
-					box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-					z-index: 1;
-				}
-
-				/* Links inside the dropdown */
-				.dropdown-content a {
-					color: black;
-					padding: 12px 16px;
-					text-decoration: none;
-					display: block;
-				}
-
-				/* Change color of dropdown links on hover */
-				.dropdown-content a:hover {background-color: #f1f1f1}
-
-				/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-				.show {display:block;}
-      /* Optional: Makes the sample page fill the window. */
+				
       html, body {
         height: 100%;
         margin: 0;
@@ -69,35 +24,9 @@
   </head>
   <body>
     <div id="map"></div>
-	<div class="dropdown">
-	  <button onclick="myFunction()" class="dropbtn">Dataset</button>
-	  <div id="myDropdown" class="dropdown-content">
-		<a href="#">Link 1</a>
-		<a href="#">Link 2</a>
-		<a href="#">Link 3</a>
-	  </div>
-	</div>
+	
     <script>
-      /* When the user clicks on the button, 
-		toggle between hiding and showing the dropdown content */
-		function myFunction() {
-			document.getElementById("myDropdown").classList.toggle("show");
-		}
-
-		// Close the dropdown menu if the user clicks outside of it
-		window.onclick = function(event) {
-		  if (!event.target.matches('.dropbtn')) {
-
-			var dropdowns = document.getElementsByClassName("dropdown-content");
-			var i;
-			for (i = 0; i < dropdowns.length; i++) {
-			  var openDropdown = dropdowns[i];
-			  if (openDropdown.classList.contains('show')) {
-				openDropdown.classList.remove('show');
-			  }
-			}
-		  }
-		}
+     
 	  
 	      // INITIALIZING MAP //
 	    var map;
@@ -127,7 +56,7 @@
 		//URL to our json on gist.github -> https://gist.github.com/DanMoriarty/26a52c8decc8b56eaaea4808d4604a03
 		//To embed -> <script src="https://gist.github.com/DanMoriarty/26a52c8decc8b56eaaea4808d4604a03"/>
 		var suburbLayer = new google.maps.Data();
-		suburbLayer.loadGeoJson('./SA2NameOnly&Sentiment%.json');
+		suburbLayer.loadGeoJson('https://gist.github.com/DanMoriarty/26a52c8decc8b56eaaea4808d4604a03');
 					
 			//NOTE If you wish to use raw counts of sentiment as opposed to percentages:
 		//physical file on github -> './SA2NameOnly&Sentiment.json'
