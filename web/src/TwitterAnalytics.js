@@ -12,6 +12,7 @@ import AuthorCards from "./material/AuthorCards.js"
 import Sentiment from "./visualisation/Sentiment.js"
 import GraphicalAnalysis from "./visualisation/GraphicalAnalysis.js"
 import Speed from "./visualisation/Speed.js"
+import Language from "./visualisation/Language.js"
 
 import * as Constants from './Constants.js';
 
@@ -56,6 +57,9 @@ class TwitterAnalytics extends Component {
           />
           <Speed
             active={this.state.activeView === Constants.SPEED}
+          />
+          <Language
+            active={this.state.activeView === Constants.LANGUAGE}
           />
           <AuthorCards active={this.state.activeView === Constants.AUTHORS} />
           
