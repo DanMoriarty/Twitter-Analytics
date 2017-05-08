@@ -9,20 +9,11 @@ const MelbourneMap = withGoogleMap(props => (
     defaultCenter={{ lat: -37.815790, lng: 144.961341 }} // Melb Coords
     onClick={props.onMapClick}
   >
-    <Polygon 
-      paths={path}
-      onClick={_.noop}
-      onRightClick={_.noop}
-      onDragStart={_.noop}
-    />
+    {props.polygons}
   </GoogleMap>
 ));
 
-const path = 
-[
-  [{"lat": -42.3009342, "lng": 150.2853237}, {"lat": -13.8812806, "lng": 170.9287479}, {"lat": -15.2666499, "lng": 116.9337753}, {"lat": -36.4019412, "lng": 116.8621811} ],
-  [{"lat": -20.3009342, "lng": 150.2853237}, {"lat": -13.8812806, "lng": 149.9287479}, {"lat": -15.2666499, "lng": 116.9337753}, {"lat": -36.4019412, "lng": 116.8621811} ],
-]
+const path = [{"lat": -42.3009342, "lng": 150.2853237}, {"lat": -13.8812806, "lng": 149.9287479}, {"lat": -15.2666499, "lng": 116.9337753}, {"lat": -36.4019412, "lng": 116.8621811} ]
 
 class GMap extends Component {
   constructor(props) {
@@ -46,19 +37,27 @@ class GMap extends Component {
   }
 
   render() { 
+    let polygons = [];
+    
+    polygons.push
+    (
+      <Polygon 
+        path={path}
+        onClick={_.noop}
+        onRightClick={_.noop}
+        onDragStart={_.noop}
+        options={ {fillColor: "#FF0000", strokeWeight: 2} }
+      />
+    );
 
     return (
       <div style={{height: this.state.windowheight}}>
         <MelbourneMap
-          containerElement={
-            <div style={{width: this.state.windowwidth, height: this.state.windowheight }} />
-          }
-          mapElement={
-            <div style={{ height: this.state.windowheight }} />
-          }
+          containerElement={<div style={{width: this.state.windowwidth, height: this.state.windowheight }} />}
+          mapElement={<div style={{ height: this.state.windowheight }} />}
           onMapLoad={this.handleMapLoad}
           onMapClick={this.handleMapClick}
-          mylines={this.props.processedP}
+          polygons={polygons}
         >
         </MelbourneMap>
       </div>
