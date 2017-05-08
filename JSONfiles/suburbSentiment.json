@@ -1,0 +1,3690 @@
+{
+	"rows": [{
+		"key": "Abbotsford",
+		"value": {
+			"0": 1348,
+			"1": 512,
+			"-1": 152
+		}
+	},
+	{
+		"key": "Airport West",
+		"value": {
+			"0": 84,
+			"1": 20,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Albert Park",
+		"value": {
+			"0": 2606,
+			"1": 1179,
+			"-1": 138
+		}
+	},
+	{
+		"key": "Alexandra",
+		"value": {
+			"0": 202,
+			"1": 82,
+			"-1": 15
+		}
+	},
+	{
+		"key": "Alfredton",
+		"value": {
+			"0": 14,
+			"1": 6,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Alphington - Fairfield",
+		"value": {
+			"0": 401,
+			"1": 158,
+			"-1": 29
+		}
+	},
+	{
+		"key": "Alps - West",
+		"value": {
+			"0": 17,
+			"1": 0,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Altona",
+		"value": {
+			"0": 411,
+			"1": 174,
+			"-1": 31
+		}
+	},
+	{
+		"key": "Altona Meadows",
+		"value": {
+			"0": 49,
+			"1": 19,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Altona North",
+		"value": {
+			"0": 185,
+			"1": 48,
+			"-1": 15
+		}
+	},
+	{
+		"key": "Ararat",
+		"value": {
+			"0": 87,
+			"1": 29,
+			"-1": 9
+		}
+	},
+	{
+		"key": "Ararat Region",
+		"value": {
+			"0": 15,
+			"1": 9,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Ardeer - Albion",
+		"value": {
+			"0": 64,
+			"1": 19,
+			"-1": 11
+		}
+	},
+	{
+		"key": "Armadale",
+		"value": {
+			"0": 1962,
+			"1": 597,
+			"-1": 94
+		}
+	},
+	{
+		"key": "Ascot Vale",
+		"value": {
+			"0": 362,
+			"1": 227,
+			"-1": 48
+		}
+	},
+	{
+		"key": "Ashburton (Vic.)",
+		"value": {
+			"0": 120,
+			"1": 45,
+			"-1": 9
+		}
+	},
+	{
+		"key": "Ashwood - Chadstone",
+		"value": {
+			"0": 3135,
+			"1": 110,
+			"-1": 340
+		}
+	},
+	{
+		"key": "Aspendale Gardens - Waterways",
+		"value": {
+			"0": 76,
+			"1": 38,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Avoca",
+		"value": {
+			"0": 20,
+			"1": 6,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Bacchus Marsh",
+		"value": {
+			"0": 125,
+			"1": 45,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Bacchus Marsh Region",
+		"value": {
+			"0": 252,
+			"1": 135,
+			"-1": 14
+		}
+	},
+	{
+		"key": "Bairnsdale",
+		"value": {
+			"0": 14,
+			"1": 7,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Ballarat",
+		"value": {
+			"0": 676,
+			"1": 262,
+			"-1": 45
+		}
+	},
+	{
+		"key": "Ballarat - North",
+		"value": {
+			"0": 465,
+			"1": 150,
+			"-1": 41
+		}
+	},
+	{
+		"key": "Ballarat - South",
+		"value": {
+			"0": 136,
+			"1": 38,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Balwyn",
+		"value": {
+			"0": 237,
+			"1": 64,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Balwyn North",
+		"value": {
+			"0": 318,
+			"1": 34,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Bannockburn",
+		"value": {
+			"0": 28,
+			"1": 13,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Bayswater",
+		"value": {
+			"0": 299,
+			"1": 20,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Bayswater North",
+		"value": {
+			"0": 170,
+			"1": 12,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Beaconsfield - Officer",
+		"value": {
+			"0": 82,
+			"1": 25,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Beaufort",
+		"value": {
+			"0": 25,
+			"1": 4,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Beaumaris",
+		"value": {
+			"0": 3316,
+			"1": 48,
+			"-1": 10
+		}
+	},
+	{
+		"key": "Beechworth",
+		"value": {
+			"0": 122,
+			"1": 55,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Belgrave - Selby",
+		"value": {
+			"0": 486,
+			"1": 210,
+			"-1": 51
+		}
+	},
+	{
+		"key": "Belmont",
+		"value": {
+			"0": 120,
+			"1": 72,
+			"-1": 15
+		}
+	},
+	{
+		"key": "Benalla",
+		"value": {
+			"0": 28,
+			"1": 6,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Benalla Region",
+		"value": {
+			"0": 28,
+			"1": 4,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Bendigo",
+		"value": {
+			"0": 513,
+			"1": 133,
+			"-1": 35
+		}
+	},
+	{
+		"key": "Bendigo Region - North",
+		"value": {
+			"0": 7,
+			"1": 2,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Bendigo Region - South",
+		"value": {
+			"0": 79,
+			"1": 30,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Bentleigh - McKinnon",
+		"value": {
+			"0": 356,
+			"1": 120,
+			"-1": 19
+		}
+	},
+	{
+		"key": "Bentleigh East (North)",
+		"value": {
+			"0": 135,
+			"1": 64,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Bentleigh East (South)",
+		"value": {
+			"0": 66,
+			"1": 59,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Berwick - North",
+		"value": {
+			"0": 167,
+			"1": 66,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Berwick - South",
+		"value": {
+			"0": 295,
+			"1": 170,
+			"-1": 63
+		}
+	},
+	{
+		"key": "Blackburn",
+		"value": {
+			"0": 237,
+			"1": 137,
+			"-1": 19
+		}
+	},
+	{
+		"key": "Blackburn South",
+		"value": {
+			"0": 45,
+			"1": 12,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Boronia",
+		"value": {
+			"0": 272,
+			"1": 115,
+			"-1": 81
+		}
+	},
+	{
+		"key": "Box Hill",
+		"value": {
+			"0": 783,
+			"1": 156,
+			"-1": 33
+		}
+	},
+	{
+		"key": "Box Hill North",
+		"value": {
+			"0": 795,
+			"1": 42,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Braeside",
+		"value": {
+			"0": 60,
+			"1": 31,
+			"-1": 9
+		}
+	},
+	{
+		"key": "Braybrook",
+		"value": {
+			"0": 249,
+			"1": 85,
+			"-1": 30
+		}
+	},
+	{
+		"key": "Bright - Mount Beauty",
+		"value": {
+			"0": 1014,
+			"1": 536,
+			"-1": 76
+		}
+	},
+	{
+		"key": "Brighton (Vic.)",
+		"value": {
+			"0": 2090,
+			"1": 1052,
+			"-1": 128
+		}
+	},
+	{
+		"key": "Brighton East",
+		"value": {
+			"0": 658,
+			"1": 272,
+			"-1": 62
+		}
+	},
+	{
+		"key": "Broadmeadows",
+		"value": {
+			"0": 102,
+			"1": 33,
+			"-1": 15
+		}
+	},
+	{
+		"key": "Brunswick",
+		"value": {
+			"0": 3403,
+			"1": 1246,
+			"-1": 227
+		}
+	},
+	{
+		"key": "Brunswick East",
+		"value": {
+			"0": 1054,
+			"1": 401,
+			"-1": 74
+		}
+	},
+	{
+		"key": "Brunswick West",
+		"value": {
+			"0": 190,
+			"1": 114,
+			"-1": 13
+		}
+	},
+	{
+		"key": "Bruthen - Omeo",
+		"value": {
+			"0": 26,
+			"1": 7,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Bulleen",
+		"value": {
+			"0": 162,
+			"1": 43,
+			"-1": 11
+		}
+	},
+	{
+		"key": "Buloke",
+		"value": {
+			"0": 11,
+			"1": 4,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Bundoora - East",
+		"value": {
+			"0": 110,
+			"1": 23,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Bundoora - North",
+		"value": {
+			"0": 145,
+			"1": 29,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Bundoora - West",
+		"value": {
+			"0": 122,
+			"1": 19,
+			"-1": 13
+		}
+	},
+	{
+		"key": "Buninyong",
+		"value": {
+			"0": 69,
+			"1": 25,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Bunyip - Garfield",
+		"value": {
+			"0": 53,
+			"1": 13,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Burnside",
+		"value": {
+			"0": 32,
+			"1": 13,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Burnside Heights",
+		"value": {
+			"0": 22,
+			"1": 14,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Burwood",
+		"value": {
+			"0": 585,
+			"1": 140,
+			"-1": 60
+		}
+	},
+	{
+		"key": "Burwood East",
+		"value": {
+			"0": 589,
+			"1": 97,
+			"-1": 17
+		}
+	},
+	{
+		"key": "Cairnlea",
+		"value": {
+			"0": 85,
+			"1": 57,
+			"-1": 10
+		}
+	},
+	{
+		"key": "California Gully - Eaglehawk",
+		"value": {
+			"0": 5,
+			"1": 2,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Camberwell",
+		"value": {
+			"0": 475,
+			"1": 185,
+			"-1": 36
+		}
+	},
+	{
+		"key": "Campbellfield - Coolaroo",
+		"value": {
+			"0": 115,
+			"1": 30,
+			"-1": 13
+		}
+	},
+	{
+		"key": "Camperdown",
+		"value": {
+			"0": 10,
+			"1": 4,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Carlton",
+		"value": {
+			"0": 3822,
+			"1": 1099,
+			"-1": 218
+		}
+	},
+	{
+		"key": "Carlton North - Princes Hill",
+		"value": {
+			"0": 885,
+			"1": 478,
+			"-1": 80
+		}
+	},
+	{
+		"key": "Carnegie",
+		"value": {
+			"0": 558,
+			"1": 239,
+			"-1": 35
+		}
+	},
+	{
+		"key": "Caroline Springs",
+		"value": {
+			"0": 718,
+			"1": 253,
+			"-1": 126
+		}
+	},
+	{
+		"key": "Carrum - Patterson Lakes",
+		"value": {
+			"0": 83,
+			"1": 54,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Carrum Downs",
+		"value": {
+			"0": 74,
+			"1": 27,
+			"-1": 46
+		}
+	},
+	{
+		"key": "Castlemaine",
+		"value": {
+			"0": 74,
+			"1": 29,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Castlemaine Region",
+		"value": {
+			"0": 47,
+			"1": 27,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Caulfield - North",
+		"value": {
+			"0": 1241,
+			"1": 413,
+			"-1": 76
+		}
+	},
+	{
+		"key": "Caulfield - South",
+		"value": {
+			"0": 370,
+			"1": 214,
+			"-1": 49
+		}
+	},
+	{
+		"key": "Chelsea - Bonbeach",
+		"value": {
+			"0": 331,
+			"1": 175,
+			"-1": 47
+		}
+	},
+	{
+		"key": "Chelsea Heights",
+		"value": {
+			"0": 43,
+			"1": 25,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Cheltenham - Highett (East)",
+		"value": {
+			"0": 641,
+			"1": 231,
+			"-1": 56
+		}
+	},
+	{
+		"key": "Cheltenham - Highett (West)",
+		"value": {
+			"0": 1394,
+			"1": 730,
+			"-1": 159
+		}
+	},
+	{
+		"key": "Chiltern - Indigo Valley",
+		"value": {
+			"0": 11,
+			"1": 2,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Chirnside Park",
+		"value": {
+			"0": 81,
+			"1": 33,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Churchill",
+		"value": {
+			"0": 50,
+			"1": 6,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Clarinda - Oakleigh South",
+		"value": {
+			"0": 86,
+			"1": 50,
+			"-1": 17
+		}
+	},
+	{
+		"key": "Clayton",
+		"value": {
+			"0": 719,
+			"1": 140,
+			"-1": 25
+		}
+	},
+	{
+		"key": "Clayton South",
+		"value": {
+			"0": 66,
+			"1": 28,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Clifton Springs",
+		"value": {
+			"0": 133,
+			"1": 49,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Cobram",
+		"value": {
+			"0": 11,
+			"1": 6,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Coburg",
+		"value": {
+			"0": 336,
+			"1": 104,
+			"-1": 66
+		}
+	},
+	{
+		"key": "Coburg North",
+		"value": {
+			"0": 138,
+			"1": 69,
+			"-1": 12
+		}
+	},
+	{
+		"key": "Colac",
+		"value": {
+			"0": 23,
+			"1": 15,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Colac Region",
+		"value": {
+			"0": 43,
+			"1": 25,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Collingwood",
+		"value": {
+			"0": 2315,
+			"1": 997,
+			"-1": 107
+		}
+	},
+	{
+		"key": "Corangamite - North",
+		"value": {
+			"0": 11,
+			"1": 2,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Corangamite - South",
+		"value": {
+			"0": 243,
+			"1": 161,
+			"-1": 13
+		}
+	},
+	{
+		"key": "Corio - Norlane",
+		"value": {
+			"0": 105,
+			"1": 41,
+			"-1": 12
+		}
+	},
+	{
+		"key": "Craigieburn - Central",
+		"value": {
+			"0": 74,
+			"1": 25,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Craigieburn - North",
+		"value": {
+			"0": 13,
+			"1": 5,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Craigieburn - South",
+		"value": {
+			"0": 30,
+			"1": 19,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Craigieburn - West",
+		"value": {
+			"0": 93,
+			"1": 45,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Cranbourne",
+		"value": {
+			"0": 82,
+			"1": 27,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Cranbourne East",
+		"value": {
+			"0": 89,
+			"1": 34,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Cranbourne North",
+		"value": {
+			"0": 73,
+			"1": 32,
+			"-1": 13
+		}
+	},
+	{
+		"key": "Cranbourne South",
+		"value": {
+			"0": 177,
+			"1": 69,
+			"-1": 31
+		}
+	},
+	{
+		"key": "Cranbourne West",
+		"value": {
+			"0": 22,
+			"1": 11,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Creswick - Clunes",
+		"value": {
+			"0": 56,
+			"1": 18,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Croydon - East",
+		"value": {
+			"0": 246,
+			"1": 95,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Croydon - West",
+		"value": {
+			"0": 67,
+			"1": 26,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Croydon Hills - Warranwood",
+		"value": {
+			"0": 104,
+			"1": 70,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Croydon South",
+		"value": {
+			"0": 97,
+			"1": 4,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Dandenong",
+		"value": {
+			"0": 500,
+			"1": 143,
+			"-1": 17
+		}
+	},
+	{
+		"key": "Dandenong North",
+		"value": {
+			"0": 375,
+			"1": 339,
+			"-1": 91
+		}
+	},
+	{
+		"key": "Daylesford",
+		"value": {
+			"0": 421,
+			"1": 210,
+			"-1": 20
+		}
+	},
+	{
+		"key": "Deer Park - Derrimut",
+		"value": {
+			"0": 85,
+			"1": 42,
+			"-1": 14
+		}
+	},
+	{
+		"key": "Delacombe",
+		"value": {
+			"0": 9,
+			"1": 0,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Delahey",
+		"value": {
+			"0": 116,
+			"1": 81,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Dingley Village",
+		"value": {
+			"0": 20,
+			"1": 25,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Docklands",
+		"value": {
+			"0": 4280,
+			"1": 1296,
+			"-1": 233
+		}
+	},
+	{
+		"key": "Doncaster",
+		"value": {
+			"0": 915,
+			"1": 155,
+			"-1": 37
+		}
+	},
+	{
+		"key": "Doncaster East (North)",
+		"value": {
+			"0": 312,
+			"1": 17,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Doncaster East (South)",
+		"value": {
+			"0": 230,
+			"1": 38,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Donvale - Park Orchards",
+		"value": {
+			"0": 56,
+			"1": 17,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Doreen",
+		"value": {
+			"0": 128,
+			"1": 46,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Doveton",
+		"value": {
+			"0": 68,
+			"1": 18,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Dromana",
+		"value": {
+			"0": 410,
+			"1": 144,
+			"-1": 25
+		}
+	},
+	{
+		"key": "Drouin",
+		"value": {
+			"0": 20,
+			"1": 3,
+			"-1": 2
+		}
+	},
+	{
+		"key": "East Bendigo - Kennington",
+		"value": {
+			"0": 12,
+			"1": 11,
+			"-1": 1
+		}
+	},
+	{
+		"key": "East Melbourne",
+		"value": {
+			"0": 6495,
+			"1": 2438,
+			"-1": 420
+		}
+	},
+	{
+		"key": "Echuca",
+		"value": {
+			"0": 68,
+			"1": 27,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Edithvale - Aspendale",
+		"value": {
+			"0": 234,
+			"1": 95,
+			"-1": 22
+		}
+	},
+	{
+		"key": "Elsternwick",
+		"value": {
+			"0": 595,
+			"1": 199,
+			"-1": 175
+		}
+	},
+	{
+		"key": "Eltham",
+		"value": {
+			"0": 177,
+			"1": 98,
+			"-1": 13
+		}
+	},
+	{
+		"key": "Elwood",
+		"value": {
+			"0": 840,
+			"1": 581,
+			"-1": 82
+		}
+	},
+	{
+		"key": "Emerald - Cockatoo",
+		"value": {
+			"0": 91,
+			"1": 40,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Endeavour Hills - North",
+		"value": {
+			"0": 91,
+			"1": 10,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Endeavour Hills - South",
+		"value": {
+			"0": 32,
+			"1": 9,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Epping - East",
+		"value": {
+			"0": 3,
+			"1": 1,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Epping - South",
+		"value": {
+			"0": 512,
+			"1": 53,
+			"-1": 15
+		}
+	},
+	{
+		"key": "Epping - West",
+		"value": {
+			"0": 17,
+			"1": 6,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Essendon - Aberfeldie",
+		"value": {
+			"0": 291,
+			"1": 112,
+			"-1": 19
+		}
+	},
+	{
+		"key": "Essendon Airport",
+		"value": {
+			"0": 124,
+			"1": 48,
+			"-1": 10
+		}
+	},
+	{
+		"key": "Euroa",
+		"value": {
+			"0": 39,
+			"1": 11,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Fawkner",
+		"value": {
+			"0": 30,
+			"1": 2,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Ferntree Gully (North)",
+		"value": {
+			"0": 278,
+			"1": 148,
+			"-1": 274
+		}
+	},
+	{
+		"key": "Ferntree Gully (South) - Upper Ferntree Gully",
+		"value": {
+			"0": 107,
+			"1": 60,
+			"-1": 10
+		}
+	},
+	{
+		"key": "Fitzroy",
+		"value": {
+			"0": 6469,
+			"1": 2199,
+			"-1": 379
+		}
+	},
+	{
+		"key": "Fitzroy North",
+		"value": {
+			"0": 1372,
+			"1": 542,
+			"-1": 123
+		}
+	},
+	{
+		"key": "Flemington",
+		"value": {
+			"0": 159,
+			"1": 49,
+			"-1": 11
+		}
+	},
+	{
+		"key": "Flemington Racecourse",
+		"value": {
+			"0": 977,
+			"1": 432,
+			"-1": 50
+		}
+	},
+	{
+		"key": "Flinders",
+		"value": {
+			"0": 998,
+			"1": 652,
+			"-1": 49
+		}
+	},
+	{
+		"key": "Flora Hill - Spring Gully",
+		"value": {
+			"0": 39,
+			"1": 25,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Footscray",
+		"value": {
+			"0": 1699,
+			"1": 539,
+			"-1": 111
+		}
+	},
+	{
+		"key": "Forest Hill",
+		"value": {
+			"0": 310,
+			"1": 33,
+			"-1": 12
+		}
+	},
+	{
+		"key": "Foster",
+		"value": {
+			"0": 197,
+			"1": 103,
+			"-1": 10
+		}
+	},
+	{
+		"key": "Frankston",
+		"value": {
+			"0": 513,
+			"1": 232,
+			"-1": 23
+		}
+	},
+	{
+		"key": "Frankston North",
+		"value": {
+			"0": 58,
+			"1": 26,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Frankston South",
+		"value": {
+			"0": 38,
+			"1": 21,
+			"-1": 3
+		}
+	},
+	{
+		"key": "French Island",
+		"value": {
+			"0": 9,
+			"1": 4,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Gannawarra",
+		"value": {
+			"0": 14,
+			"1": 8,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Geelong",
+		"value": {
+			"0": 2129,
+			"1": 1006,
+			"-1": 119
+		}
+	},
+	{
+		"key": "Geelong West - Hamlyn Heights",
+		"value": {
+			"0": 1043,
+			"1": 711,
+			"-1": 63
+		}
+	},
+	{
+		"key": "Gisborne",
+		"value": {
+			"0": 43,
+			"1": 25,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Gladstone Park - Westmeadows",
+		"value": {
+			"0": 86,
+			"1": 21,
+			"-1": 10
+		}
+	},
+	{
+		"key": "Glen Iris - East",
+		"value": {
+			"0": 386,
+			"1": 113,
+			"-1": 33
+		}
+	},
+	{
+		"key": "Glen Waverley - East",
+		"value": {
+			"0": 91,
+			"1": 33,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Glen Waverley - West",
+		"value": {
+			"0": 685,
+			"1": 141,
+			"-1": 30
+		}
+	},
+	{
+		"key": "Glenelg (Vic.)",
+		"value": {
+			"0": 15,
+			"1": 3,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Glenroy",
+		"value": {
+			"0": 27,
+			"1": 6,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Golden Plains - North",
+		"value": {
+			"0": 5,
+			"1": 3,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Golden Plains - South",
+		"value": {
+			"0": 69,
+			"1": 47,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Gordon (Vic.)",
+		"value": {
+			"0": 59,
+			"1": 45,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Gowanbrae",
+		"value": {
+			"0": 5,
+			"1": 5,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Greensborough",
+		"value": {
+			"0": 207,
+			"1": 55,
+			"-1": 22
+		}
+	},
+	{
+		"key": "Greenvale - Bulla",
+		"value": {
+			"0": 114,
+			"1": 64,
+			"-1": 20
+		}
+	},
+	{
+		"key": "Grovedale",
+		"value": {
+			"0": 245,
+			"1": 90,
+			"-1": 25
+		}
+	},
+	{
+		"key": "Hadfield",
+		"value": {
+			"0": 5,
+			"1": 1,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Hallam",
+		"value": {
+			"0": 71,
+			"1": 42,
+			"-1": 9
+		}
+	},
+	{
+		"key": "Hamilton (Vic.)",
+		"value": {
+			"0": 20,
+			"1": 7,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Hampton",
+		"value": {
+			"0": 685,
+			"1": 216,
+			"-1": 45
+		}
+	},
+	{
+		"key": "Hampton Park - Lynbrook",
+		"value": {
+			"0": 50,
+			"1": 16,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Hastings - Somers",
+		"value": {
+			"0": 292,
+			"1": 157,
+			"-1": 34
+		}
+	},
+	{
+		"key": "Hawthorn",
+		"value": {
+			"0": 1787,
+			"1": 473,
+			"-1": 91
+		}
+	},
+	{
+		"key": "Hawthorn East",
+		"value": {
+			"0": 543,
+			"1": 176,
+			"-1": 31
+		}
+	},
+	{
+		"key": "Healesville - Yarra Glen",
+		"value": {
+			"0": 904,
+			"1": 455,
+			"-1": 48
+		}
+	},
+	{
+		"key": "Heathcote",
+		"value": {
+			"0": 55,
+			"1": 22,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Heidelberg - Rosanna",
+		"value": {
+			"0": 587,
+			"1": 144,
+			"-1": 54
+		}
+	},
+	{
+		"key": "Heidelberg West",
+		"value": {
+			"0": 388,
+			"1": 113,
+			"-1": 20
+		}
+	},
+	{
+		"key": "Highton",
+		"value": {
+			"0": 360,
+			"1": 253,
+			"-1": 41
+		}
+	},
+	{
+		"key": "Hillside",
+		"value": {
+			"0": 36,
+			"1": 27,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Hoppers Crossing - North",
+		"value": {
+			"0": 394,
+			"1": 237,
+			"-1": 21
+		}
+	},
+	{
+		"key": "Hoppers Crossing - South",
+		"value": {
+			"0": 267,
+			"1": 64,
+			"-1": 23
+		}
+	},
+	{
+		"key": "Horsham",
+		"value": {
+			"0": 48,
+			"1": 12,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Horsham Region",
+		"value": {
+			"0": 23,
+			"1": 2,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Hughesdale",
+		"value": {
+			"0": 26,
+			"1": 24,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Hurstbridge",
+		"value": {
+			"0": 25,
+			"1": 7,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Irymple",
+		"value": {
+			"0": 7,
+			"1": 3,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Ivanhoe",
+		"value": {
+			"0": 153,
+			"1": 62,
+			"-1": 19
+		}
+	},
+	{
+		"key": "Ivanhoe East - Eaglemont",
+		"value": {
+			"0": 77,
+			"1": 25,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Kangaroo Flat - Golden Square",
+		"value": {
+			"0": 59,
+			"1": 16,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Keilor",
+		"value": {
+			"0": 103,
+			"1": 27,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Keilor Downs",
+		"value": {
+			"0": 123,
+			"1": 62,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Keilor East",
+		"value": {
+			"0": 206,
+			"1": 79,
+			"-1": 43
+		}
+	},
+	{
+		"key": "Kensington (Vic.)",
+		"value": {
+			"0": 4159,
+			"1": 400,
+			"-1": 48
+		}
+	},
+	{
+		"key": "Kerang",
+		"value": {
+			"0": 5,
+			"1": 1,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Kew",
+		"value": {
+			"0": 508,
+			"1": 222,
+			"-1": 40
+		}
+	},
+	{
+		"key": "Kew East",
+		"value": {
+			"0": 114,
+			"1": 45,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Keysborough",
+		"value": {
+			"0": 265,
+			"1": 89,
+			"-1": 21
+		}
+	},
+	{
+		"key": "Kilmore - Broadford",
+		"value": {
+			"0": 52,
+			"1": 24,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Kilsyth",
+		"value": {
+			"0": 47,
+			"1": 25,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Kinglake",
+		"value": {
+			"0": 87,
+			"1": 17,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Kings Park (Vic.)",
+		"value": {
+			"0": 17,
+			"1": 9,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Kingsbury",
+		"value": {
+			"0": 558,
+			"1": 81,
+			"-1": 26
+		}
+	},
+	{
+		"key": "Knoxfield - Scoresby",
+		"value": {
+			"0": 121,
+			"1": 49,
+			"-1": 9
+		}
+	},
+	{
+		"key": "Koo Wee Rup",
+		"value": {
+			"0": 22,
+			"1": 7,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Korumburra",
+		"value": {
+			"0": 25,
+			"1": 13,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Kyabram",
+		"value": {
+			"0": 1,
+			"1": 1,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Kyneton",
+		"value": {
+			"0": 97,
+			"1": 53,
+			"-1": 11
+		}
+	},
+	{
+		"key": "Lake King",
+		"value": {
+			"0": 1,
+			"1": 0,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Lakes Entrance",
+		"value": {
+			"0": 81,
+			"1": 36,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Lalor",
+		"value": {
+			"0": 24,
+			"1": 10,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Langwarrin",
+		"value": {
+			"0": 61,
+			"1": 20,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Lara",
+		"value": {
+			"0": 311,
+			"1": 135,
+			"-1": 26
+		}
+	},
+	{
+		"key": "Laverton",
+		"value": {
+			"0": 155,
+			"1": 63,
+			"-1": 18
+		}
+	},
+	{
+		"key": "Leongatha",
+		"value": {
+			"0": 174,
+			"1": 72,
+			"-1": 26
+		}
+	},
+	{
+		"key": "Leopold",
+		"value": {
+			"0": 201,
+			"1": 16,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Lilydale - Coldstream",
+		"value": {
+			"0": 1064,
+			"1": 422,
+			"-1": 49
+		}
+	},
+	{
+		"key": "Lockington - Gunbower",
+		"value": {
+			"0": 5,
+			"1": 2,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Loddon",
+		"value": {
+			"0": 7,
+			"1": 4,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Longford - Loch Sport",
+		"value": {
+			"0": 56,
+			"1": 4,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Lorne - Anglesea",
+		"value": {
+			"0": 585,
+			"1": 404,
+			"-1": 44
+		}
+	},
+	{
+		"key": "Lynbrook - Lyndhurst",
+		"value": {
+			"0": 67,
+			"1": 36,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Lysterfield",
+		"value": {
+			"0": 31,
+			"1": 33,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Macedon",
+		"value": {
+			"0": 236,
+			"1": 122,
+			"-1": 12
+		}
+	},
+	{
+		"key": "Maffra",
+		"value": {
+			"0": 41,
+			"1": 11,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Maiden Gully",
+		"value": {
+			"0": 2,
+			"1": 0,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Malvern - Glen Iris",
+		"value": {
+			"0": 1002,
+			"1": 438,
+			"-1": 67
+		}
+	},
+	{
+		"key": "Malvern East",
+		"value": {
+			"0": 2079,
+			"1": 589,
+			"-1": 108
+		}
+	},
+	{
+		"key": "Mansfield (Vic.)",
+		"value": {
+			"0": 274,
+			"1": 98,
+			"-1": 16
+		}
+	},
+	{
+		"key": "Maribyrnong",
+		"value": {
+			"0": 837,
+			"1": 138,
+			"-1": 43
+		}
+	},
+	{
+		"key": "Maryborough (Vic.)",
+		"value": {
+			"0": 6,
+			"1": 2,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Maryborough Region",
+		"value": {
+			"0": 4,
+			"1": 1,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Meadow Heights",
+		"value": {
+			"0": 11,
+			"1": 3,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Melbourne",
+		"value": {
+			"0": 43165,
+			"1": 13933,
+			"-1": 2300
+		}
+	},
+	{
+		"key": "Melbourne Airport",
+		"value": {
+			"0": 2774,
+			"1": 623,
+			"-1": 136
+		}
+	},
+	{
+		"key": "Melton",
+		"value": {
+			"0": 82,
+			"1": 51,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Melton South",
+		"value": {
+			"0": 275,
+			"1": 141,
+			"-1": 24
+		}
+	},
+	{
+		"key": "Melton West",
+		"value": {
+			"0": 65,
+			"1": 22,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Mentone",
+		"value": {
+			"0": 397,
+			"1": 200,
+			"-1": 45
+		}
+	},
+	{
+		"key": "Merbein",
+		"value": {
+			"0": 2,
+			"1": 0,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Mernda",
+		"value": {
+			"0": 293,
+			"1": 114,
+			"-1": 24
+		}
+	},
+	{
+		"key": "Mickleham - Yuroke",
+		"value": {
+			"0": 12,
+			"1": 3,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Mildura - North",
+		"value": {
+			"0": 35,
+			"1": 13,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Mildura - South",
+		"value": {
+			"0": 25,
+			"1": 15,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Mildura Region",
+		"value": {
+			"0": 12,
+			"1": 3,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Mill Park - North",
+		"value": {
+			"0": 142,
+			"1": 22,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Mill Park - South",
+		"value": {
+			"0": 42,
+			"1": 12,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Mitcham (Vic.)",
+		"value": {
+			"0": 275,
+			"1": 100,
+			"-1": 18
+		}
+	},
+	{
+		"key": "Moe - Newborough",
+		"value": {
+			"0": 125,
+			"1": 16,
+			"-1": 37
+		}
+	},
+	{
+		"key": "Moira",
+		"value": {
+			"0": 24,
+			"1": 5,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Monbulk - Silvan",
+		"value": {
+			"0": 104,
+			"1": 53,
+			"-1": 13
+		}
+	},
+	{
+		"key": "Montmorency - Briar Hill",
+		"value": {
+			"0": 204,
+			"1": 249,
+			"-1": 24
+		}
+	},
+	{
+		"key": "Montrose",
+		"value": {
+			"0": 126,
+			"1": 44,
+			"-1": 18
+		}
+	},
+	{
+		"key": "Moonee Ponds",
+		"value": {
+			"0": 738,
+			"1": 385,
+			"-1": 51
+		}
+	},
+	{
+		"key": "Moorabbin - Heatherton",
+		"value": {
+			"0": 374,
+			"1": 143,
+			"-1": 24
+		}
+	},
+	{
+		"key": "Moorabbin Airport",
+		"value": {
+			"0": 63,
+			"1": 17,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Mooroolbark",
+		"value": {
+			"0": 499,
+			"1": 165,
+			"-1": 17
+		}
+	},
+	{
+		"key": "Mooroopna",
+		"value": {
+			"0": 18,
+			"1": 23,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Mordialloc - Parkdale",
+		"value": {
+			"0": 568,
+			"1": 213,
+			"-1": 23
+		}
+	},
+	{
+		"key": "Mornington",
+		"value": {
+			"0": 570,
+			"1": 342,
+			"-1": 34
+		}
+	},
+	{
+		"key": "Morwell",
+		"value": {
+			"0": 46,
+			"1": 5,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Mount Baw Baw Region",
+		"value": {
+			"0": 111,
+			"1": 43,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Mount Dandenong - Olinda",
+		"value": {
+			"0": 621,
+			"1": 285,
+			"-1": 44
+		}
+	},
+	{
+		"key": "Mount Eliza",
+		"value": {
+			"0": 179,
+			"1": 93,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Mount Evelyn",
+		"value": {
+			"0": 191,
+			"1": 101,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Mount Martha",
+		"value": {
+			"0": 488,
+			"1": 289,
+			"-1": 28
+		}
+	},
+	{
+		"key": "Mount Waverley - North",
+		"value": {
+			"0": 125,
+			"1": 115,
+			"-1": 11
+		}
+	},
+	{
+		"key": "Mount Waverley - South",
+		"value": {
+			"0": 298,
+			"1": 90,
+			"-1": 16
+		}
+	},
+	{
+		"key": "Moyne - East",
+		"value": {
+			"0": 38,
+			"1": 23,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Moyne - West",
+		"value": {
+			"0": 381,
+			"1": 102,
+			"-1": 39
+		}
+	},
+	{
+		"key": "Mulgrave",
+		"value": {
+			"0": 292,
+			"1": 154,
+			"-1": 23
+		}
+	},
+	{
+		"key": "Murrumbeena",
+		"value": {
+			"0": 176,
+			"1": 60,
+			"-1": 14
+		}
+	},
+	{
+		"key": "Myrtleford",
+		"value": {
+			"0": 64,
+			"1": 36,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Nagambie",
+		"value": {
+			"0": 52,
+			"1": 35,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Narre Warren - North East",
+		"value": {
+			"0": 697,
+			"1": 423,
+			"-1": 55
+		}
+	},
+	{
+		"key": "Narre Warren - South West",
+		"value": {
+			"0": 447,
+			"1": 193,
+			"-1": 28
+		}
+	},
+	{
+		"key": "Narre Warren North",
+		"value": {
+			"0": 155,
+			"1": 59,
+			"-1": 48
+		}
+	},
+	{
+		"key": "Narre Warren South (East)",
+		"value": {
+			"0": 41,
+			"1": 11,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Narre Warren South (West)",
+		"value": {
+			"0": 685,
+			"1": 195,
+			"-1": 109
+		}
+	},
+	{
+		"key": "Newcomb - Moolap",
+		"value": {
+			"0": 125,
+			"1": 35,
+			"-1": 10
+		}
+	},
+	{
+		"key": "Newport",
+		"value": {
+			"0": 574,
+			"1": 214,
+			"-1": 61
+		}
+	},
+	{
+		"key": "Newtown (Vic.)",
+		"value": {
+			"0": 529,
+			"1": 458,
+			"-1": 31
+		}
+	},
+	{
+		"key": "Nhill Region",
+		"value": {
+			"0": 36,
+			"1": 6,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Niddrie - Essendon West",
+		"value": {
+			"0": 55,
+			"1": 12,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Noble Park - East",
+		"value": {
+			"0": 46,
+			"1": 15,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Noble Park - West",
+		"value": {
+			"0": 102,
+			"1": 23,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Noble Park North",
+		"value": {
+			"0": 15,
+			"1": 4,
+			"-1": 0
+		}
+	},
+	{
+		"key": "None",
+		"value": {
+			"0": 211187,
+			"1": 66587,
+			"-1": 14553
+		}
+	},
+	{
+		"key": "North Geelong - Bell Park",
+		"value": {
+			"0": 76,
+			"1": 35,
+			"-1": 8
+		}
+	},
+	{
+		"key": "North Melbourne",
+		"value": {
+			"0": 1770,
+			"1": 621,
+			"-1": 135
+		}
+	},
+	{
+		"key": "Northcote",
+		"value": {
+			"0": 1926,
+			"1": 1089,
+			"-1": 451
+		}
+	},
+	{
+		"key": "Numurkah",
+		"value": {
+			"0": 15,
+			"1": 8,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Nunawading",
+		"value": {
+			"0": 137,
+			"1": 36,
+			"-1": 9
+		}
+	},
+	{
+		"key": "Oakleigh - Huntingdale",
+		"value": {
+			"0": 717,
+			"1": 278,
+			"-1": 36
+		}
+	},
+	{
+		"key": "Ocean Grove - Barwon Heads",
+		"value": {
+			"0": 540,
+			"1": 261,
+			"-1": 27
+		}
+	},
+	{
+		"key": "Orbost",
+		"value": {
+			"0": 61,
+			"1": 18,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Ormond - Glen Huntly",
+		"value": {
+			"0": 224,
+			"1": 106,
+			"-1": 16
+		}
+	},
+	{
+		"key": "Otway",
+		"value": {
+			"0": 312,
+			"1": 184,
+			"-1": 20
+		}
+	},
+	{
+		"key": "Pakenham - North",
+		"value": {
+			"0": 52,
+			"1": 16,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Pakenham - South",
+		"value": {
+			"0": 79,
+			"1": 20,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Panton Hill - St Andrews",
+		"value": {
+			"0": 120,
+			"1": 45,
+			"-1": 11
+		}
+	},
+	{
+		"key": "Parkville",
+		"value": {
+			"0": 1721,
+			"1": 565,
+			"-1": 86
+		}
+	},
+	{
+		"key": "Pascoe Vale",
+		"value": {
+			"0": 86,
+			"1": 32,
+			"-1": 12
+		}
+	},
+	{
+		"key": "Pascoe Vale South",
+		"value": {
+			"0": 214,
+			"1": 267,
+			"-1": 17
+		}
+	},
+	{
+		"key": "Paynesville",
+		"value": {
+			"0": 28,
+			"1": 4,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Pearcedale - Tooradin",
+		"value": {
+			"0": 247,
+			"1": 89,
+			"-1": 19
+		}
+	},
+	{
+		"key": "Phillip Island",
+		"value": {
+			"0": 1111,
+			"1": 349,
+			"-1": 70
+		}
+	},
+	{
+		"key": "Plenty - Yarrambat",
+		"value": {
+			"0": 40,
+			"1": 8,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Point Cook - East",
+		"value": {
+			"0": 130,
+			"1": 56,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Point Cook - North",
+		"value": {
+			"0": 434,
+			"1": 77,
+			"-1": 21
+		}
+	},
+	{
+		"key": "Point Cook - South",
+		"value": {
+			"0": 520,
+			"1": 73,
+			"-1": 18
+		}
+	},
+	{
+		"key": "Point Lonsdale - Queenscliff",
+		"value": {
+			"0": 164,
+			"1": 54,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Point Nepean",
+		"value": {
+			"0": 797,
+			"1": 310,
+			"-1": 36
+		}
+	},
+	{
+		"key": "Port Melbourne",
+		"value": {
+			"0": 1519,
+			"1": 845,
+			"-1": 101
+		}
+	},
+	{
+		"key": "Port Melbourne Industrial",
+		"value": {
+			"0": 412,
+			"1": 179,
+			"-1": 29
+		}
+	},
+	{
+		"key": "Portarlington",
+		"value": {
+			"0": 74,
+			"1": 43,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Portland",
+		"value": {
+			"0": 8,
+			"1": 10,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Prahran - Windsor",
+		"value": {
+			"0": 5294,
+			"1": 2375,
+			"-1": 302
+		}
+	},
+	{
+		"key": "Preston - East",
+		"value": {
+			"0": 1276,
+			"1": 532,
+			"-1": 112
+		}
+	},
+	{
+		"key": "Preston - West",
+		"value": {
+			"0": 64,
+			"1": 20,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Red Cliffs",
+		"value": {
+			"0": 5,
+			"1": 0,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Research - North Warrandyte",
+		"value": {
+			"0": 79,
+			"1": 64,
+			"-1": 9
+		}
+	},
+	{
+		"key": "Reservoir - East",
+		"value": {
+			"0": 201,
+			"1": 80,
+			"-1": 37
+		}
+	},
+	{
+		"key": "Reservoir - West",
+		"value": {
+			"0": 294,
+			"1": 86,
+			"-1": 31
+		}
+	},
+	{
+		"key": "Richmond (Vic.)",
+		"value": {
+			"0": 4802,
+			"1": 1769,
+			"-1": 310
+		}
+	},
+	{
+		"key": "Riddells Creek",
+		"value": {
+			"0": 7,
+			"1": 2,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Ringwood",
+		"value": {
+			"0": 556,
+			"1": 244,
+			"-1": 40
+		}
+	},
+	{
+		"key": "Ringwood East",
+		"value": {
+			"0": 140,
+			"1": 81,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Ringwood North",
+		"value": {
+			"0": 134,
+			"1": 74,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Robinvale",
+		"value": {
+			"0": 9,
+			"1": 0,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Rochester",
+		"value": {
+			"0": 0,
+			"1": 3,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Rockbank - Mount Cottrell",
+		"value": {
+			"0": 99,
+			"1": 63,
+			"-1": 11
+		}
+	},
+	{
+		"key": "Romsey",
+		"value": {
+			"0": 111,
+			"1": 50,
+			"-1": 14
+		}
+	},
+	{
+		"key": "Rosebud - McCrae",
+		"value": {
+			"0": 206,
+			"1": 65,
+			"-1": 16
+		}
+	},
+	{
+		"key": "Rosedale",
+		"value": {
+			"0": 14,
+			"1": 3,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Rowville - Central",
+		"value": {
+			"0": 49,
+			"1": 28,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Rowville - North",
+		"value": {
+			"0": 6,
+			"1": 6,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Rowville - South",
+		"value": {
+			"0": 35,
+			"1": 13,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Roxburgh Park - Somerton",
+		"value": {
+			"0": 65,
+			"1": 24,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Rushworth",
+		"value": {
+			"0": 20,
+			"1": 6,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Rutherglen",
+		"value": {
+			"0": 40,
+			"1": 15,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Sale",
+		"value": {
+			"0": 17,
+			"1": 7,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Sandringham - Black Rock",
+		"value": {
+			"0": 635,
+			"1": 362,
+			"-1": 29
+		}
+	},
+	{
+		"key": "Seabrook",
+		"value": {
+			"0": 28,
+			"1": 3,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Seaford (Vic.)",
+		"value": {
+			"0": 250,
+			"1": 135,
+			"-1": 14
+		}
+	},
+	{
+		"key": "Seddon - Kingsville",
+		"value": {
+			"0": 178,
+			"1": 75,
+			"-1": 31
+		}
+	},
+	{
+		"key": "Seymour",
+		"value": {
+			"0": 19,
+			"1": 8,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Seymour Region",
+		"value": {
+			"0": 61,
+			"1": 57,
+			"-1": 14
+		}
+	},
+	{
+		"key": "Shepparton - North",
+		"value": {
+			"0": 73,
+			"1": 47,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Shepparton - South",
+		"value": {
+			"0": 69,
+			"1": 31,
+			"-1": 11
+		}
+	},
+	{
+		"key": "Shepparton Region - East",
+		"value": {
+			"0": 26,
+			"1": 8,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Shepparton Region - West",
+		"value": {
+			"0": 66,
+			"1": 78,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Skye - Sandhurst",
+		"value": {
+			"0": 19,
+			"1": 6,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Somerville",
+		"value": {
+			"0": 318,
+			"1": 155,
+			"-1": 8
+		}
+	},
+	{
+		"key": "South Melbourne",
+		"value": {
+			"0": 2271,
+			"1": 977,
+			"-1": 133
+		}
+	},
+	{
+		"key": "South Morang (North)",
+		"value": {
+			"0": 17,
+			"1": 6,
+			"-1": 2
+		}
+	},
+	{
+		"key": "South Morang (South)",
+		"value": {
+			"0": 32,
+			"1": 20,
+			"-1": 4
+		}
+	},
+	{
+		"key": "South Yarra - East",
+		"value": {
+			"0": 4380,
+			"1": 1710,
+			"-1": 251
+		}
+	},
+	{
+		"key": "South Yarra - West",
+		"value": {
+			"0": 759,
+			"1": 287,
+			"-1": 52
+		}
+	},
+	{
+		"key": "Southbank",
+		"value": {
+			"0": 9109,
+			"1": 3330,
+			"-1": 568
+		}
+	},
+	{
+		"key": "Southern Grampians",
+		"value": {
+			"0": 32,
+			"1": 7,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Springvale",
+		"value": {
+			"0": 430,
+			"1": 135,
+			"-1": 38
+		}
+	},
+	{
+		"key": "Springvale South",
+		"value": {
+			"0": 44,
+			"1": 27,
+			"-1": 3
+		}
+	},
+	{
+		"key": "St Albans - North",
+		"value": {
+			"0": 306,
+			"1": 161,
+			"-1": 66
+		}
+	},
+	{
+		"key": "St Albans - South",
+		"value": {
+			"0": 226,
+			"1": 80,
+			"-1": 35
+		}
+	},
+	{
+		"key": "St Arnaud",
+		"value": {
+			"0": 3,
+			"1": 0,
+			"-1": 1
+		}
+	},
+	{
+		"key": "St Kilda",
+		"value": {
+			"0": 5745,
+			"1": 2546,
+			"-1": 520
+		}
+	},
+	{
+		"key": "St Kilda East",
+		"value": {
+			"0": 798,
+			"1": 355,
+			"-1": 65
+		}
+	},
+	{
+		"key": "Stawell",
+		"value": {
+			"0": 264,
+			"1": 152,
+			"-1": 17
+		}
+	},
+	{
+		"key": "Strathfieldsaye",
+		"value": {
+			"0": 2,
+			"1": 0,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Strathmore",
+		"value": {
+			"0": 86,
+			"1": 37,
+			"-1": 13
+		}
+	},
+	{
+		"key": "Sunbury",
+		"value": {
+			"0": 21,
+			"1": 11,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Sunbury - South",
+		"value": {
+			"0": 73,
+			"1": 24,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Sunshine",
+		"value": {
+			"0": 134,
+			"1": 93,
+			"-1": 17
+		}
+	},
+	{
+		"key": "Sunshine North",
+		"value": {
+			"0": 236,
+			"1": 129,
+			"-1": 15
+		}
+	},
+	{
+		"key": "Sunshine West",
+		"value": {
+			"0": 130,
+			"1": 107,
+			"-1": 23
+		}
+	},
+	{
+		"key": "Surrey Hills (East) - Mont Albert",
+		"value": {
+			"0": 85,
+			"1": 26,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Surrey Hills (West) - Canterbury",
+		"value": {
+			"0": 215,
+			"1": 97,
+			"-1": 18
+		}
+	},
+	{
+		"key": "Swan Hill",
+		"value": {
+			"0": 47,
+			"1": 51,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Swan Hill Region",
+		"value": {
+			"0": 37,
+			"1": 7,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Sydenham",
+		"value": {
+			"0": 86,
+			"1": 45,
+			"-1": 62
+		}
+	},
+	{
+		"key": "Tarneit",
+		"value": {
+			"0": 53,
+			"1": 17,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Taylors Hill",
+		"value": {
+			"0": 76,
+			"1": 42,
+			"-1": 10
+		}
+	},
+	{
+		"key": "Taylors Lakes",
+		"value": {
+			"0": 281,
+			"1": 122,
+			"-1": 41
+		}
+	},
+	{
+		"key": "Templestowe",
+		"value": {
+			"0": 221,
+			"1": 44,
+			"-1": 11
+		}
+	},
+	{
+		"key": "Templestowe Lower",
+		"value": {
+			"0": 195,
+			"1": 51,
+			"-1": 9
+		}
+	},
+	{
+		"key": "The Basin",
+		"value": {
+			"0": 29,
+			"1": 16,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Thomastown",
+		"value": {
+			"0": 897,
+			"1": 352,
+			"-1": 54
+		}
+	},
+	{
+		"key": "Thornbury",
+		"value": {
+			"0": 824,
+			"1": 298,
+			"-1": 69
+		}
+	},
+	{
+		"key": "Toorak",
+		"value": {
+			"0": 481,
+			"1": 321,
+			"-1": 22
+		}
+	},
+	{
+		"key": "Torquay",
+		"value": {
+			"0": 806,
+			"1": 375,
+			"-1": 91
+		}
+	},
+	{
+		"key": "Towong",
+		"value": {
+			"0": 28,
+			"1": 11,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Trafalgar (Vic.)",
+		"value": {
+			"0": 35,
+			"1": 10,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Traralgon",
+		"value": {
+			"0": 122,
+			"1": 70,
+			"-1": 16
+		}
+	},
+	{
+		"key": "Truganina",
+		"value": {
+			"0": 189,
+			"1": 111,
+			"-1": 24
+		}
+	},
+	{
+		"key": "Tullamarine",
+		"value": {
+			"0": 66,
+			"1": 25,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Upper Yarra Valley",
+		"value": {
+			"0": 9,
+			"1": 2,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Upwey - Tecoma",
+		"value": {
+			"0": 171,
+			"1": 130,
+			"-1": 31
+		}
+	},
+	{
+		"key": "Vermont",
+		"value": {
+			"0": 151,
+			"1": 7,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Vermont South",
+		"value": {
+			"0": 78,
+			"1": 33,
+			"-1": 13
+		}
+	},
+	{
+		"key": "Viewbank - Yallambie",
+		"value": {
+			"0": 180,
+			"1": 53,
+			"-1": 14
+		}
+	},
+	{
+		"key": "Wallan",
+		"value": {
+			"0": 233,
+			"1": 173,
+			"-1": 48
+		}
+	},
+	{
+		"key": "Wandin - Seville",
+		"value": {
+			"0": 114,
+			"1": 74,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Wangaratta",
+		"value": {
+			"0": 43,
+			"1": 12,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Wangaratta Region",
+		"value": {
+			"0": 122,
+			"1": 37,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Wantirna",
+		"value": {
+			"0": 40,
+			"1": 14,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Wantirna South",
+		"value": {
+			"0": 726,
+			"1": 257,
+			"-1": 53
+		}
+	},
+	{
+		"key": "Warragul",
+		"value": {
+			"0": 86,
+			"1": 45,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Warrandyte - Wonga Park",
+		"value": {
+			"0": 505,
+			"1": 545,
+			"-1": 175
+		}
+	},
+	{
+		"key": "Warrnambool - North",
+		"value": {
+			"0": 14,
+			"1": 9,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Warrnambool - South",
+		"value": {
+			"0": 150,
+			"1": 91,
+			"-1": 16
+		}
+	},
+	{
+		"key": "Watsonia",
+		"value": {
+			"0": 18,
+			"1": 8,
+			"-1": 4
+		}
+	},
+	{
+		"key": "Wattle Glen - Diamond Creek",
+		"value": {
+			"0": 194,
+			"1": 137,
+			"-1": 33
+		}
+	},
+	{
+		"key": "Wendouree - Miners Rest",
+		"value": {
+			"0": 55,
+			"1": 20,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Werribee - East",
+		"value": {
+			"0": 48,
+			"1": 24,
+			"-1": 7
+		}
+	},
+	{
+		"key": "Werribee - South",
+		"value": {
+			"0": 424,
+			"1": 168,
+			"-1": 30
+		}
+	},
+	{
+		"key": "Werribee - West",
+		"value": {
+			"0": 51,
+			"1": 22,
+			"-1": 6
+		}
+	},
+	{
+		"key": "West Footscray - Tottenham",
+		"value": {
+			"0": 279,
+			"1": 132,
+			"-1": 50
+		}
+	},
+	{
+		"key": "West Melbourne",
+		"value": {
+			"0": 189,
+			"1": 57,
+			"-1": 23
+		}
+	},
+	{
+		"key": "West Wimmera",
+		"value": {
+			"0": 1,
+			"1": 0,
+			"-1": 1
+		}
+	},
+	{
+		"key": "West Wodonga",
+		"value": {
+			"0": 12,
+			"1": 1,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Wheelers Hill",
+		"value": {
+			"0": 134,
+			"1": 44,
+			"-1": 8
+		}
+	},
+	{
+		"key": "White Hills - Ascot",
+		"value": {
+			"0": 38,
+			"1": 9,
+			"-1": 2
+		}
+	},
+	{
+		"key": "Whittlesea",
+		"value": {
+			"0": 53,
+			"1": 17,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Williamstown",
+		"value": {
+			"0": 1110,
+			"1": 584,
+			"-1": 112
+		}
+	},
+	{
+		"key": "Wilsons Promontory",
+		"value": {
+			"0": 104,
+			"1": 39,
+			"-1": 5
+		}
+	},
+	{
+		"key": "Winchelsea",
+		"value": {
+			"0": 60,
+			"1": 35,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Wodonga",
+		"value": {
+			"0": 66,
+			"1": 10,
+			"-1": 8
+		}
+	},
+	{
+		"key": "Wollert",
+		"value": {
+			"0": 24,
+			"1": 15,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Wonthaggi - Inverloch",
+		"value": {
+			"0": 453,
+			"1": 232,
+			"-1": 42
+		}
+	},
+	{
+		"key": "Woodend",
+		"value": {
+			"0": 108,
+			"1": 33,
+			"-1": 6
+		}
+	},
+	{
+		"key": "Wyndham Vale",
+		"value": {
+			"0": 137,
+			"1": 56,
+			"-1": 48
+		}
+	},
+	{
+		"key": "Yackandandah",
+		"value": {
+			"0": 14,
+			"1": 6,
+			"-1": 1
+		}
+	},
+	{
+		"key": "Yallourn North - Glengarry",
+		"value": {
+			"0": 11,
+			"1": 2,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Yarra - North",
+		"value": {
+			"0": 455,
+			"1": 203,
+			"-1": 61
+		}
+	},
+	{
+		"key": "Yarra Valley",
+		"value": {
+			"0": 166,
+			"1": 88,
+			"-1": 13
+		}
+	},
+	{
+		"key": "Yarram",
+		"value": {
+			"0": 40,
+			"1": 9,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Yarraville",
+		"value": {
+			"0": 939,
+			"1": 637,
+			"-1": 56
+		}
+	},
+	{
+		"key": "Yarrawonga",
+		"value": {
+			"0": 29,
+			"1": 12,
+			"-1": 0
+		}
+	},
+	{
+		"key": "Yarriambiack",
+		"value": {
+			"0": 40,
+			"1": 11,
+			"-1": 3
+		}
+	},
+	{
+		"key": "Yea",
+		"value": {
+			"0": 29,
+			"1": 20,
+			"-1": 6
+		}
+	}]
+}

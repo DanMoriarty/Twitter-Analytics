@@ -10,13 +10,15 @@
 
 #####----------------------------   IMPORTS   ----------------------------#####
 
+import os
 import csv
 import fiona
 from shapely.geometry import shape, Point
 
 #####----------------------------  CONSTANTS  ----------------------------#####
 
-FILE_PATH = "reverseGeo_files/" 
+CURRENT_D = os.path.dirname(os.path.realpath(__file__))
+FILE_PATH = CURRENT_D + "/reverseGeo_files/" 
 SA2_CODES = FILE_PATH + "SA2_VIC_codes.csv" #CSV with suburb codes and names.
 SA2_POLYG = FILE_PATH + "SA2_2016_AUST.shp" #SHP file with suburb polygon data.
 

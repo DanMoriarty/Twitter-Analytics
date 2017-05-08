@@ -10,6 +10,7 @@
 
 #####----------------------------   IMPORTS   ----------------------------#####
 
+import os
 import re
 import cPickle
 
@@ -25,7 +26,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 POS_THRESHOLD = 0.4  #Minimum polarity for positive tweets.
 NEG_THRESHOLD = 0.4  #Minimum polarity for positive tweets.
 NEU_THRESHOLD = 0.8  #Maximum subjectivity for objective tweets.
-FILE_PATH     = "sentiment_files/" 
+
+CURRENT_D = os.path.dirname(os.path.realpath(__file__))
+FILE_PATH = CURRENT_D + "/sentiment_files/" 
 POL_CSV       = FILE_PATH + "tweet_polarity.csv"  #Pre-built polarity set.
 TWEETS        = FILE_PATH + "tweets_rebuild.json" #Tweets for rebuilding POL_CSV.
 CLASSIFIER    = FILE_PATH + "classifier.pkl"    #Pickled classifier model.

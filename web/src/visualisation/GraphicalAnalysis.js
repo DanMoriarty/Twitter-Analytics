@@ -3,9 +3,10 @@ import Loading from '../material/Loading.js';
 import AutoComplete from 'material-ui/AutoComplete';
 import Paper from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
-import SingleHistogram from './SingleHistogram.js'
-import TimeGraph from './TimeGraph.js'
-import * as Constants from '../Constants.js'
+import SingleHistogram from './SingleHistogram.js';
+import StackedBar from './StackedBar.js';
+import TimeGraph from './TimeGraph.js';
+import * as Constants from '../Constants.js';
 
 class GraphicalAnalysis extends Component {
   
@@ -57,87 +58,128 @@ class GraphicalAnalysis extends Component {
     }
 
     render() {
-    // Set width for each graph element
-    const   minWidth = 350,
-            dynamicWidth = (Number(this.state.width) * 0.96).toFixed(0),
-            w = dynamicWidth > minWidth ? dynamicWidth : Number(this.state.width);
-    
-    // Set style for paper wrappers
-    const paperStyle = {
-      width: w,
-      margin: '1%',
-      textAlign: 'center',
-      display: 'inline-block',
-    };
+        // Set width for each graph element
+        const   minWidth = 350,
+                dynamicWidth = (Number(this.state.width) * 0.96).toFixed(0),
+                w = dynamicWidth > minWidth ? dynamicWidth : Number(this.state.width);
+        
+        // Set style for paper wrappers
+        const paperStyle = {
+          width: w,
+          margin: '1%',
+          textAlign: 'center',
+          display: 'inline-block',
+        };
 
-    if (!this.props.active)
-        return null;
-    
-    if (this.state.error)
-        return (<p>&nbsp;Failed retrieving data. Please try refreshing the page.</p>);
+        const halfPaperStyle = {
+          width: (w/2),
+          margin: '1%',
+          textAlign: 'center',
+          display: 'inline-block',
+        };
 
-    if (!this.props.suburbSentiment || !this.state.suburbSentimentTime || !!this.state.suburbSentiment)
-        return (<Loading />);
+        if (!this.props.active)
+            return null;
+        
+        if (this.state.error)
+            return (<p>&nbsp;Failed retrieving data. Please try refreshing the page.</p>);
 
+        if (!this.props.suburbSentiment || !this.state.suburbSentimentTime || !!this.state.suburbSentiment)
+            return (<Loading />);
 
-    console.log(this.state.sentimentTime)
+        const tweetsPerSuburb = this.props.suburbSentiment.slice(0,10).map(
+            item => ({x: item.key, y: item.value["1"]}));
 
-    const tweetsPerSuburb = this.props.suburbSentiment.slice(0,10).map(
-        item => ({x: item.key, y: item.value["1"]}));
+        const allSuburbs = this.props.suburbSentiment.map(
+            item => (item.key));
 
-    const allSuburbs = this.props.suburbSentiment.map(
-        item => (item.key));
+        return (<div className="GraphPage">
+                    <Paper style={paperStyle}>
+                        <div>
+                            <h3>Sentiment vs Time </h3>
+                            <TimeGraph
+                                series={["Melbourne Tweets"]}
+                                data={this.state.sentimentTime}
+                                X="Time of Day"
+                                Y="Proportion of Positive Tweets"
+                                width={paperStyle.width}
+                                zoom = {this.state.zoomMelbTweets}
+                            />
+                            <RaisedButton label="Toggle Zoom" secondary={true} onTouchTap={this.toggleMTweetsZoom} />
+                        </div>
+                    </Paper>
 
-    return (<div className="GraphPage">
-                <Paper style={paperStyle}>
-                    <div>
-                        <h3>Sentiment vs Time </h3>
-                        <TimeGraph
-                            series={["Melbourne Tweets"]}
-                            data={this.state.sentimentTime}
-                            X="Time of Day"
-                            Y="Proportion of Positive Tweets"
-                            width={paperStyle.width}
-                            zoom = {this.state.zoomMelbTweets}
-                        />
-                        <RaisedButton label="Toggle Zoom" secondary={true} onTouchTap={this.toggleMTweetsZoom} />
-                    </div>
-                </Paper>
+                    <Paper style={paperStyle}>
+                        <div>
+                            <h3>Sentiment vs Time (Suburbs)</h3>
+                            <TimeGraph
+                                series={this.state.selectedSuburbs}
+                                data={this.state.suburbSentimentTime}
+                                X="Time of Day"
+                                Y="Proportion of Positive Tweets"
+                                width={paperStyle.width}
+                            />
+                            <AutoComplete
+                                floatingLabelText="Add Suburb"
+                                filter={ AutoComplete.caseInsensitiveFilter }
+                                dataSource={ allSuburbs }
+                                maxSearchResults={ 5 }
+                                onNewRequest={ this.selectSuburb }
+                            />
+                            <RaisedButton label="Clear All" secondary={true} onTouchTap={this.clearSuburb} />
+                        </div>
+                    </Paper>
 
-                <Paper style={paperStyle}>
-                    <div>
-                        <h3>Sentiment vs Time (Suburbs)</h3>
-                        <TimeGraph
-                            series={this.state.selectedSuburbs}
-                            data={this.state.suburbSentimentTime}
-                            X="Time of Day"
-                            Y="Proportion of Positive Tweets"
-                            width={paperStyle.width}
-                        />
-                        <AutoComplete
-                            floatingLabelText="Add Suburb"
-                            filter={ AutoComplete.caseInsensitiveFilter }
-                            dataSource={ allSuburbs }
-                            maxSearchResults={ 5 }
-                            onNewRequest={ this.selectSuburb }
-                        />
-                        <RaisedButton label="Clear All" secondary={true} onTouchTap={this.clearSuburb} />
-                    </div>
-                </Paper>
+                    <Paper style={paperStyle}>
+                        <div>
+                            <h3>HISTOGRMA EXAMPLE - Number of Positive Tweets</h3>
+                            <SingleHistogram
+                                data={tweetsPerSuburb}
+                                Y="Number of Tweets"
+                                width={paperStyle.width}
+                            />
+                            <sub>Usernames</sub>
+                        </div>
+                    </Paper>
 
-                <Paper style={paperStyle}>
-                    <div>
-                        <h3>Number of Positive Tweets</h3>
-                        <SingleHistogram
-                            data={tweetsPerSuburb}
-                            Y="Number of Tweets"
-                            width={paperStyle.width}
-                        />
-                        <sub>Usernames</sub>
-                    </div>
-                </Paper>
-
-            </div>);
+                    <Paper style={halfPaperStyle}>
+                        <div>
+                            <h3>Stacked Bar Example</h3>
+                            <br/>
+                            <p>TODO: Make View in the Format:<br/>{"{Positive: [{x: Android, y: Android Positive Count}, {x: iPhone, y: iPhone Positive Count}, ...], {Negative: ...}, {Neutral: ...}}"}</p>
+                            <StackedBar
+                                series={["Neutral", "Positive", "Negative"]}
+                                data={
+                                    {
+                                    Positive:
+                                        [
+                                        {x: "Android", y: 3},
+                                        {x: "iPhone", y: 3},
+                                        {x: "Instagram", y: 5}
+                                        ],
+                                    Neutral:
+                                        [
+                                        {x: "Android", y: 5},
+                                        {x: "iPhone", y: 10},
+                                        {x: "Instagram", y: 3}
+                                        ],
+                                    Negative:
+                                        [
+                                        {x: "Android", y: 1},
+                                        {x: "iPhone", y: 5},
+                                        {x: "Instagram", y: 2}
+                                        ]
+                                    }
+                                }
+                                X="Device"
+                                Y="Number of Tweets"
+                                width={halfPaperStyle.width}
+                                stack={true}
+                            />
+                            <sub>Usernames</sub>
+                        </div>
+                    </Paper>
+                </div>);
   }
 }
 

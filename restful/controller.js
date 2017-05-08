@@ -15,8 +15,42 @@ var nano		= require('nano')('http://115.146.93.56:8888/'),
 	sadesign	= 'sa2'
 	;
 
+var PythonShell = require('python-shell'),
+	pyshell 	= new PythonShell('../Sentiment\ Analysis/langModel.py'),
+	resBuffer 	= {},
+	SEP 		= "^^^&$&$&^^^"
+	;
+
+// Event listener
+pyshell.on('message', function(m) {
+	// resBuffer.shift().send(m);
+	let mjson = JSON.parse(m);
+
+	// Check the unique key is still in the buffer
+	if (resBuffer.hasOwnProperty(mjson.key)) {
+		
+		// Respond to the res with the Python output
+		resBuffer[mjson.key].send(mjson.res);
+
+		// Remove key from buffer
+		delete resBuffer[mjson.key];
+	}
+})
+
+exports.runLanguageModel = function(req, res) {
+	// Make a unique key for this request
+	let key = req.tweet + SEP + new Date().getTime()
+
+	// add the key to the buffer
+	resBuffer[key] = res; 
+
+	// Send the key to python
+	pyshell.send(key);
+}
+
+
 exports.getMelbTweets = function(req, res) {
-	db.view(design, 'melb', {stale: "update_after"}, function(err, body) {
+	db.view(design, 'melb', {stale: "ok"}, function(err, body) {
 		// body.rows.forEach(function(doc) {
 		// 	console.log(doc)
 		// });
@@ -26,7 +60,7 @@ exports.getMelbTweets = function(req, res) {
 
 // get tweets in the view and specify key(s)
 exports.getMelbTweetsKey = function(req, res) {
-	db.view(design, 'melb', {stale: "update_after", key: req.key, include_docs: true}, function(err, body) {
+	db.view(design, 'melb', {stale: "ok", key: req.key, include_docs: true}, function(err, body) {
 		res.send(body);
 	});
 }
@@ -39,16 +73,15 @@ exports.getSpeed = function(req, res) {
 }
 
 exports.getSpeedStale = function(req, res) {
-	db.view(speeddesign, 'all-over-1kph', {stale: "update_after"}, function(err, body) {
+	db.view(speeddesign, 'all-over-1kph', {stale: "ok"}, function(err, body) {
 		res.send(body);
 		console.log(err);
 	});
 }
 
-
 // get view containing number of tweets by each user
 exports.getUserTweets = function(req, res) {
-	db.view(design, 'all-tweets-by-user', { stale: "update_after", group_level: 1 }, function(err, body) {
+	db.view(design, 'all-tweets-by-user', { stale: "ok", group_level: 1 }, function(err, body) {
 		res.send(body);
 	});
 }
@@ -61,19 +94,19 @@ exports.getUserTweetsKey = function(req, res) {
 }
 
 exports.getSuburbSentiment = function(req, res) {
-	db.view(sadesign, 'sa2-sentiment', { stale: "update_after", group_level: 1 }, function(err, body) {
+	db.view(sadesign, 'sa2-sentiment', { stale: "ok", group_level: 1 }, function(err, body) {
 		res.send(body);
 	});
 }
 
 exports.getSuburbSentimentTime = function(req, res) {
-	db.view(sadesign, 'sa2-timeofday', { stale: "update_after", group_level: 1 }, function(err, body) {
+	db.view(sadesign, 'sa2-timeofday', { stale: "ok", group_level: 1 }, function(err, body) {
 		res.send(body);
 	});
 }
 
 exports.getSentimentTime = function(req, res) {
-	db.view(sadesign, 'sa2-timeofday', { stale: "update_after", group_level: 0 }, function(err, body) {
+	db.view(sadesign, 'sa2-timeofday', { stale: "ok", group_level: 0 }, function(err, body) {
 		res.send(body);
 	});
 }

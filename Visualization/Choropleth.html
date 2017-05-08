@@ -127,7 +127,8 @@
 
 		  // LOADING DATA //		
 		var suburbLayer = new google.maps.Data();
-		suburbLayer.loadGeoJson('./SA2Masterfile.json');
+		suburbLayer.loadGeoJson('./SA2Masterfile(MELB).json');
+		
 		//suburbLayer.loadGeoJson('http://data.gov.au/geoserver/vic-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=af33dd8c_0534_4e18_9245_fc64440f742e&outputFormat=json');
 
 		  // GETTING MAX AND MIN VALUES OF DATA
@@ -167,7 +168,7 @@
 					DATASET = D1;
 					ATTRIBUTE = A1;
 				}	
-\
+
 				getMax();
 					
 			}

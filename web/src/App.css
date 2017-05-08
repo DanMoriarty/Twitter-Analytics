@@ -44,9 +44,16 @@ div.right {
   top: 10px; 
   width: 30%;
   margin-left: 68%;
+  z-index: 50;
+}
+
+#topLayer {
   z-index: 99;
 }
 
+#bottomLayer {
+  z-index: 0;
+}
 
 .authorCard {
   padding-top: 5px;
