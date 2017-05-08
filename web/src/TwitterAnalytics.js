@@ -25,7 +25,6 @@ class TwitterAnalytics extends Component {
 
     this.state = {
       activeView: Constants.HOME,
-      suburbSentiment: null,
     };
 
     this.setActiveView = this.setActiveView.bind(this);
@@ -45,7 +44,6 @@ class TwitterAnalytics extends Component {
           <Home active={this.state.activeView === Constants.HOME} />
           <Sentiment
             active={this.state.activeView === Constants.SENTIMENT}
-            suburbs={this.state.suburbSentiment} 
             melbPolygons={melbPolygons}
           />
           <GraphicalAnalysis
