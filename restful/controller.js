@@ -111,4 +111,10 @@ exports.getSentimentTime = function(req, res) {
 	});
 }
 
+exports.getDeviceSentiment = function(req, res) {
+	db.view('sources', 'tweet-specific-sources-with-sentiment', { stale: "ok", group_level: 2 }, function(err, body) {
+		res.send(body);
+	});
+}
+
 //------------------------------  END  FILE  ------------------------------//
