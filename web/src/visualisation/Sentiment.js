@@ -1,6 +1,6 @@
 import React from 'react';
 import InfoCard from '../material/InfoCard.js'
-import GMap from './GMap.js'
+import GMapAsync2 from './GMapAsync2.js'
 
 function Sentiment(props) {
     if (!props.active) return null;
@@ -14,7 +14,7 @@ function Sentiment(props) {
     return (
       <div className="container">
         <div className="left">
-          <GMap suburbs={props.suburbs}/>
+          <GMapAsync2 suburbs={props.suburbs}/>
         </div>
         <div className="right">
           <InfoCard

@@ -29,6 +29,7 @@ module.exports = function(router) {
 	router.get('/sentimentTime', controller.getSentimentTime);
 	router.get('/languageModel/:tweet', controller.runLanguageModel);
 	router.get('/deviceSentiment/', controller.getDeviceSentiment);
+	router.get('/speed3k3m', controller.getSpeed3k3m);
 
 	//--------------- PLAYING WITH KEYS ---------------//
 	// router middleware to handle key
