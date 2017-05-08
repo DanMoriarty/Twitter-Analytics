@@ -117,4 +117,9 @@ exports.getDeviceSentiment = function(req, res) {
 	});
 }
 
+exports.getSpeed3k3m = function(req, res) {
+	db.view(speeddesign, 'both-in-melb-over-3kph-within-3-minutes', { stale: "ok", group_level: 2 }, function(err, body) {
+		res.send(body);
+	});
+}
 //------------------------------  END  FILE  ------------------------------//

@@ -11,7 +11,7 @@ import AuthorCards from "./material/AuthorCards.js"
 // Import Visualisation Components
 import Sentiment from "./visualisation/Sentiment.js"
 import GraphicalAnalysis from "./visualisation/GraphicalAnalysis.js"
-import Speed from "./visualisation/Speed.js"
+import Speed from "./visualisation/Movement.js"
 import Language from "./visualisation/Language.js"
 
 // Load polygon data for maps
