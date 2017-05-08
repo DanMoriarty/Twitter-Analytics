@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Card, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import Snackbar from 'material-ui/Snackbar';
-import GMap from './GMap.js'
+import GChoropleth from './GChoropleth.js'
 import RaisedButton from 'material-ui/RaisedButton';
 import * as Constants from '../Constants.js'
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,
@@ -17,7 +17,7 @@ class Language extends Component {
             userText: "",
             error: false,
             topSuburbs: ["Enter a sentence first!", "", "", "", ""],
-            choropleths: null,
+            scores: null,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,7 +28,7 @@ class Language extends Component {
         this.setState({open: true}); 
         fetch('http://localhost:4444/api/languageModel/'.concat(this.state.userText), Constants.INIT)
             .then(result=>result.json()) 
-            .then(items=> this.setState({choropleths:
+            .then(items=> this.setState({scores:
                   items.scores, topSuburbs: items.topfive, error:false}))
             .catch(error => this.setState({error: true}))
     }
@@ -38,9 +38,12 @@ class Language extends Component {
         return (
         <div className="container">
             <div className="left">
-                <GMap suburbs={this.props.topSuburbs}/>
+              <GChoropleth
+                data={this.state.scores}
+                melbPolygons={this.props.melbPolygons}
+              />
             </div>
-
+            
             <div className="right">
                 <Card>
                     <CardTitle 

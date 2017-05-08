@@ -11,7 +11,7 @@ import AuthorCards from "./material/AuthorCards.js"
 // Import Visualisation Components
 import Sentiment from "./visualisation/Sentiment.js"
 import GraphicalAnalysis from "./visualisation/GraphicalAnalysis.js"
-import Speed from "./visualisation/Movement.js"
+import Speed from "./visualisation/Speed.js"
 import Language from "./visualisation/Language.js"
 
 // Load polygon data for maps
@@ -25,6 +25,7 @@ class TwitterAnalytics extends Component {
 
     this.state = {
       activeView: Constants.HOME,
+      suburbSentiment: null,
     };
 
     this.setActiveView = this.setActiveView.bind(this);
@@ -44,6 +45,7 @@ class TwitterAnalytics extends Component {
           <Home active={this.state.activeView === Constants.HOME} />
           <Sentiment
             active={this.state.activeView === Constants.SENTIMENT}
+            suburbs={this.state.suburbSentiment} 
             melbPolygons={melbPolygons}
           />
           <GraphicalAnalysis
@@ -55,6 +57,7 @@ class TwitterAnalytics extends Component {
           />
           <Language
             active={this.state.activeView === Constants.LANGUAGE}
+            melbPolygons={melbPolygons}
           />
           <AuthorCards active={this.state.activeView === Constants.AUTHORS} />
           
