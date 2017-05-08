@@ -19,24 +19,31 @@ class Sentiment extends Component {
   componentDidMount() {
     fetch('http://localhost:4444/api/suburbSentiment', Constants.INIT)
       .then(result=>result.json()) 
-      .then(items=> this.setState({suburbSentiment: items.rows, sortedSentiment: processSentiments(items.rows)}))
+      .then(items=> this.setState({suburbSentiment: processSentiments(items.rows)}))
       .catch(error => this.setState({error: true}))
   }
 
   render() {
     if (!this.props.active) return null;
 
-    let topPos = null,
+    let posRatioSuburbs = null,
+        topTweets = null,
+        topPos = null,
         topNeg = null,
-        topNeu = null;
+        topNeu = null,
+        limit   = 5;
 
-    if (this.state.sortedSentiment) {
-      let pos = this.state.sortedSentiment[0],
-          neu = this.state.sortedSentiment[1];
+    if (this.state.suburbSentiment) {
+      let top = this.state.suburbSentiment[0],
+          pos = this.state.suburbSentiment[1],
+          neu = this.state.suburbSentiment[2],
+          posRatioSuburbs = this.state.suburbSentiment[3];
 
-      topPos = formatSentimental(pos.slice(-3).reverse());
-      topNeg = formatSentimental(pos.slice(0, 3));
-      topNeu = formatNeutral(neu.slice(-3).reverse());
+      console.log(posRatioSuburbs);
+      topPos = formatSentimentalList(pos.slice(-1 * limit).reverse());
+      topNeg = formatSentimentalList(pos.slice(0, limit));
+      topNeu = formatNeutralList(neu.slice(-1 * limit).reverse());
+      topTweets = formatTopList(top.slice(-1 * limit).reverse());
 
     }
 
@@ -44,29 +51,28 @@ class Sentiment extends Component {
       <div className="container">
         <div className="left">
           <GChoropleth
-            data={this.state.suburbSentiment}
+            data={posRatioSuburbs}
             melbPolygons={this.props.melbPolygons}
           />
         </div>
         <div className="right">
           <ListBox 
+            title="Most Tweets"
+            subtitle="Highest total number of tweets"
+            items={topTweets}
+          />
+          <ListBox 
             title="Happiest Suburbs"
-            subtitle="Highest ratio of positive tweets"
-            columnTitle="Suburb"
+            subtitle="Highest ratio of positive sentimental tweets"
             items={topPos}
           />
-          <InfoCard
-            title="Happiest Suburbs"
-            subtitle="Highest ratio of positive tweets"
-            items={topPos}
-          />
-          <InfoCard
+          <ListBox 
             title="Unhappiest Suburbs"
-            subtitle="Highest ratio of negative tweets"
+            subtitle="Lowest ratio of positive sentimental tweets"
             items={topNeg}
           />
-          <InfoCard
-            title="Neutral Suburbs"
+          <ListBox 
+            title="Most Neutral Suburbs"
             subtitle="Highest ratio of neutral tweets"
             items={topNeu}
           />
@@ -78,11 +84,15 @@ class Sentiment extends Component {
 }
 
 function processSentiments(suburbSentiment) {
-  // Sort tweets by their positivity / neutrality
+  // Process sentiment counts into the format expected by the 
+  // Google Maps choropleth, and share the computation with
+  // soting tweets by their positivity / neutrality
   const minTweets = 100;
 
-  let topPos = [],
-      topNeu = [];
+  let processedSents = {},
+      topPos = [],
+      topNeu = [],
+      topTweet = [];
 
   for (var key in suburbSentiment) {
     if (!key || !suburbSentiment.hasOwnProperty(key))
@@ -94,37 +104,52 @@ function processSentiments(suburbSentiment) {
         neu = obj.value['0'],
         neg = obj.value['-1'];
 
+    if (!suburb || suburb == "None")
+      continue
+
     let posR = pos > 0 || neg > 0 ? pos / (pos + neg) : 0,
         neuR = pos > 0 || neg > 0 || neu > 0 ? neu / (pos + neg + neu) : 0;
     
     if ((pos + neg) > minTweets) {
       topPos.push([suburb, posR, {pos: pos, neu: neu, neg: neg}]);
       topNeu.push([suburb, neuR, {pos: pos, neu: neu, neg: neg}]);
+      topTweet.push([suburb, pos+neg+neu, {pos: pos, neu: neu, neg: neg}])
     }
+
+    processedSents[suburb] = posR;
   }
 
-  return [topPos.sort((a, b) => a[1] - b[1]), topNeu.sort((a, b) => a[1] - b[1])];
+  return [topTweet.sort((a, b) => a[1] - b[1]), topPos.sort((a, b) => a[1] - b[1]), topNeu.sort((a, b) => a[1] - b[1]), processedSents];
 }
 
-function formatSentimental(arrSlice) {
+function formatSentimentalList(arrSlice) {
   let formatted = [];
   for (var i in arrSlice) {
     let item = arrSlice[i];
     formatted.push(
-      item[0]
-      // {suburb: item[0], data: `${(item[1] * 100).toFixed(2)}% Positive (${item[2].pos}+, ${item[2].neg}-)`}
+      {Suburb: item[0],  "Sentimental Tweets": (item[2].pos + item[2].neg), Positive: `${(item[1] * 100).toFixed(2)}%`}
     );
   }
   return formatted;
 }
 
-function formatNeutral(arrSlice) {
+function formatNeutralList(arrSlice) {
   let formatted = [];
   for (var i in arrSlice) {
     let item = arrSlice[i];
     formatted.push(
-      {suburb: item[0], data: `${(item[1] * 100).toFixed(2)}% Neutral (${item[2].pos}+, ${item[2].neg}-, ${item[2].neu}*)`}
+      {Suburb: item[0],  "Total Tweets": (item[2].pos + item[2].neg + item[2].neu), Neutrality: `${(item[1] * 100).toFixed(2)}%`}
+    );
+  }
+  return formatted;
+}
 
+function formatTopList(arrSlice) {
+  let formatted = [];
+  for (var i in arrSlice) {
+    let item = arrSlice[i];
+    formatted.push(
+      {Suburb: item[0],  "Total Tweets": (item[2].pos + item[2].neg + item[2].neu)}
     );
   }
   return formatted;
