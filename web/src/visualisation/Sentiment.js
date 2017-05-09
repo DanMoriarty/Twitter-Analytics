@@ -36,10 +36,8 @@ class Sentiment extends Component {
     if (this.state.suburbSentiment) {
       let top = this.state.suburbSentiment[0],
           pos = this.state.suburbSentiment[1],
-          neu = this.state.suburbSentiment[2],
-          posRatioSuburbs = this.state.suburbSentiment[3];
+          neu = this.state.suburbSentiment[2];
 
-      console.log(posRatioSuburbs);
       topPos = formatSentimentalList(pos.slice(-1 * limit).reverse());
       topNeg = formatSentimentalList(pos.slice(0, limit));
       topNeu = formatNeutralList(neu.slice(-1 * limit).reverse());
@@ -51,7 +49,7 @@ class Sentiment extends Component {
       <div className="container">
         <div className="left">
           <GChoropleth
-            data={posRatioSuburbs}
+            data={this.state.suburbSentiment ? this.state.suburbSentiment[3] : null}
             melbPolygons={this.props.melbPolygons}
           />
         </div>

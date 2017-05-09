@@ -32,14 +32,13 @@ class GraphicalAnalysis extends Component {
 
         fetch('http://localhost:4444/api/suburbSentimentTime', Constants.INIT)
             .then(result=>result.json()) 
-            .then(items=> this.setState({suburbSentimentTime: processSuburbTimes(items.rows), error:false}))
-            .catch(error => this.setState({error: true}))
+            .then(items=> this.setState({suburbSentimentTime: processSuburbTimes(items.rows)}))
+            .catch(error => console.log(error))
 
         fetch('http://localhost:4444/api/sentimentTime', Constants.INIT)
             .then(result=>result.json()) 
-            .then(items=> this.setState({sentimentTime: processSuburbTimes(items.rows), error:false}))
-            .catch(error => this.setState({error: true}))
-        
+            .then(items=> this.setState({sentimentTime: processSuburbTimes(items.rows)}))
+            .catch(error => console.log(error))     
     }
 
     selectSuburb(chosenRequest, index) {
@@ -84,14 +83,8 @@ class GraphicalAnalysis extends Component {
         if (this.state.error)
             return (<p>&nbsp;Failed retrieving data. Please try refreshing the page.</p>);
 
-        if (!this.props.suburbSentiment || !this.state.suburbSentimentTime || !!this.state.suburbSentiment)
+        if (!this.state.suburbSentimentTime || !this.state.sentimentTime)
             return (<Loading />);
-
-        const tweetsPerSuburb = this.props.suburbSentiment.slice(0,10).map(
-            item => ({x: item.key, y: item.value["1"]}));
-
-        const allSuburbs = this.props.suburbSentiment.map(
-            item => (item.key));
 
         return (<div className="GraphPage">
                     <Paper style={paperStyle}>
@@ -122,23 +115,11 @@ class GraphicalAnalysis extends Component {
                             <AutoComplete
                                 floatingLabelText="Add Suburb"
                                 filter={ AutoComplete.caseInsensitiveFilter }
-                                dataSource={ allSuburbs }
+                                dataSource={ Object.keys(this.state.suburbSentimentTime) }
                                 maxSearchResults={ 5 }
                                 onNewRequest={ this.selectSuburb }
                             />
                             <RaisedButton label="Clear All" secondary={true} onTouchTap={this.clearSuburb} />
-                        </div>
-                    </Paper>
-
-                    <Paper style={paperStyle}>
-                        <div>
-                            <h3>HISTOGRMA EXAMPLE - Number of Positive Tweets</h3>
-                            <SingleHistogram
-                                data={tweetsPerSuburb}
-                                Y="Number of Tweets"
-                                width={paperStyle.width}
-                            />
-                            <sub>Usernames</sub>
                         </div>
                     </Paper>
 
@@ -186,6 +167,9 @@ class GraphicalAnalysis extends Component {
 function processSuburbTimes(data) {
     let formattedSuburbs = {};
     for (var suburb in data) {
+        if (!suburb || !data.hasOwnProperty(suburb) || suburb == "None")
+            continue
+
         let suburbName = data[suburb].key;
         let vals = data[suburb].value;
         let suburbArr = []

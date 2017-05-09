@@ -29,6 +29,10 @@ function normaliseData(data) {
         if (data.hasOwnProperty(key2))
             nData[key2] = Math.round( 5.0*(data[key2]-minX)/denom )
     }
+
+    console.log(data);
+    console.log(minX);
+
     return nData;
 }
 
@@ -65,7 +69,7 @@ class GChoropleth extends Component {
   }
 
   render() { 
-
+    console.log(this.props.data);
     let polygons = [];
     let nData = normaliseData(this.props.data);
 

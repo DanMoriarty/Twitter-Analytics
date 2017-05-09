@@ -12,7 +12,6 @@ import {
 
 function ListBox(props) {
   if (!props.items) {
-    console.log('nothing to see here')
     return null;
   }
 

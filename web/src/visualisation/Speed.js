@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import InfoCard from '../material/InfoCard.js'
 import GMap from './GMap.js'
-import Speedmap2 from './Speedmap2.js';
+// import Speedmap2 from './Speedmap2.js';
 
 function Speed(props) {
     if (!props.active) return null;
@@ -15,7 +15,9 @@ function Speed(props) {
     return (
       <div className="container">
         <div className="left">
-          <Speedmap2 suburbs={props.suburbs}/>
+          {
+            //<Speedmap2 suburbs={props.suburbs}/>
+          }
         </div>
         <div className="right">
           <InfoCard
