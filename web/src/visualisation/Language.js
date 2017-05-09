@@ -95,81 +95,83 @@ class Language extends Component {
                     </div>
 
                 </Card>
-                
-                <Card>
-                    <CardHeader
-                        actAsExpander={true} 
-                        showExpandableButton={true}
-                        title="Likely Suburbs of Origin"
-                        subtitle="Based on language model analysis"
-                    />
-                    <CardText
-                        expandable={true}
-                        children={
-                            <Table style={{tableLayout: 'auto',}}>
-                            <TableHeader
-                                adjustForCheckbox={false}
-                                displaySelectAll={false}
-                            >
-                            <TableRow>
-                                <TableHeaderColumn style={{width: '20%',}}>Rank</TableHeaderColumn>
-                                <TableHeaderColumn>Suburb</TableHeaderColumn>
-                            </TableRow>
-                            </TableHeader>
-                            <TableBody displayRowCheckbox={false} >
-                            <TableRow>
-                                <TableRowColumn style={{width: '20%',}}>1.</TableRowColumn>
-                                <TableRowColumn>{this.state.topSuburbs[0]}
-                                    </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn style={{width: '20%',}}>2.</TableRowColumn>
-                                <TableRowColumn>{this.state.topSuburbs[1]}
-                                    </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn style={{width: '20%',}}>3.</TableRowColumn>
-                                <TableRowColumn>{this.state.topSuburbs[2]}
-                                    </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn style={{width: '20%',}}>4.</TableRowColumn>
-                                <TableRowColumn>{this.state.topSuburbs[3]}
-                                    </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn style={{width: '20%',}}>5.</TableRowColumn>
-                                <TableRowColumn>{this.state.topSuburbs[4]}
-                                    </TableRowColumn>
-                            </TableRow>
-                            </TableBody>
-                            </Table>
-                        }
-                    />
-                </Card>
+                <div className="listBox">
+                    <Card>
+                        <CardHeader
+                            actAsExpander={true} 
+                            showExpandableButton={true}
+                            title="Likely Suburbs of Origin"
+                            subtitle="Based on language model analysis"
+                        />
+                        <CardText
+                            expandable={true}
+                            children={
+                                <Table style={{tableLayout: 'auto',}}>
+                                <TableHeader
+                                    adjustForCheckbox={false}
+                                    displaySelectAll={false}
+                                >
+                                <TableRow>
+                                    <TableHeaderColumn style={{width: '20%',}}>Rank</TableHeaderColumn>
+                                    <TableHeaderColumn>Suburb</TableHeaderColumn>
+                                </TableRow>
+                                </TableHeader>
+                                <TableBody displayRowCheckbox={false} >
+                                <TableRow>
+                                    <TableRowColumn style={{width: '20%',}}>1.</TableRowColumn>
+                                    <TableRowColumn>{this.state.topSuburbs[0]}
+                                        </TableRowColumn>
+                                </TableRow>
+                                <TableRow>
+                                    <TableRowColumn style={{width: '20%',}}>2.</TableRowColumn>
+                                    <TableRowColumn>{this.state.topSuburbs[1]}
+                                        </TableRowColumn>
+                                </TableRow>
+                                <TableRow>
+                                    <TableRowColumn style={{width: '20%',}}>3.</TableRowColumn>
+                                    <TableRowColumn>{this.state.topSuburbs[2]}
+                                        </TableRowColumn>
+                                </TableRow>
+                                <TableRow>
+                                    <TableRowColumn style={{width: '20%',}}>4.</TableRowColumn>
+                                    <TableRowColumn>{this.state.topSuburbs[3]}
+                                        </TableRowColumn>
+                                </TableRow>
+                                <TableRow>
+                                    <TableRowColumn style={{width: '20%',}}>5.</TableRowColumn>
+                                    <TableRowColumn>{this.state.topSuburbs[4]}
+                                        </TableRowColumn>
+                                </TableRow>
+                                </TableBody>
+                                </Table>
+                            }
+                        />
+                    </Card>
+                </div>
+                <div className="listBox">
+                    <Card>
+                        <CardHeader
+                            actAsExpander={true} 
+                            showExpandableButton={true}
+                            title="Estimated Socio-economic Background"
+                            subtitle="Comparison with AURIN suburb data"
+                        />
+                        <CardText style={{textAlign: 'justify'}}
+                            expandable={true}>
 
-                <Card>
-                    <CardHeader
-                        actAsExpander={true} 
-                        showExpandableButton={true}
-                        title="Estimated Socio-economic Background"
-                        subtitle="Comparison with AURIN suburb data"
-                    />
-                    <CardText style={{textAlign: 'justify'}}
-                        expandable={true}>
+        Separate language models were built for groups of suburbs that fell on the 
+        intersection of similar socio-economic indicators, provided by AURIN.
+                        <div style={{textAlign: 'center', margin:'5'}}>
+                            <br/>Low<LinearProgress mode={this.state.socioecBar} 
+                        value={this.state.socioec}
+                        max='1'
+                        style={{width:'80%', margin:'2', display:'inline-block'}} /> High
+                        <br/>{percentageDisplay(this.state.socioec)}
+                        </div>
+                        </CardText>
 
-    Separate language models were built for groups of suburbs that fell on the 
-    intersection of similar socio-economic indicators, provided by AURIN.
-                    <div style={{textAlign: 'center', margin:'5'}}>
-                        <br/>Low<LinearProgress mode={this.state.socioecBar} 
-                    value={this.state.socioec}
-                    max='1'
-                    style={{width:'80%', margin:'2', display:'inline-block'}} /> High
-                    <br/>{percentageDisplay(this.state.socioec)}
-                    </div>
-                    </CardText>
-
-                </Card>                
+                    </Card>  
+                </div>              
             </div>
         </div>
         );

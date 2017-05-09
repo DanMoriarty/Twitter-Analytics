@@ -15,7 +15,7 @@ import Speed from "./visualisation/Movement.js"
 import Language from "./visualisation/Language.js"
 
 // Load polygon data for maps
-import melbPolygons from "./visualisation/sa2_melb_lite.json";
+import melbPolygons from "./visualisation/sa2_melb_full.json";
 
 import * as Constants from './Constants.js';
 

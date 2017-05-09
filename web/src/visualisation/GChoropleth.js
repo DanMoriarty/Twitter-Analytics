@@ -50,7 +50,7 @@ const MelbourneMap = withGoogleMap(props => (
 class GChoropleth extends Component {
   constructor(props) {
     super(props);
-    this.state = { windowheight: '700px', 'windowwidth': '700px' };
+    this.state = { windowheight: window.innerHeight + 'px', 'windowwidth': window.innerWidth + 'px' };
 
     this.handleMapLoad = this.handleMapLoad.bind(this);
     this.handleMapClick = this.handleMapClick.bind(this);
@@ -87,7 +87,7 @@ class GChoropleth extends Component {
           onClick={_.noop}
           onRightClick={_.noop}
           onDragStart={_.noop}
-          options={{fillColor: choroColour, strokeWeight: 1}}
+          options={{fillColor: choroColour, strokeWeight: 1, fillOpacity: 0.8}}
         />
       )
     }

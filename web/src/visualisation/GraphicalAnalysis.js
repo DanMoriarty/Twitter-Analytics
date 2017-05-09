@@ -37,7 +37,7 @@ class GraphicalAnalysis extends Component {
 
         fetch('http://localhost:4444/api/sentimentTime', Constants.INIT)
             .then(result=>result.json()) 
-            .then(items=> this.setState({sentimentTime: processSuburbTimes(items.rows)}))
+            .then(items=> this.setState({sentimentTime: processSuburbTimes(items.rows, true)}))
             .catch(error => console.log(error))     
     }
 
@@ -164,10 +164,10 @@ class GraphicalAnalysis extends Component {
   }
 }
 
-function processSuburbTimes(data) {
+function processSuburbTimes(data, allMelbourne = false) {
     let formattedSuburbs = {};
     for (var suburb in data) {
-        if (!suburb || !data.hasOwnProperty(suburb) || suburb == "None")
+        if (!suburb || !data.hasOwnProperty(suburb) || data[suburb].key == "None")
             continue
 
         let suburbName = data[suburb].key;
@@ -180,10 +180,10 @@ function processSuburbTimes(data) {
             } 
         }
 
-        if (suburbName != null) {
-            formattedSuburbs[suburbName] = suburbArr;
-        } else {
+        if (allMelbourne) {
             formattedSuburbs["Melbourne Tweets"] = suburbArr;
+        } else {
+            formattedSuburbs[suburbName] = suburbArr;
         }
     }
     return formattedSuburbs;
