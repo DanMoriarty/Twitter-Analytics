@@ -53,24 +53,24 @@ class Navigation extends Component {
               onTouchTap={() => this.select(1, Constants.SENTIMENT, this.props.onClick)}
             />
             <BottomNavigationItem
+              label="Sentiment Analysis"
+              icon={graphIcon}
+              onTouchTap={() => this.select(2, Constants.GRAPHS, this.props.onClick)}
+            />
+            <BottomNavigationItem
               label="Movement"
               icon={speedIcon}
-              onTouchTap={() => this.select(2, Constants.SPEED, this.props.onClick)}
+              onTouchTap={() => this.select(3, Constants.SPEED, this.props.onClick)}
             />
             <BottomNavigationItem
               label="User Tracker"
               icon={userIcon}
-              onTouchTap={() => this.select(3, Constants.USER, this.props.onClick)}
+              onTouchTap={() => this.select(4, Constants.USER, this.props.onClick)}
             />
             <BottomNavigationItem
               label="Language"
               icon={langIcon}
-              onTouchTap={() => this.select(4, Constants.LANGUAGE, this.props.onClick)}
-            />
-            <BottomNavigationItem
-              label="Analysis"
-              icon={graphIcon}
-              onTouchTap={() => this.select(5, Constants.GRAPHS, this.props.onClick)}
+              onTouchTap={() => this.select(5, Constants.LANGUAGE, this.props.onClick)}
             />
             <BottomNavigationItem
               label="Creators"
