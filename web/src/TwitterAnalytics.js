@@ -12,10 +12,11 @@ import AuthorCards from "./material/AuthorCards.js"
 import Sentiment from "./visualisation/Sentiment.js"
 import GraphicalAnalysis from "./visualisation/GraphicalAnalysis.js"
 import Speed from "./visualisation/Movement.js"
+import User from "./visualisation/UserMovement.js"
 import Language from "./visualisation/Language.js"
 
 // Load polygon data for maps
-import melbPolygons from "./visualisation/sa2_melb_lite.json";
+import melbPolygons from "./visualisation/sa2_melb_full.json";
 
 import * as Constants from './Constants.js';
 
@@ -54,6 +55,9 @@ class TwitterAnalytics extends Component {
           />
           <Speed
             active={this.state.activeView === Constants.SPEED}
+          />
+          <User
+            active={this.state.activeView === Constants.USER}
           />
           <Language
             active={this.state.activeView === Constants.LANGUAGE}

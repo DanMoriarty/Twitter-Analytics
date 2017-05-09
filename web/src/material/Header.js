@@ -40,7 +40,10 @@ function Header(props) {
       t = "Where are the happiest Melbournians?"
       break;
     case Constants.SPEED:
-      t = "Speeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeed!"
+      t = "Movement"
+      break;
+    case Constants.USER:
+      t = "User Tracker"
       break;
     case Constants.LANGUAGE:
       t = "Languages"
