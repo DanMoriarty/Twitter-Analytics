@@ -1,9 +1,11 @@
 /* eslint-disable no-undef */
+import RaisedButton from 'material-ui/RaisedButton';
 import React, { Component } from 'react';
 
 import _ from "lodash";
 //import loadJS from './loadJS.js';
 import ReactDOM from 'react-dom'
+import * as Constants  from '../Constants.js'
 //import './Map.css'
 //import fileUrl from 'file-url'
 
@@ -21,78 +23,63 @@ const MELBOURNE = {
   lng: 144.8711918
 };
 
+var selectedP = 'Positive'
+    var newProp = 'Positive'
 
-var path = require('path');
 
-function fileUrl(str) {
-    if (typeof str !== 'string') {
-        throw new Error('Expected a string');
-    }
-
-    var pathName = path.resolve(str).replace(/\\/g, '/');
-
-    // Windows drive letter must be prefixed with a slash
-    if (pathName[0] !== '/') {
-        pathName = '/' + pathName;
-    }
-
-    return encodeURI('file://' + pathName);
-};
-
-// returns a color based on the value given when the function is called
-function getColor(prop) {
-var colors = [
-  '#d1ccad',
-  '#c2c083',
-  '#cbd97c',
-  '#acd033',
-  '#89a844'
-];
- return prop >= 120 ? colors[4] :
-prop > 110 ? colors[3] :
-prop > 100 ? colors[2] :
-prop > 90 ? colors[1] :
-colors[0];
-};
 
 export default class GMapAsync2 extends React.Component {
   constructor(props) {
     super(props);
-    //attachSentimentToGeo=this.bind(attachSentimentToGeo)
+    this.handlePositive=this.handlePositive.bind(this)
 
   }
+
+  handlePositive() {
+    console.log("clicked")
+
+    newProp='Positive'
+    console.log("changed to P")
+
+}
+ handleNegative() {
+    console.log("clicked")
+
+      newProp='Negative'
+      console.log("changed to Negative")
+
+}
+ handleNeutral() {
+    console.log("clicked")
+
+      newProp='Neutral'
+      console.log("changed to Neutral")
+
+}
+        
+
+
+
+
+
+      
   
+
   componentDidMount() {
     this.map = new google.maps.Map(this.refs.map, {
       center: MELBOURNE,
       zoom: 12
     });
 
-    
-	console.log(this.props.thing)
-  console.log(this.props.suburbs)
-	var marker = new google.maps.Marker({
-          position: MELBOURNE,
-          map: this.map,
-          title: 'Hello World!'
-        });
 
-	
-    var D1 = 'CountryOfBirth';
-    var A1 = 'Turkey_P';
-    var D2 = 'Education';
-    var A2 = '%u16Educated';
-    
-    //These will be defined by the drop down links
-    var DATASET = D1;
-    var ATTRIBUTE = A1;
-    
+  
+  console.log(selectedP)
 	//var fileUrl = require('file-url'); <- if not windows
   //var localjson = JSON.parse(require('./Geo&1Dataset.json'))
 	var suburbLayer = new google.maps.Data();
-  var localjson=null;
+  //var localjson=null;
   //attachSentimentToGeo(this.props.suburbs, localjson)
-  suburbLayer.loadGeoJson(localjson);
+  //suburbLayer.loadGeoJson(localjson);
 
 
   // Boundary data -> 'https://gist.github.com/DanMoriarty/dcde573fcf2a9866bb71e0b26398b588'
@@ -105,7 +92,8 @@ export default class GMapAsync2 extends React.Component {
     //Strangely no CORS issues
   //Parsing/Loading methods  
     //suburbLayer.loadGeoJson(JSON.parse(JSON.stringify(localjson)))
-    //suburbLayer.loadGeoJson('https://gist.github.com/DanMoriarty/dcde573fcf2a9866bb71e0b26398b588') // <- may not work b/c private
+    suburbLayer.loadGeoJson('https://gist.githubusercontent.com/DanMoriarty/011b359551b169e2acf5dd91afcf6080/raw/509cc6a1fb890656c57952554ce042d4b6691f30/MelbSent%2525.jsonp')
+    //suburbLayer.loadGeoJson('https://gist.github.com/DanMoriarty/dcde573fcf2a9866bb71e0b26398b588',) // <- may not work b/c private
 		//suburbLayer.loadGeoJson(fileUrl('./SA2Masterfile(MELB).json'));
 		//suburbLayer.GeoJson('./EmptySA2.json');
 	
@@ -117,26 +105,17 @@ export default class GMapAsync2 extends React.Component {
   
   //console.log('second:')
   //console.log(suburbLayer.getFeatureById('0').getProperty('SA2_NAME16'))
-  console.log('third:')
-  var i=0;
-  suburbLayer.forEach(function(feature) {
-    console.log(feature.getProperty('SA2_NAME16'))
-    i=i+1
-  })
-  console.log('this is i:')
-  console.log(i)
-  /* USA suburb layering*/
+
+
   var max = 100.0;
   var min = 0.0;
 
-  var infoWindow = new google.maps.InfoWindow({
-  content: ""
-  });
+  
 
-  function getSmartColor(alldatasets) {
-          var prop = alldatasets[DATASET][ATTRIBUTE]
+  function getSmartColor(prop) {
           var low = [5, 69, 54];  // color of smallest datum
-          var high = [151, 83, 34];   // color of largest datum
+          var high = [151, 150, 4];   // color of largest datum
+
 
           // delta represents where the value sits between the min and max
           var delta = (prop - min )/
@@ -156,7 +135,7 @@ export default class GMapAsync2 extends React.Component {
       suburbLayer.setStyle(function(feature) {
         return {
         //try
-          fillColor: '#d1ccad',//getSmartColor(feature.getProperty('Datasets')), // call function to get color for state based on the ...
+          fillColor: getSmartColor(feature.getProperty('selectedP')), // call function to get color for state based on the ...
         //catch
         //  fillColor: '#b3b3b3',
         fillOpacity: 0.9,
@@ -166,9 +145,24 @@ export default class GMapAsync2 extends React.Component {
         visible: true
         };
         });
-  },2000);
+  },3000);
+          var infoWindow = new google.maps.InfoWindow({
+  content: ""
+  });
         
-        
+        //sets infowindow on a click
+      suburbLayer.addListener('click', function(e) {
+
+        console.log(e);
+        infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
+        e.feature.getProperty('SA2_NAME16')
+          + '<br> ' + selectedP + ': ' + e.feature.getProperty(selectedP)
+          + '%'+'</div>');
+      //sets position of infowindow
+      var anchor = new google.maps.MVCObject();
+      anchor.set("position", e.latLng);
+      infoWindow.open(this.map, anchor);
+      });
         
       // Add mouseover and mouse out styling for the GeoJSON State data
       suburbLayer.addListener('mouseover', function(e) {
@@ -184,28 +178,67 @@ export default class GMapAsync2 extends React.Component {
       suburbLayer.addListener('mouseout', function(e) {
         suburbLayer.revertStyle();
       });
+
+      suburbLayer.addListener('rightclick', function(e) {
+        console.log('right click');
+        selectedP=newProp
+        console.log(selectedP);
+        //toggleProperty();
+        //console.log(selectedP);
+        suburbLayer.setStyle(function(feature){
+        return {
+        //try
+          fillColor: getSmartColor(feature.getProperty(selectedP)), // call function to get color for state based on the ...
+        //catch
+        //  fillColor: '#b3b3b3',
+        fillOpacity: 0.9,
+        strokeColor: '#b3b3b3',
+        strokeWeight: 1,
+        zIndex: 1,
+        visible: true
+        };
+        });
+        
+      });
     
 }
-  attachSentimentToGeo(sentiment, suburbs) {
-    for (var i=0;i<suburbs['features'].length();i++){
-      for (var j=0;j<sentiment['rows'].length();j++){
-        if (sentiment['rows'][j]['key']===suburbs['features'][i]['properties']['SA2_NAME16']) {
-          Sentiment = sentiment['rows'][j]['value']
-          suburbs['features'][i]['properties'].push(Sentiment)
-        }
-      }
 
-    }
-  }
   render() {
     const mapStyle = {
-      width: 1000,
-      height: 400,
+      width: "100%",
+      height: "100%",
     };
     
     return (
+
         <div>
-          <div ref="map" style={mapStyle}>I should be a map!</div>
+          <RaisedButton
+                onClick = {this.handlePositive}
+                label="Positive"
+                primary={true}
+              />
+          <RaisedButton
+                onClick = {this.handleNegative}
+                label="Negative"
+                primary={true}
+              />
+         <RaisedButton
+                onClick = {this.handleNeutral}
+                label="Neutral"
+                primary={true}
+              />
+              
+              <RaisedButton
+      href="https://gist.github.com/DanMoriarty/8338dd8633d2a58a4300a348c8064d8f"
+      target="_blank"
+      label="Raw"
+      secondary={true}
+    />
+              
+    
+          <div style={{width: "100%", height: "400px"}}>
+            <div ref="map" style={mapStyle}>I should be a map!</div>
+          </div>
         </div>  
 
     );
