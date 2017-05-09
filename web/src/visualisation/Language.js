@@ -4,10 +4,17 @@ import TextField from 'material-ui/TextField';
 import Snackbar from 'material-ui/Snackbar';
 import GChoropleth from './GChoropleth.js'
 import RaisedButton from 'material-ui/RaisedButton';
+import LinearProgress from 'material-ui/LinearProgress';
 import * as Constants from '../Constants.js'
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,
         } from 'material-ui/Table';
 
+
+function percentageDisplay(score) {
+    if (score == "indeterminate") return "";
+    else
+        return Math.round(score * 1000) / 10 + "%";
+}
 
 class Language extends Component {
     constructor(props) {
@@ -18,6 +25,8 @@ class Language extends Component {
             error: false,
             topSuburbs: ["Enter a sentence first!", "", "", "", ""],
             scores: null,
+            socioec: "indeterminate",
+            socioecBar: "indeterminate"
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,8 +37,10 @@ class Language extends Component {
         this.setState({open: true}); 
         fetch('http://localhost:4444/api/languageModel/'.concat(this.state.userText), Constants.INIT)
             .then(result=>result.json()) 
-            .then(items=> this.setState({scores:
-                  items.scores, topSuburbs: items.topfive, error:false}))
+            .then(items=> this.setState({scores: items.scores, 
+                topSuburbs: items.topfive,
+                socioec: items.socioec,
+                socioecBar: "determinate", error:false}))
             .catch(error => this.setState({error: true}))
     }
 
@@ -136,7 +147,29 @@ class Language extends Component {
                         }
                     />
                 </Card>
-                
+
+                <Card>
+                    <CardHeader
+                        actAsExpander={true} 
+                        showExpandableButton={true}
+                        title="Estimated Socio-economic Background"
+                        subtitle="Comparison with AURIN suburb data"
+                    />
+                    <CardText style={{textAlign: 'justify'}}
+                        expandable={true}>
+
+    Separate language models were built for groups of suburbs that fell on the 
+    intersection of similar socio-economic indicators, provided by AURIN.
+                    <div style={{textAlign: 'center', margin:'5'}}>
+                        <br/>Low<LinearProgress mode={this.state.socioecBar} 
+                    value={this.state.socioec}
+                    max='1'
+                    style={{width:'80%', margin:'2', display:'inline-block'}} /> High
+                    <br/>{percentageDisplay(this.state.socioec)}
+                    </div>
+                    </CardText>
+
+                </Card>                
             </div>
         </div>
         );
