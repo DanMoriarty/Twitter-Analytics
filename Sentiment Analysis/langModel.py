@@ -113,10 +113,11 @@ def suburb_scores(text):
     text   = sentiment.cleanTweet(text)
     scores = []
     for model_file in os.listdir(KLM_M_FP):
-        sa2 = model_file[:9]
-        scores.append((sa2, kenlm.LanguageModel(KLM_M_FP+model_file).score(text)))
-    scores  = sorted(scores, key=lambda x: x[1], reverse=True)
-    topfive = [reverseGeo.sa2_name(s[0]) for s in scores[:5]]
+        sa2 = reverseGeo.sa2_name(model_file[:9])
+        score = kenlm.LanguageModel(KLM_M_FP+model_file).score(text)
+        scores.append((sa2, abs(score)))
+    scores  = sorted(scores, key=lambda x: x[1])
+    topfive = [s[0] for s in scores[:5]]
     scores  = dict(scores)
     return json.dumps({"topfive": topfive, "scores": scores})
     

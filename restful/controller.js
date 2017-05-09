@@ -28,7 +28,7 @@ pyshell.on('message', function(m) {
 
 	// Check the unique key is still in the buffer
 	if (resBuffer.hasOwnProperty(mjson.key)) {
-		
+
 		// Respond to the res with the Python output
 		resBuffer[mjson.key].send(mjson.res);
 
