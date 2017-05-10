@@ -33,7 +33,7 @@ module.exports = function(router) {
 	router.get('/speed3k150k3m/', controller.getSpeed3k150k3m);
 	router.get('/userLocations', controller.getUserLocations);
 	router.get('/userLocations/:screen_name', controller.getUserLocationsKey);
-
+	router.get('/userNames', controller.getUserNames);
 
 	//--------------- PLAYING WITH KEYS ---------------//
 	// router middleware to handle key
