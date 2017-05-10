@@ -96,8 +96,7 @@ class UserMovementMap extends Component {
   }
 
   render() {     
-    if (!this.state.userspeed){
-        console.log("loading")
+    if (!this.state.usernames) {
         return (<Loading />);
     }
 
