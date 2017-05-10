@@ -86,6 +86,9 @@ class GChoropleth extends Component {
   }
 
   handlePolyClick(target) {
+    if (!this.props.data.hasOwnProperty(target.key)) {
+      return;
+    }
 
     let w = cloneDeep(this.state.windows)
 

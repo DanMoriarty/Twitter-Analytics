@@ -37,7 +37,7 @@ class Language extends Component {
         this.setState({open: true}); 
         fetch('http://localhost:4444/api/languageModel/'.concat(this.state.userText), Constants.INIT)
             .then(result=>result.json()) 
-            .then(items=> this.setState({scores: items.scores, 
+            .then(items=> this.setState({scores: processScores(items.scores), 
                 topSuburbs: items.topfive,
                 socioec: items.socioec,
                 socioecBar: "determinate", error:false}))
@@ -179,6 +179,15 @@ class Language extends Component {
     
 }
 
+function processScores(scores) {
+    let processed = {};
+    console.log(scores);
 
+    for (var key in scores) {
+        processed[key] = {data: scores[key]}
+    }
+
+    return processed
+}
 
 export default Language;
