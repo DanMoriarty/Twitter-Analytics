@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap } from "react-google-maps";
+import { withGoogleMap, GoogleMap, Polygon } from "react-google-maps";
 import _ from "lodash";
 
 const MelbourneMap = withGoogleMap(props => (
   <GoogleMap
     ref={props.onMapLoad}
     defaultZoom={9}
-    defaultCenter={{ lat: -37.815790, lng: 144.961341, }} // Melb Coords
+    defaultCenter={{ lat: -37.815790, lng: 144.961341 }} // Melb Coords
     onClick={props.onMapClick}
   >
+    {props.polygons}
   </GoogleMap>
 ));
+
+const path = [{"lat": -42.3009342, "lng": 150.2853237}, {"lat": -13.8812806, "lng": 149.9287479}, {"lat": -15.2666499, "lng": 116.9337753}, {"lat": -36.4019412, "lng": 116.8621811} ]
 
 class GMap extends Component {
   constructor(props) {
@@ -33,19 +36,30 @@ class GMap extends Component {
     console.log("Clicked map at" + event.latLng)
   }
 
-  render() {    
+  render() { 
+    let polygons = [];
+    
+    polygons.push
+    (
+      <Polygon 
+        path={path}
+        onClick={_.noop}
+        onRightClick={_.noop}
+        onDragStart={_.noop}
+        options={ {fillColor: "#FF0000", strokeWeight: 2} }
+      />
+    );
+
     return (
       <div style={{height: this.state.windowheight}}>
         <MelbourneMap
-          containerElement={
-            <div style={{width: this.state.windowwidth, height: this.state.windowheight }} />
-          }
-          mapElement={
-            <div style={{ height: this.state.windowheight }} />
-          }
+          containerElement={<div style={{width: this.state.windowwidth, height: this.state.windowheight }} />}
+          mapElement={<div style={{ height: this.state.windowheight }} />}
           onMapLoad={this.handleMapLoad}
           onMapClick={this.handleMapClick}
-        />
+          polygons={polygons}
+        >
+        </MelbourneMap>
       </div>
     );
   }

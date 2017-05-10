@@ -28,7 +28,7 @@ pyshell.on('message', function(m) {
 
 	// Check the unique key is still in the buffer
 	if (resBuffer.hasOwnProperty(mjson.key)) {
-		
+
 		// Respond to the res with the Python output
 		resBuffer[mjson.key].send(mjson.res);
 
@@ -110,5 +110,39 @@ exports.getSentimentTime = function(req, res) {
 		res.send(body);
 	});
 }
+
+exports.getDeviceSentiment = function(req, res) {
+	db.view('sources', 'tweet-specific-sources-with-sentiment', { stale: "ok", group_level: 2 }, function(err, body) {
+		res.send(body);
+	});
+}
+
+exports.getSpeed3k3m = function(req, res) {
+	db.view(speeddesign, 'both-in-melb-over-3kph-within-3-minutes', {stale: "ok"}, function(err, body) {
+		res.send(body);
+	});
+}
+
+exports.getSpeed3k150k3m = function(req, res) {
+	db.view(speeddesign, 'both-in-melb-between-3-and-150kph-within-3-mins', {stale: "ok"}, function(err, body) {
+		res.send(body);
+	});
+}
+
+
+exports.getUserLocations = function(req, res) {
+	db.view(speeddesign, 'userspeed', {stale: "ok"}, function(err, body) {
+		res.send(body);
+	});
+}
+
+exports.getUserLocationsKey = function(req, res) {
+	// Make a unique key for this request
+	db.view(speeddesign, 'userspeed', {stale: "ok", 'keys': req.screen_name}, function(err, body) {
+		res.send(body);
+	});
+}
+
+
 
 //------------------------------  END  FILE  ------------------------------//

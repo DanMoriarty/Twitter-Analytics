@@ -27,7 +27,13 @@ module.exports = function(router) {
 	router.get('/suburbSentiment', controller.getSuburbSentiment);
 	router.get('/suburbSentimentTime', controller.getSuburbSentimentTime);
 	router.get('/sentimentTime', controller.getSentimentTime);
-	router.get('/languageModel/:tweet', controller.runLanguageModel)
+	router.get('/languageModel/:tweet', controller.runLanguageModel);
+	router.get('/deviceSentiment/', controller.getDeviceSentiment);
+	router.get('/speed3k3m/', controller.getSpeed3k3m);
+	router.get('/speed3k150k3m/', controller.getSpeed3k150k3m);
+	router.get('/userLocations', controller.getUserLocations);
+	router.get('/userLocations/:screen_name', controller.getUserLocationsKey);
+
 
 	//--------------- PLAYING WITH KEYS ---------------//
 	// router middleware to handle key
@@ -40,6 +46,12 @@ module.exports = function(router) {
 	router.param('tweet', function(req, res, next, tweet) {
 		// update key
 		req.tweet = tweet.split("&");
+		next();
+	})
+
+	router.param('screen_name', function(req, res, next, screen_name) {
+		// update key
+		req.screen_name = screen_name.split("&popeye&hogscafe&");
 		next();
 	})
 

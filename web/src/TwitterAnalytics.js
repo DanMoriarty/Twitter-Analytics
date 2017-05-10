@@ -11,8 +11,12 @@ import AuthorCards from "./material/AuthorCards.js"
 // Import Visualisation Components
 import Sentiment from "./visualisation/Sentiment.js"
 import GraphicalAnalysis from "./visualisation/GraphicalAnalysis.js"
-import Speed from "./visualisation/Speed.js"
+import Speed from "./visualisation/Movement.js"
+import User from "./visualisation/UserMovement.js"
 import Language from "./visualisation/Language.js"
+
+// Load polygon data for maps
+import melbPolygons from "./visualisation/sa2_melb_full.json";
 
 import * as Constants from './Constants.js';
 
@@ -28,13 +32,6 @@ class TwitterAnalytics extends Component {
     this.setActiveView = this.setActiveView.bind(this);
   }
   
-  componentDidMount() {
-    fetch('http://localhost:4444/api/suburbSentiment', Constants.INIT)
-        .then(result=>result.json()) 
-        .then(items=> this.setState({suburbSentiment: items.rows}))
-        .catch(error => this.setState({error: true}))
-  }
-
   setActiveView(view) {
     this.setState({activeView: view});
   }
@@ -50,6 +47,7 @@ class TwitterAnalytics extends Component {
           <Sentiment
             active={this.state.activeView === Constants.SENTIMENT}
             suburbs={this.state.suburbSentiment} 
+            melbPolygons={melbPolygons}
           />
           <GraphicalAnalysis
             active={this.state.activeView === Constants.GRAPHS}
@@ -58,8 +56,12 @@ class TwitterAnalytics extends Component {
           <Speed
             active={this.state.activeView === Constants.SPEED}
           />
+          <User
+            active={this.state.activeView === Constants.USER}
+          />
           <Language
             active={this.state.activeView === Constants.LANGUAGE}
+            melbPolygons={melbPolygons}
           />
           <AuthorCards active={this.state.activeView === Constants.AUTHORS} />
           

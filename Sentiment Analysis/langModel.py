@@ -12,6 +12,7 @@
 
 import os
 import sys
+import math
 import kenlm
 import json
 import reverseGeo
@@ -100,25 +101,25 @@ def binarise_models():
         os.system(command)
 
 #Function to classify socioeconomic background for txt, given lang models.
+#Uses the logistic sigmoid function to give a score.
 def classify(text):
     txt = sentiment.cleanTweet(text)
-    hi_score = HI_MODEL.score(txt)
-    lo_score = LO_MODEL.score(txt)
-    if hi_score > lo_score:
-        return 1
-    return 0
+    polarity = abs(LO_MODEL.score(txt)) - abs(HI_MODEL.score(txt))
+    return 1 / (1 + math.exp(-1*polarity))
 
 #Function to return sorted list of language model scores, one for every suburb.
 def suburb_scores(text):
+    soc_ec = classify(text)
     text   = sentiment.cleanTweet(text)
     scores = []
     for model_file in os.listdir(KLM_M_FP):
-        sa2 = model_file[:9]
-        scores.append((sa2, kenlm.LanguageModel(KLM_M_FP+model_file).score(text)))
-    scores  = sorted(scores, key=lambda x: x[1], reverse=True)
-    topfive = [reverseGeo.sa2_name(s[0]) for s in scores[:5]]
+        sa2 = reverseGeo.sa2_name(model_file[:9])
+        score = kenlm.LanguageModel(KLM_M_FP+model_file).score(text)
+        scores.append((sa2, abs(score)))
+    scores  = sorted(scores, key=lambda x: x[1])
+    topfive = [s[0] for s in scores[:5]]
     scores  = dict(scores)
-    return json.dumps({"topfive": topfive, "scores": scores})
+    return json.dumps({"topfive": topfive, "scores": scores, "socioec": soc_ec})
     
 #Read data from stdin.
 def runLanguageModel(line):

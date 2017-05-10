@@ -9,6 +9,7 @@ import IconSpeed from 'material-ui/svg-icons/maps/directions-run';
 import IconGraph from 'material-ui/svg-icons/action/assessment';
 import IconLanguage from 'material-ui/svg-icons/action/language';
 import IconFace from 'material-ui/svg-icons/action/face';
+import IconUser from 'material-ui/svg-icons/action/accessibility';
 
 // Import Constants
 import * as Constants from '../Constants.js';
@@ -19,6 +20,7 @@ const sentimentIcon = <IconSentiment />;
 const speedIcon = <IconSpeed />;
 const langIcon = <IconLanguage />;
 const faceIcon = <IconFace />;
+const userIcon = <IconUser />;
 
 
 class Navigation extends Component {
@@ -51,24 +53,29 @@ class Navigation extends Component {
               onTouchTap={() => this.select(1, Constants.SENTIMENT, this.props.onClick)}
             />
             <BottomNavigationItem
+              label="Sentiment Analysis"
+              icon={graphIcon}
+              onTouchTap={() => this.select(2, Constants.GRAPHS, this.props.onClick)}
+            />
+            <BottomNavigationItem
               label="Movement"
               icon={speedIcon}
-              onTouchTap={() => this.select(2, Constants.SPEED, this.props.onClick)}
+              onTouchTap={() => this.select(3, Constants.SPEED, this.props.onClick)}
+            />
+            <BottomNavigationItem
+              label="User Tracker"
+              icon={userIcon}
+              onTouchTap={() => this.select(4, Constants.USER, this.props.onClick)}
             />
             <BottomNavigationItem
               label="Language"
               icon={langIcon}
-              onTouchTap={() => this.select(3, Constants.LANGUAGE, this.props.onClick)}
-            />
-            <BottomNavigationItem
-              label="Analysis"
-              icon={graphIcon}
-              onTouchTap={() => this.select(4, Constants.GRAPHS, this.props.onClick)}
+              onTouchTap={() => this.select(5, Constants.LANGUAGE, this.props.onClick)}
             />
             <BottomNavigationItem
               label="Creators"
               icon={faceIcon}
-              onTouchTap={() => this.select(5, Constants.AUTHORS, this.props.onClick)}
+              onTouchTap={() => this.select(6, Constants.AUTHORS, this.props.onClick)}
             />
           </BottomNavigation>
         </Paper>

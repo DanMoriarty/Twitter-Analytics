@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import {Card, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import Snackbar from 'material-ui/Snackbar';
-import GMap from './GMap.js'
+import GChoropleth from './GChoropleth.js'
 import RaisedButton from 'material-ui/RaisedButton';
+import LinearProgress from 'material-ui/LinearProgress';
 import * as Constants from '../Constants.js'
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,
         } from 'material-ui/Table';
 
+
+function percentageDisplay(score) {
+    if (score == "indeterminate") return "";
+    else
+        return Math.round(score * 1000) / 10 + "%";
+}
 
 class Language extends Component {
     constructor(props) {
@@ -17,7 +24,9 @@ class Language extends Component {
             userText: "",
             error: false,
             topSuburbs: ["Enter a sentence first!", "", "", "", ""],
-            choropleths: null,
+            scores: null,
+            socioec: "indeterminate",
+            socioecBar: "indeterminate"
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,8 +37,10 @@ class Language extends Component {
         this.setState({open: true}); 
         fetch('http://localhost:4444/api/languageModel/'.concat(this.state.userText), Constants.INIT)
             .then(result=>result.json()) 
-            .then(items=> this.setState({choropleths:
-                  items.scores, topSuburbs: items.topfive, error:false}))
+            .then(items=> this.setState({scores: items.scores, 
+                topSuburbs: items.topfive,
+                socioec: items.socioec,
+                socioecBar: "determinate", error:false}))
             .catch(error => this.setState({error: true}))
     }
 
@@ -38,9 +49,12 @@ class Language extends Component {
         return (
         <div className="container">
             <div className="left">
-                <GMap suburbs={this.props.topSuburbs}/>
+              <GChoropleth
+                data={this.state.scores}
+                melbPolygons={this.props.melbPolygons}
+              />
             </div>
-
+            
             <div className="right">
                 <Card>
                     <CardTitle 
@@ -81,59 +95,83 @@ class Language extends Component {
                     </div>
 
                 </Card>
-                
-                <Card>
-                    <CardHeader
-                        actAsExpander={true} 
-                        showExpandableButton={true}
-                        title="Likely Suburbs of Origin"
-                        subtitle="Based on language model analysis"
-                    />
-                    <CardText
-                        expandable={true}
-                        children={
-                            <Table style={{tableLayout: 'auto',}}>
-                            <TableHeader
-                                adjustForCheckbox={false}
-                                displaySelectAll={false}
-                            >
-                            <TableRow>
-                                <TableHeaderColumn style={{width: '20%',}}>Rank</TableHeaderColumn>
-                                <TableHeaderColumn>Suburb</TableHeaderColumn>
-                            </TableRow>
-                            </TableHeader>
-                            <TableBody displayRowCheckbox={false} >
-                            <TableRow>
-                                <TableRowColumn style={{width: '20%',}}>1.</TableRowColumn>
-                                <TableRowColumn>{this.state.topSuburbs[0]}
-                                    </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn style={{width: '20%',}}>2.</TableRowColumn>
-                                <TableRowColumn>{this.state.topSuburbs[1]}
-                                    </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn style={{width: '20%',}}>3.</TableRowColumn>
-                                <TableRowColumn>{this.state.topSuburbs[2]}
-                                    </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn style={{width: '20%',}}>4.</TableRowColumn>
-                                <TableRowColumn>{this.state.topSuburbs[3]}
-                                    </TableRowColumn>
-                            </TableRow>
-                            <TableRow>
-                                <TableRowColumn style={{width: '20%',}}>5.</TableRowColumn>
-                                <TableRowColumn>{this.state.topSuburbs[4]}
-                                    </TableRowColumn>
-                            </TableRow>
-                            </TableBody>
-                            </Table>
-                        }
-                    />
-                </Card>
-                
+                <div className="listBox">
+                    <Card>
+                        <CardHeader
+                            actAsExpander={true} 
+                            showExpandableButton={true}
+                            title="Likely Suburbs of Origin"
+                            subtitle="Based on language model analysis"
+                        />
+                        <CardText
+                            expandable={true}
+                            children={
+                                <Table style={{tableLayout: 'auto',}}>
+                                <TableHeader
+                                    adjustForCheckbox={false}
+                                    displaySelectAll={false}
+                                >
+                                <TableRow>
+                                    <TableHeaderColumn style={{width: '20%',}}>Rank</TableHeaderColumn>
+                                    <TableHeaderColumn>Suburb</TableHeaderColumn>
+                                </TableRow>
+                                </TableHeader>
+                                <TableBody displayRowCheckbox={false} >
+                                <TableRow>
+                                    <TableRowColumn style={{width: '20%',}}>1.</TableRowColumn>
+                                    <TableRowColumn>{this.state.topSuburbs[0]}
+                                        </TableRowColumn>
+                                </TableRow>
+                                <TableRow>
+                                    <TableRowColumn style={{width: '20%',}}>2.</TableRowColumn>
+                                    <TableRowColumn>{this.state.topSuburbs[1]}
+                                        </TableRowColumn>
+                                </TableRow>
+                                <TableRow>
+                                    <TableRowColumn style={{width: '20%',}}>3.</TableRowColumn>
+                                    <TableRowColumn>{this.state.topSuburbs[2]}
+                                        </TableRowColumn>
+                                </TableRow>
+                                <TableRow>
+                                    <TableRowColumn style={{width: '20%',}}>4.</TableRowColumn>
+                                    <TableRowColumn>{this.state.topSuburbs[3]}
+                                        </TableRowColumn>
+                                </TableRow>
+                                <TableRow>
+                                    <TableRowColumn style={{width: '20%',}}>5.</TableRowColumn>
+                                    <TableRowColumn>{this.state.topSuburbs[4]}
+                                        </TableRowColumn>
+                                </TableRow>
+                                </TableBody>
+                                </Table>
+                            }
+                        />
+                    </Card>
+                </div>
+                <div className="listBox">
+                    <Card>
+                        <CardHeader
+                            actAsExpander={true} 
+                            showExpandableButton={true}
+                            title="Estimated Socio-economic Background"
+                            subtitle="Comparison with AURIN suburb data"
+                        />
+                        <CardText style={{textAlign: 'justify'}}
+                            expandable={true}>
+
+        Separate language models were built for groups of suburbs that fell on the 
+        intersection of similar socio-economic indicators, provided by AURIN.
+                        <div style={{textAlign: 'center', margin:'5'}}>
+                            <br/>Low<LinearProgress mode={this.state.socioecBar} 
+                        value={this.state.socioec}
+                        max='1'
+                        style={{width:'80%', margin:'2', display:'inline-block'}} /> High
+                        <br/>{percentageDisplay(this.state.socioec)}
+                        </div>
+                        </CardText>
+
+                    </Card>  
+                </div>              
             </div>
         </div>
         );
