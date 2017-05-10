@@ -78,3 +78,7 @@ div.scrollmenu {
   overflow: auto;
   white-space: nowrap;
 }
+
+#bottomPaper {
+  margin-bottom: 70px;
+}

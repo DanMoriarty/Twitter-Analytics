@@ -35,7 +35,7 @@ class Language extends Component {
     handleText   = (e) => { this.setState({userText: e.target.value}); }
     handleSubmit = ( ) => { 
         this.setState({open: true}); 
-        fetch('http://localhost:4444/api/languageModel/'.concat(this.state.userText), Constants.INIT)
+        fetch(Constants.APIPATH + 'languageModel/'.concat(this.state.userText), Constants.INIT)
             .then(result=>result.json()) 
             .then(items=> this.setState({scores: processScores(items.scores), 
                 topSuburbs: items.topfive,
@@ -71,9 +71,9 @@ class Language extends Component {
                     </CardText>
 
                     <div>
-                        <div style={{margin: '15'}}>
+                        <div style={{margin: '15px'}}>
                             <TextField
-                                fullWidth='true'
+                                fullWidth={true}
                                 floatingLabelText="Type any sentence..."
                                 value={this.state.userText}
                                 onChange={this.handleText}
@@ -161,11 +161,11 @@ class Language extends Component {
 
         Separate language models were built for groups of suburbs that fell on the 
         intersection of similar socio-economic indicators, provided by AURIN.
-                        <div style={{textAlign: 'center', margin:'5'}}>
+                        <div style={{textAlign: 'center', margin:'5px'}}>
                             <br/>Low<LinearProgress mode={this.state.socioecBar} 
-                        value={this.state.socioec}
-                        max='1'
-                        style={{width:'80%', margin:'2', display:'inline-block'}} /> High
+                        value={Number(this.state.socioec)}
+                        max={1}
+                        style={{width:'80%', margin:'2px', display:'inline-block'}} /> High
                         <br/>{percentageDisplay(this.state.socioec)}
                         </div>
                         </CardText>

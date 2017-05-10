@@ -42,10 +42,17 @@ class TimeGraph extends Component {
             {x: "22:00", y: 1},
             {x: "23:00", y: 0} 
         ]
+
+        this.placeholder_s = 
+        [
+            {x: "0", y: 0},
+            {x: "1", y: 1}
+        ]
     }
 
     render() {
     	let placeholder = <LineSeries data={this.placeholder_times} strokeWidth={0}/>
+        let placeholderS = <LineSeries data={this.placeholder_s} strokeWidth={0}/>
     	let lines = [],
     		active = [],
     		marks = [];
@@ -62,7 +69,8 @@ class TimeGraph extends Component {
     			thisColourWheel.push(thisColour);
 	    		
 	    		active.push({'title': this.props.series[s], color: thisColour});
-	    		lines.push(<LineSeries key={s} color={thisColour} data={this.props.data[this.props.series[s]]} />)
+                if (this.props.lines)
+    	    		lines.push(<LineSeries key={s} color={thisColour} data={this.props.data[this.props.series[s]]} />)
 	    		marks.push(<MarkSeries key={s} color={thisColour} data={this.props.data[this.props.series[s]]} />)
 	    	}
 	    }
@@ -72,7 +80,7 @@ class TimeGraph extends Component {
         		<DiscreteColorLegend orientation="horizontal" width={Number(this.props.width)} items={ active } />
 			    <XYPlot
 			        margin={{ bottom: 70 }}
-			        xType="ordinal"
+			        xType={this.props.xType ? this.props.xType : "linear"}
 			        width={ this.props.width ? Number(this.props.width) : 350 }
 			        height={ this.props.height ? Number(this.props.height) : 350 }>
 			        <VerticalGridLines/>
@@ -82,6 +90,7 @@ class TimeGraph extends Component {
 			        { this.props.zoom ? null : placeholder }
 			        { lines }
 			        { marks }
+                    { this.props.sentiments ? placeholderS : null }
 			    </XYPlot>
 			</div>
         );

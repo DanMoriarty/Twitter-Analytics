@@ -44,25 +44,41 @@ class TwitterAnalytics extends Component {
           <Header title={this.state.activeView}/>          
           
           <Home active={this.state.activeView === Constants.HOME} />
-          <Sentiment
-            active={this.state.activeView === Constants.SENTIMENT}
-            suburbs={this.state.suburbSentiment} 
-            melbPolygons={melbPolygons}
-          />
+          { 
+            this.state.activeView === Constants.SENTIMENT &&
+            <Sentiment
+              active={this.state.activeView === Constants.SENTIMENT}
+              suburbs={this.state.suburbSentiment} 
+              melbPolygons={melbPolygons}
+            />
+          }
+
           <GraphicalAnalysis
             active={this.state.activeView === Constants.GRAPHS}
             suburbSentiment={this.state.suburbSentiment}
           />
-          <Speed
-            active={this.state.activeView === Constants.SPEED}
-          />
-          <User
-            active={this.state.activeView === Constants.USER}
-          />
-          <Language
-            active={this.state.activeView === Constants.LANGUAGE}
-            melbPolygons={melbPolygons}
-          />
+          
+          { 
+            this.state.activeView === Constants.SPEED &&
+            <Speed
+              active={this.state.activeView === Constants.SPEED}
+            />
+          }
+
+          { 
+            this.state.activeView === Constants.USER &&
+            <User
+              active={this.state.activeView === Constants.USER}
+            />
+          }
+
+          { 
+            this.state.activeView === Constants.LANGUAGE &&
+            <Language
+              active={this.state.activeView === Constants.LANGUAGE}
+              melbPolygons={melbPolygons}
+            />
+          }
           <AuthorCards active={this.state.activeView === Constants.AUTHORS} />
           
           <Navigation onClick={this.setActiveView} />

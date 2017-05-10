@@ -39,7 +39,6 @@ const MelbourneMap = withGoogleMap(props => (
     ref={props.onMapLoad}
     defaultZoom={9}
     defaultCenter={{ lat: -37.815790, lng: 144.961341 }} // Melb Coords
-    onClick={props.onMapClick}
   >
     {
       props.polygons.map((polygon, index) => (
@@ -146,7 +145,6 @@ class GChoropleth extends Component {
           containerElement={<div style={{width: this.state.windowwidth, height: this.state.windowheight }} />}
           mapElement={<div style={{ height: this.state.windowheight }} />}
           onMapLoad={this.handleMapLoad}
-          onMapClick={this.handleMapClick}
           polygons={polygons}
           data={this.props.data}
           handlePolyClick={this.handlePolyClick}
