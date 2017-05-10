@@ -5,7 +5,8 @@
 #    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
 #    Course:    COMP90024 Cluster and Cloud Computing
 #    Project:   Melbourne Twitter analytics
-#    Purpose:   To process the database using separate analysis modules
+#    Purpose:   To retrieve tweets through continual API calls, only requesting
+#               data newer than the current newest tweet.
 #    Modified:  26/04/2017
 
 #####----------------------------   IMPORTS   ----------------------------#####

@@ -8,19 +8,21 @@ class Sentiment extends Component {
   constructor(props) {
     super(props);
     this.state = {suburbSentiment: null};
-
-    this.placeholderData = 
-    [
-      {suburb:"Parkville", data: "20.00% Positive (Pos: 20, Neg: 80)"},
-      {suburb:"Melbourne", data: "98.03% Positive (Pos: 100, Neg: 2)"}
-    ]
+    this.updatePolys = this.updatePolys.bind(this);
   }
 
   componentDidMount() {
-    fetch('http://localhost:4444/api/suburbSentiment', Constants.INIT)
+    fetch(Constants.APIPATH + 'suburbSentiment', Constants.INIT)
       .then(result=>result.json()) 
-      .then(items=> this.setState({suburbSentiment: processSentiments(items.rows)}))
+      .then(items=> {
+        let sents = processSentiments(items.rows)
+        this.setState({suburbSentiment: sents.slice(0, 3), polyInfo: sents[3]});
+      })
       .catch(error => this.setState({error: true}))
+  }
+
+  updatePolys(update) {
+    this.setState({polyInfo: update});
   }
 
   render() {
@@ -49,8 +51,9 @@ class Sentiment extends Component {
       <div className="container">
         <div className="left">
           <GChoropleth
-            data={this.state.suburbSentiment ? this.state.suburbSentiment[3] : null}
+            data={this.state.polyInfo ? this.state.polyInfo : null}
             melbPolygons={this.props.melbPolygons}
+            updatePolys={this.updatePolys}
           />
         </div>
         <div className="right">
@@ -114,7 +117,7 @@ function processSentiments(suburbSentiment) {
       topTweet.push([suburb, pos+neg+neu, {pos: pos, neu: neu, neg: neg}])
     }
 
-    processedSents[suburb] = posR;
+    processedSents[suburb] = {data: posR, info: `Positive: ${pos}. Negative: ${neg}. Neutral: ${neu}.`, showInfo: false};
   }
 
   return [topTweet.sort((a, b) => a[1] - b[1]), topPos.sort((a, b) => a[1] - b[1]), topNeu.sort((a, b) => a[1] - b[1]), processedSents];

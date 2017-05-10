@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Polygon } from "react-google-maps";
-import _ from "lodash";
+import { withGoogleMap, GoogleMap, Polygon, InfoWindow, Marker } from "react-google-maps";
+import { _, cloneDeep } from "lodash";
 
 const gamut2 = 
     {'1': "#C8E6C9",  '2': "#A5D6A7",  '3': "#81C784",  '4': "#66BB6A",
@@ -19,7 +19,7 @@ function normaliseData(data) {
     let maxX = null;
     for (var key in data) {
         if (data.hasOwnProperty(key)) {
-            let x = data[key];
+            let x = data[key]["data"];
             if (minX == null || maxX == null) {minX = x; maxX = x;}
             if (x < minX) minX = x;
             else if (x > maxX) maxX = x; }}
@@ -27,33 +27,54 @@ function normaliseData(data) {
     let nData = {};
     for (var key2 in data) {
         if (data.hasOwnProperty(key2))
-            nData[key2] = Math.round( 5.0*(data[key2]-minX)/denom )
+            nData[key2] = Math.round( 5.0*(data[key2]["data"] - minX) / denom )
     }
-
-    console.log(data);
-    console.log(minX);
 
     return nData;
 }
 
 const MelbourneMap = withGoogleMap(props => (
+
   <GoogleMap
     ref={props.onMapLoad}
     defaultZoom={9}
     defaultCenter={{ lat: -37.815790, lng: 144.961341 }} // Melb Coords
     onClick={props.onMapClick}
   >
-    {props.polygons}
+    {
+      props.polygons.map((polygon, index) => (
+        <Polygon 
+          path={polygon.path}
+          key={index}
+          onClick={() => props.handlePolyClick(polygon)}
+          options={polygon.options}
+        >
+        </Polygon>
+    ))}
+
+    {props.windows.map(win => (
+      <InfoWindow 
+        position={win.position}
+        key={win.key}
+        onCloseClick={() => props.handlePolyClose(win)}
+      >
+        <div>
+          <h3>{ win.suburb }</h3>
+          <p>{ win.info }</p>
+        </div>
+      </InfoWindow>
+    ))}
   </GoogleMap>
 ));
 
 class GChoropleth extends Component {
   constructor(props) {
     super(props);
-    this.state = { windowheight: window.innerHeight + 'px', 'windowwidth': window.innerWidth + 'px' };
+    this.state = { windowheight: window.innerHeight + 'px', 'windowwidth': window.innerWidth + 'px', windows: [] };
 
     this.handleMapLoad = this.handleMapLoad.bind(this);
-    this.handleMapClick = this.handleMapClick.bind(this);
+    this.handlePolyClick = this.handlePolyClick.bind(this);
+    this.handlePolyClose = this.handlePolyClose.bind(this);
   }
 
   componentDidMount() {
@@ -64,12 +85,46 @@ class GChoropleth extends Component {
     this._mapComponent = map;
   }
 
-  handleMapClick(event) {
-    console.log("Clicked map at" + event.latLng)
+  handlePolyClick(target) {
+    if (!this.props.data.hasOwnProperty(target.key)) {
+      return;
+    }
+
+    let w = cloneDeep(this.state.windows)
+
+    let c1 = target.path[0],
+        c2 = target.path[Math.floor(target.path.length / 2)],
+        coords = {lat: (c1['lat'] + c2['lat']) / 2, lng: (c1['lng'] + c2['lng']) / 2}
+
+    w.push(
+    {
+      position: coords,
+      key: Date.now(),
+      suburb: target.key,
+      info: this.props.data[target.key]["info"]
+    })
+
+    this.setState({
+      windows: w,
+    });
   }
 
-  render() { 
-    console.log(this.props.data);
+  handlePolyClose(target) {
+    let w = cloneDeep(this.state.windows),
+        wout = [];
+
+    for (var thiswin in w) {
+      let p1 = w[thiswin].position,
+          p2 = target.position;
+
+      if (p1.lat != p2.lat || p1.lng != p2.lng)
+        wout.push(w[thiswin])
+    }
+
+    this.setState({windows: wout});
+  }
+
+  render() {     
     let polygons = [];
     let nData = normaliseData(this.props.data);
 
@@ -81,14 +136,7 @@ class GChoropleth extends Component {
 
       polygons.push
       (
-        <Polygon 
-          path={this.props.melbPolygons[key]}
-          key={key}
-          onClick={_.noop}
-          onRightClick={_.noop}
-          onDragStart={_.noop}
-          options={{fillColor: choroColour, strokeWeight: 1, fillOpacity: 0.8}}
-        />
+        {path: this.props.melbPolygons[key], key: key, options: {fillColor: choroColour, strokeWeight: 1, fillOpacity: 0.8}}
       )
     }
 
@@ -101,9 +149,11 @@ class GChoropleth extends Component {
           onMapClick={this.handleMapClick}
           polygons={polygons}
           data={this.props.data}
+          handlePolyClick={this.handlePolyClick}
+          handlePolyClose={this.handlePolyClose}
+          windows={this.state.windows}
         >
         </MelbourneMap>
-        <div> {nData['Parkville']} </div>
       </div>
     );
   }

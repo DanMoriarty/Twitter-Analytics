@@ -1,3 +1,12 @@
+#####---------------------------- DESCRIPTION ----------------------------#####
+
+#    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+#    Course:    COMP90024 Cluster and Cloud Computing
+#    Project:   Melbourne Twitter analytics
+#    Purpose:   To automatically deploy the tweet harvesting operation
+#    Modified:  26/04/2017
+
+
 - name: launch all compute instances
   hosts: localhost
   tasks:
@@ -49,23 +58,23 @@
         groupname: "webservers,{{ item.server.name }}"
         hostname: "{{ item.server.public_v4 }}"
       with_items: "{{ os_hosts.results }}"
-    - name: wait a little while to ensure instances are available
+    - name: wait for both instances to become available
       wait_for:
-        timeout: 120
-    # - name: create volume for each node
-    #   os_volume:
-    #     state: present
-    #     availability_zone: melbourne-np
-    #     size: 50
-    #     display_name: "volume{{ item }}"
-    #   with_sequence: "start=1 end={{ settings.num_nodes }}"
-    # - name: attach volume to host
-    #   os_server_volume:
-    #     state: present
-    #     server: "node{{ item }}"
-    #     volume: "volume{{ item }}"
-    #     device: /dev/vdb
-    #   with_sequence: "start=1 end={{ settings.num_nodes }}"
+        timeout: 30
+    - name: create volume for each node
+      os_volume:
+        state: present
+        availability_zone: melbourne-np
+        size: 50
+        display_name: "volume{{ item }}"
+      with_sequence: "start=1 end={{ settings.num_nodes }}"
+    - name: attach volume to host
+      os_server_volume:
+        state: present
+        server: "node{{ item }}"
+        volume: "volume{{ item }}"
+        device: /dev/vdb
+      with_sequence: "start=1 end={{ settings.num_nodes }}"
 
 - name: configure database
   hosts: webservers
@@ -100,6 +109,8 @@
         - python-numpy
         - python-scipy
         - libgdal-dev
+        - nodejs
+        - curl
     - name: download and untar couchdb2.0 source
       unarchive:
         remote_src: yes
@@ -181,6 +192,9 @@
       TWITTER_SECRETACCESSTOKEN2: "{{settings.credentials2.access_token_secret}}"
       COUCH_SERVER: "{{ inventory_hostname }}:8888"
   tasks:
+  - name: add other node to cluster
+    command: "curl -X PUT \"http://{{ inventory_hostname }}:8890/_nodes/couchdb@{{ item }}\" -d {}"
+    with_items: "{{ groups.webservers }}"
   - name: set environment variables
     become: true
     become_method: sudo

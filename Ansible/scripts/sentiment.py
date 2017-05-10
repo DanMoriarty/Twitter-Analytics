@@ -13,7 +13,8 @@
 import os
 import re
 import cPickle
-
+import nltk
+nltk.download('stopwords')
 from string      import punctuation
 from nltk.corpus import stopwords
 from sklearn.svm import LinearSVC
@@ -28,7 +29,7 @@ NEG_THRESHOLD = 0.4  #Minimum polarity for positive tweets.
 NEU_THRESHOLD = 0.8  #Maximum subjectivity for objective tweets.
 
 CURRENT_D = os.path.dirname(os.path.realpath(__file__))
-FILE_PATH = CURRENT_D + "/sentiment_files/" 
+FILE_PATH = CURRENT_D + "/sentiment_files/"
 POL_CSV       = FILE_PATH + "tweet_polarity.csv"  #Pre-built polarity set.
 TWEETS        = FILE_PATH + "tweets_rebuild.json" #Tweets for rebuilding POL_CSV.
 CLASSIFIER    = FILE_PATH + "classifier.pkl"    #Pickled classifier model.
@@ -54,14 +55,14 @@ def cleanTweet(s, removeURLs  = True, removeStopwords = False, \
         s = urlPattern.sub(r'', s)
     if removeEmoji: #Remove emojis by ignoring unicode.
         s = s.encode('ascii','ignore').decode('unicode_escape')
-        
+
     #Strip punctuation and uppercase.
     punctPattern = re.compile('[%s]' % re.escape(punctuation))
     s = punctPattern.sub('', s).lower()
-    
+
     if removeStopwords:
         s = " ".join([w for w in s.split() if w not in STOPWORDS])
-        
+
     #Remove any extra whitespace and return.
     return ' '.join(s.split())
 
@@ -76,11 +77,11 @@ def testTrainSplit(pos, neg, obj, split=0.9):
     mark = lambda x: int(len(x)*split)
     sets = lambda x: ( x[ :mark(x)], x[mark(x): ] )
     (posX,posx),(negX,negx),(objX,objx) = sets(pos), sets(neg), sets(obj)
-        
+
     #Combine into full train/test (X,x) sets, and provide sentiment labels.
     train_tweets = posX + negX + objX
     test_tweets  = posx + negx + objx
-    train_labels = [1 for i in posX] + [-1 for i in negX] + [0 for i in objX] 
+    train_labels = [1 for i in posX] + [-1 for i in negX] + [0 for i in objX]
     test_lables  = [1 for i in posx] + [-1 for i in negx] + [0 for i in objx]
 
     #Return tuple of train and test data.
@@ -117,10 +118,10 @@ def classify(tweet):
     return m.predict(vect.transform([cleanTweet(tweet)]))[0]
 
 
-#####----------------------------   PROGRAM   ----------------------------##### 
+#####----------------------------   PROGRAM   ----------------------------#####
 
 
-#To set up the module for use in sentiment classification, try loading the 
+#To set up the module for use in sentiment classification, try loading the
 #   model's pickle file from disk. If non-existent, rebuild.
 #   Create training and test sets using NLTK's sentiment classifier on
 #   Melbourne tweets.
@@ -129,22 +130,22 @@ try:
         m,vect = cPickle.load(model_file)
 except (IOError, cPickle.UnpicklingError) as e:
     print("Error: Unable to read model file. Attempting to rebuild model.")
-    
+
     pos_t = [] #Positive tweets
     neg_t = [] #Negative tweets
     obj_t = [] #Objective/neutral tweets
-    
+
     #Attempt to read in the tweet polarity set from file.
     try:
         with open(POL_CSV, "r") as inf:
             for line in inf:
                 #CSV: split on commas.
                 l = line.split(",")
-    
+
                 #Grab the polarity. The remainder is the tweet.
                 polarity = l.pop(0)
-                tweet = ",".join(l)            
-    
+                tweet = ",".join(l)
+
                 #Sort tweet into polarity groups.
                 if polarity == "1":
                     pos_t.append(tweet)
@@ -152,7 +153,7 @@ except (IOError, cPickle.UnpicklingError) as e:
                     obj_t.append(tweet)
                 elif polarity == "-1":
                     neg_t.append(tweet)
-    
+
     except IOError:
         print("Error: Unable to locate file '%s'." % POL_CSV)
         print("Attempting to rebuild csv...")
@@ -180,11 +181,11 @@ except (IOError, cPickle.UnpicklingError) as e:
                         elif ss["neu"] >= NEU_THRESHOLD and len(obj_t) < cap:
                             obj_t.append(t)
 
-    
+
                         # Stop when each group of tweets is full
                         if len(pos_t) >= cap and len(neg_t) >= cap and len(obj_t) >= cap:
-                            break 
-    
+                            break
+
                     except AttributeError:
                         pass
             # Output to file
@@ -198,18 +199,18 @@ except (IOError, cPickle.UnpicklingError) as e:
         except IOError:
             print("Fatal Error: Unable to locate tweet json. Exiting.")
             exit()
-    
+
     print len(pos_t), len(neg_t), len(obj_t)
     #Initialise train (X,Y) and test (x,y) data and labels, and vectorize.
     (X,Y), (x,y) = testTrainSplit(tokenize(pos_t), tokenize(neg_t), tokenize(obj_t))
     X,x,vect = getVects(X, x)
-    
+
     #Train the linear SVC model used for sentiment analysis.
     m = trainModel(LinearSVC(loss='squared_hinge', penalty='l2', tol=1e-4), (X,Y), (x,y))
 
     #Pickle the model and vectorizer to disk.
     with open(CLASSIFIER, 'wb') as model_file:
         cPickle.dump((m, vect), model_file)
-    
+
 
 #####----------------------------  END  FILE  ----------------------------#####
