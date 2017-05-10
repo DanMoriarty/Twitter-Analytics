@@ -19,3 +19,5 @@ export const COLOURWHEEL = [
 	"#E91E63", "#673AB7", "#2196F3", "#00BCD4", 
 	"#4CAF50", "#CDDC39", "#FF9800", "#FF5722", 
 	"#F44336", "#607D8B", "#9E9E9E" ];
+
+export const APIPATH = "http://localhost:4444/api/"
