@@ -1,3 +1,11 @@
+//---------------------------- DESCRIPTION ----------------------------//
+//    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+//    Course:    COMP90024 Cluster and Cloud Computing
+//    Project:   Melbourne Twitter analytics
+//    Purpose:   App Container
+//    Modified:  30/04/2017
+//---------------------------- DESCRIPTION ----------------------------//
+
 // Import React Components
 import React, { Component } from 'react';
 import './App.css';

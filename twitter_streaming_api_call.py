@@ -33,12 +33,7 @@ def insert_tweet(tweet):
             del entry['id_str']
             db[tweet['id_str']] = entry
 
-
-
-
-
 class listener(StreamListener):
-
     def on_status(self,status):
         try:
             tweet = status._json
@@ -46,6 +41,7 @@ class listener(StreamListener):
 
         except KeyError:
             print("Tossed it out")
+    
     def on_error(self,status):
         print status
 

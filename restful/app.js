@@ -2,10 +2,10 @@
 //    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
 //    Course:    COMP90024 Cluster and Cloud Computing
 //    Project:   Melbourne Twitter analytics
-//    Purpose:   A very thin layer sitting between our CouchDB database 
+//    Purpose:   A lightweight layer sitting between our CouchDB database 
 //               and web app to prevent direct access to the database.
 //    Usage:     (PORT=xxxx) node app.js
-//    Modified:  29/04/2017
+//    Modified:  10/05/2017
 //---------------------------- DESCRIPTION ----------------------------//
 
 

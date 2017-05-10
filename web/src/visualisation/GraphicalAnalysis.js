@@ -1,3 +1,12 @@
+//---------------------------- DESCRIPTION ----------------------------//
+//    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+//    Course:    COMP90024 Cluster and Cloud Computing
+//    Project:   A page to manage all the sentiment-related graphs.
+//               Implements each kind of graph component we wrote.
+//    Purpose:   App Container
+//    Modified:  11/05/2017
+//---------------------------- DESCRIPTION ----------------------------//
+
 import React, { Component } from 'react';
 import Loading from '../material/Loading.js';
 import AutoComplete from 'material-ui/AutoComplete';
@@ -8,13 +17,17 @@ import SingleHistogram from './SingleHistogram.js';
 import StackedBar from './StackedBar.js';
 import TimeGraph from './TimeGraph.js';
 import * as Constants from '../Constants.js';
-import AURIN from "./AURIN.json";
 import cloneDeep from "lodash";
 
+// pre-processed json containing 4 AURIN socioeconomic datasets
+import AURIN from "./AURIN.json";
+
+// headers for the AURIN datasets
 const headers = ["Qualification", "OECD Indicators", "Advantage", "Learning or Earning"];
 
-class GraphicalAnalysis extends Component {
-  
+
+// Retrive data from the API and display relevant graph components for each.
+class GraphicalAnalysis extends Component {  
     constructor(props) {
         super(props);
         this.state = {
@@ -34,6 +47,7 @@ class GraphicalAnalysis extends Component {
         this.selectAurin = this.selectAurin.bind(this);
     }
 
+    // Fetch each piece of data from the API
     componentDidMount() {
         this.setState({height:window.innerHeight, width: window.innerWidth})
 
@@ -58,6 +72,7 @@ class GraphicalAnalysis extends Component {
           .catch(error => console.log(error))
     }
 
+    // add suburbs to the "selected" list for the sentiment vs time (suburbs) graph
     selectSuburb(chosenRequest, index) {
         if (index === -1 || this.state.selectedSuburbs.includes(chosenRequest))
             return null;
@@ -65,14 +80,17 @@ class GraphicalAnalysis extends Component {
         this.setState({selectedSuburbs: this.state.selectedSuburbs.concat(chosenRequest)});
     }
 
+    // select an aurin data set
     selectAurin(value) {
       this.setState({selectedAurin: value});
     }
 
+    // remove all suburbs from the suburb list
     clearSuburb(chosenRequest, index) {
         this.setState({selectedSuburbs: []});
     }
 
+    // zoom in / out on the sentiment vs time graph
     toggleMTweetsZoom() {
         this.setState({zoomMelbTweets: !this.state.zoomMelbTweets});
     }
@@ -91,15 +109,19 @@ class GraphicalAnalysis extends Component {
           display: 'inline-block',
         };
 
+        // Don't display the page if it isn't "active" (has been clicked on)
         if (!this.props.active)
             return null;
         
+        // Display an error if one was found
         if (this.state.error)
             return (<p>&nbsp;Failed retrieving data. Please try refreshing the page.</p>);
 
+        // Return a loading screen until all data has arrived
         if (!this.state.suburbSentimentTime || !this.state.sentimentTime || !this.state.deviceSentiment || !this.state.suburbSentiment)
             return (<Loading />);
 
+        // Display the graphs
         return (<div className="GraphPage">
                     <Paper style={paperStyle}>
                         <div>
@@ -152,7 +174,6 @@ class GraphicalAnalysis extends Component {
                                 width={paperStyle.width}
                                 stack={true}
                             />
-                            <sub>Usernames</sub>
                         </div>
                     </Paper>
 
@@ -202,6 +223,7 @@ class GraphicalAnalysis extends Component {
   }
 }
 
+// process the suburb time data into the format required by the graphing components
 function processSuburbTimes(data, allMelbourne = false) {
     let formattedSuburbs = {};
     for (var suburb in data) {
@@ -227,6 +249,7 @@ function processSuburbTimes(data, allMelbourne = false) {
     return formattedSuburbs;
 }
 
+// process the device sentiment data into the format required by the graphing components
 function processDeviceSentiment(data) {
     let devicesCounts = {};
     let pos = [],
@@ -262,6 +285,7 @@ function processDeviceSentiment(data) {
     return {"Positive": pos, "Negative": neg, "Neutral": neu};
 }
 
+// process the suburb data alongside the AURIN data
 function correlateAURIN(data) {
   let processed = {};
   
@@ -288,6 +312,5 @@ function correlateAURIN(data) {
   console.log("correlated")
   return processed;
 }
-
 
 export default GraphicalAnalysis;

@@ -1,3 +1,12 @@
+//---------------------------- DESCRIPTION ----------------------------//
+//    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+//    Course:    COMP90024 Cluster and Cloud Computing
+//    Project:   Melbourne Twitter analytics
+//    Purpose:   A component that converts its props into a stylised 
+//               dropdown list on a card.
+//    Modified:  08/04/2017
+//---------------------------- DESCRIPTION ----------------------------//
+
 import React from 'react';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import * as Constants from '../Constants.js'

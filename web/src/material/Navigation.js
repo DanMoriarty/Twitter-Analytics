@@ -1,3 +1,12 @@
+//---------------------------- DESCRIPTION ----------------------------//
+//    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+//    Course:    COMP90024 Cluster and Cloud Computing
+//    Project:   Melbourne Twitter analytics
+//    Purpose:   A navigation bar that appears on the bottom of every 
+//               screen that controls application flow.
+//    Modified:  1/05/2017
+//---------------------------- DESCRIPTION ----------------------------//
+
 import React, {Component} from 'react';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';

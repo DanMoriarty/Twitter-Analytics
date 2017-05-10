@@ -1,3 +1,12 @@
+//---------------------------- DESCRIPTION ----------------------------//
+//    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+//    Course:    COMP90024 Cluster and Cloud Computing
+//    Project:   Melbourne Twitter analytics
+//    Purpose:   Header component, do display a title and some links at
+//               the top of every screen.
+//    Modified:  30/04/2017
+//---------------------------- DESCRIPTION ----------------------------//
+
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import * as Constants from '../Constants.js';
@@ -18,7 +27,7 @@ const GithubButton = () => (
 
 const YoutubeButton = () => (
     <RaisedButton
-      href="http://youtube.com"
+      href="https://youtu.be/-BL7-9NsJ4M"
       target="_blank"
       label="Demo"
       primary={true}

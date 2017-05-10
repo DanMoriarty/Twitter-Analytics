@@ -1,3 +1,12 @@
+//---------------------------- DESCRIPTION ----------------------------//
+//    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+//    Course:    COMP90024 Cluster and Cloud Computing
+//    Project:   Melbourne Twitter analytics
+//    Purpose:   A component implementing stacked bar charts with an
+//               on-hover event.
+//    Modified:  10/05/2017
+//---------------------------- DESCRIPTION ----------------------------//
+
 import React, { Component } from 'react';
 import {
     XYPlot,

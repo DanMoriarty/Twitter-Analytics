@@ -1,3 +1,13 @@
+//---------------------------- DESCRIPTION ----------------------------//
+//    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+//    Course:    COMP90024 Cluster and Cloud Computing
+//    Project:   Melbourne Twitter analytics
+//    Purpose:   Component containinng everything needed for the 'Language'
+//               tab. Implements a GChoropleth component as well as some
+//               cards and input fields for interacting with the user.
+//    Modified:  09/05/2017
+//---------------------------- DESCRIPTION ----------------------------//
+
 import React, { Component } from 'react';
 import {Card, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
@@ -9,7 +19,7 @@ import * as Constants from '../Constants.js'
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,
         } from 'material-ui/Table';
 
-
+// Convert score to a percentage
 function percentageDisplay(score) {
     if (score == "indeterminate") return "";
     else

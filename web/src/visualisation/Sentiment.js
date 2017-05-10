@@ -1,3 +1,14 @@
+//---------------------------- DESCRIPTION ----------------------------//
+//    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+//    Course:    COMP90024 Cluster and Cloud Computing
+//    Project:   Melbourne Twitter analytics
+//    Purpose:   Component implementing a GChoropleth map that visualises
+//               sentiment across Melbourne suburbs. Also displays a number
+//               of statistics, e.g. "Most Positive" and "Least Positive"
+//               areas of Melbourne.
+//    Modified:  10/05/2017
+//---------------------------- DESCRIPTION ----------------------------//
+
 import React, { Component } from 'react';
 import InfoCard from '../material/InfoCard.js'
 import GChoropleth from './GChoropleth.js'

@@ -1,4 +1,12 @@
 import couchdb
+#####---------------------------- DESCRIPTION ----------------------------#####
+
+#    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+#    Course:    COMP90024 Cluster and Cloud Computing
+#    Project:   Melbourne Twitter analytics
+#    Purpose:   Add new fields documents in the database
+#    Modified:  22/04/2017
+
 
 #####----------------------------  CONSTANTS  ----------------------------#####
 
@@ -12,8 +20,10 @@ DB   = "melbtweets_sentiment"   #The main tweets database.
 
 #####----------------------------  FUNCTIONS  ----------------------------#####
 
-#Function to read in tweets and assign sentiment labels to an entire database.
-
+# Function to read in tweets and assign sentiment labels to an entire database.
+# IMPORTANT NOTE: sentiment labels are automatically added to new tweets with
+# our harvester now, but this legacy code demonstrates how we could easily update 
+# documents in our database with new fields.
 
 def creating_user_docs(db):
 	print 'start'
@@ -43,3 +53,6 @@ def creating_user_docs(db):
 
 server = couchdb.Server("http://{0}:{1}".format(HOST,PORT))
 creating_user_docs(server[DB])
+
+#####----------------------------  END  FILE  ----------------------------#####
+

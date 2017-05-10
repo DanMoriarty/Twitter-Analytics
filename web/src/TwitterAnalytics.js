@@ -1,3 +1,14 @@
+//---------------------------- DESCRIPTION ----------------------------//
+//    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+//    Course:    COMP90024 Cluster and Cloud Computing
+//    Project:   Melbourne Twitter analytics
+//    Purpose:   Main controller for the app. State manages which "page"
+//               is visible at any given time. Map components are only
+//               mounted when their state is active. Non-map components
+//               are loaded in the background.
+//    Modified:  08/05/2017
+//---------------------------- DESCRIPTION ----------------------------//
+
 // Import React Components
 import React, { Component } from 'react';
 import './App.css';
@@ -26,12 +37,12 @@ class TwitterAnalytics extends Component {
 
     this.state = {
       activeView: Constants.HOME,
-      suburbSentiment: null,
     };
 
     this.setActiveView = this.setActiveView.bind(this);
   }
   
+  // Update the state with a new active view 
   setActiveView(view) {
     this.setState({activeView: view});
   }
@@ -48,14 +59,12 @@ class TwitterAnalytics extends Component {
             this.state.activeView === Constants.SENTIMENT &&
             <Sentiment
               active={this.state.activeView === Constants.SENTIMENT}
-              suburbs={this.state.suburbSentiment} 
               melbPolygons={melbPolygons}
             />
           }
 
           <GraphicalAnalysis
             active={this.state.activeView === Constants.GRAPHS}
-            suburbSentiment={this.state.suburbSentiment}
           />
           
           { 

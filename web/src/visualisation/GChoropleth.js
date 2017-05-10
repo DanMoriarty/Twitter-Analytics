@@ -1,7 +1,17 @@
+//---------------------------- DESCRIPTION ----------------------------//
+//    Authors:   T. Glennan, T. Lynch, D. Moriarty, S. Spratley, A. White
+//    Course:    COMP90024 Cluster and Cloud Computing
+//    Project:   A choroplath made using the Google maps API! Implemented
+//               using the react API wrapper.
+//    Purpose:   App Container
+//    Modified:  07/05/2017
+//---------------------------- DESCRIPTION ----------------------------//
+
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, Polygon, InfoWindow, Marker } from "react-google-maps";
 import { _, cloneDeep } from "lodash";
 
+// Define our choroplete colour palettes
 const gamut2 = 
     {'1': "#C8E6C9",  '2': "#A5D6A7",  '3': "#81C784",  '4': "#66BB6A",
      '5': "#4CAF50",  '6': "#43A047",  '7': "#388E3C",  '8': "#2E7D32",
@@ -13,6 +23,8 @@ const gamut =
     {'0': "#D32F2F", '1': "#E57373",  '2': "#FFCC80",  
      '3': "#C5E1A5", '4': "#81C784",  '5': "#388E3C"}
 
+// Normalise data in order to indetify a good range of colours for the
+// choropleth
 function normaliseData(data) {
     if (data == null) return {};
     let minX = null;
@@ -33,8 +45,8 @@ function normaliseData(data) {
     return nData;
 }
 
+// Render the Google Map with the supplied polygons and any added markers
 const MelbourneMap = withGoogleMap(props => (
-
   <GoogleMap
     ref={props.onMapLoad}
     defaultZoom={9}
@@ -66,6 +78,7 @@ const MelbourneMap = withGoogleMap(props => (
   </GoogleMap>
 ));
 
+// 
 class GChoropleth extends Component {
   constructor(props) {
     super(props);
@@ -76,14 +89,19 @@ class GChoropleth extends Component {
     this.handlePolyClose = this.handlePolyClose.bind(this);
   }
 
+  // Update the window dimensions on mount
   componentDidMount() {
     this.setState({ windowheight: window.innerHeight + 'px', windowwidth: window.innerWidth + 'px'})
   }
 
+  // Bind the map
   handleMapLoad(map) {
     this._mapComponent = map;
   }
 
+  // Function to handle clicking on a polygon.
+  // Identifies a sensible location for placing an information box, then
+  // adds a new information box to this position.
   handlePolyClick(target) {
     if (!this.props.data || !this.props.data.hasOwnProperty(target.key)) {
       return;
@@ -91,10 +109,13 @@ class GChoropleth extends Component {
 
     let w = cloneDeep(this.state.windows)
 
+    // Average of first and middle path coordinate are our best guess at a
+    // good information box position.
     let c1 = target.path[0],
         c2 = target.path[Math.floor(target.path.length / 2)],
         coords = {lat: (c1['lat'] + c2['lat']) / 2, lng: (c1['lng'] + c2['lng']) / 2}
 
+    // Add the new information box.
     w.push(
     {
       position: coords,
@@ -103,11 +124,13 @@ class GChoropleth extends Component {
       info: this.props.data[target.key]["info"]
     })
 
+    // Update state.
     this.setState({
       windows: w,
     });
   }
 
+  // Destroy the info box on close.
   handlePolyClose(target) {
     let w = cloneDeep(this.state.windows),
         wout = [];
@@ -116,6 +139,7 @@ class GChoropleth extends Component {
       let p1 = w[thiswin].position,
           p2 = target.position;
 
+      // Identify the box that was clicked on.
       if (p1.lat != p2.lat || p1.lng != p2.lng)
         wout.push(w[thiswin])
     }
@@ -123,10 +147,12 @@ class GChoropleth extends Component {
     this.setState({windows: wout});
   }
 
+  // Render
   render() {     
     let polygons = [];
     let nData = normaliseData(this.props.data);
 
+    // Map polygons to the appropriate structure
     for (var key in this.props.melbPolygons) {
       if (!this.props.melbPolygons.hasOwnProperty(key))
         continue;
