@@ -143,6 +143,10 @@ exports.getUserLocationsKey = function(req, res) {
 	});
 }
 
-
+exports.getUserNames = function(req, res) {
+	db.view('users', 'all-usernames', {stale: "ok", group_level: 3 }, function(err, body) {
+		res.send(body);
+	});
+}
 
 //------------------------------  END  FILE  ------------------------------//

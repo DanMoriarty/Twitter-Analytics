@@ -30,14 +30,19 @@ class GraphicalAnalysis extends Component {
     componentDidMount() {
         this.setState({height:window.innerHeight, width: window.innerWidth})
 
-        fetch('http://localhost:4444/api/suburbSentimentTime', Constants.INIT)
+        fetch(Constants.APIPATH + 'suburbSentimentTime', Constants.INIT)
             .then(result=>result.json()) 
             .then(items=> this.setState({suburbSentimentTime: processSuburbTimes(items.rows)}))
             .catch(error => console.log(error))
 
-        fetch('http://localhost:4444/api/sentimentTime', Constants.INIT)
+        fetch(Constants.APIPATH + 'sentimentTime', Constants.INIT)
             .then(result=>result.json()) 
             .then(items=> this.setState({sentimentTime: processSuburbTimes(items.rows, true)}))
+            .catch(error => console.log(error))     
+
+        fetch(Constants.APIPATH + 'deviceSentiment', Constants.INIT)
+            .then(result=>result.json()) 
+            .then(items=> this.setState({deviceSentiment: processDeviceSentiment(items.rows, true)}))
             .catch(error => console.log(error))     
     }
 
@@ -83,7 +88,7 @@ class GraphicalAnalysis extends Component {
         if (this.state.error)
             return (<p>&nbsp;Failed retrieving data. Please try refreshing the page.</p>);
 
-        if (!this.state.suburbSentimentTime || !this.state.sentimentTime)
+        if (!this.state.suburbSentimentTime || !this.state.sentimentTime || !this.state.deviceSentiment)
             return (<Loading />);
 
         return (<div className="GraphPage">
@@ -101,7 +106,7 @@ class GraphicalAnalysis extends Component {
                             <RaisedButton label="Toggle Zoom" secondary={true} onTouchTap={this.toggleMTweetsZoom} />
                         </div>
                     </Paper>
-
+                    
                     <Paper style={paperStyle}>
                         <div>
                             <h3>Sentiment vs Time (Suburbs)</h3>
@@ -125,33 +130,10 @@ class GraphicalAnalysis extends Component {
 
                     <Paper style={halfPaperStyle}>
                         <div>
-                            <h3>Stacked Bar Example</h3>
-                            <br/>
-                            <p>TODO: Make View in the Format:<br/>{"{Positive: [{x: Android, y: Android Positive Count}, {x: iPhone, y: iPhone Positive Count}, ...], {Negative: ...}, {Neutral: ...}}"}</p>
+                            <h3>Sentiment by Tweet Source</h3>
                             <StackedBar
                                 series={["Neutral", "Positive", "Negative"]}
-                                data={
-                                    {
-                                    Positive:
-                                        [
-                                        {x: "Android", y: 3},
-                                        {x: "iPhone", y: 3},
-                                        {x: "Instagram", y: 5}
-                                        ],
-                                    Neutral:
-                                        [
-                                        {x: "Android", y: 5},
-                                        {x: "iPhone", y: 10},
-                                        {x: "Instagram", y: 3}
-                                        ],
-                                    Negative:
-                                        [
-                                        {x: "Android", y: 1},
-                                        {x: "iPhone", y: 5},
-                                        {x: "Instagram", y: 2}
-                                        ]
-                                    }
-                                }
+                                data={ this.state.deviceSentiment }
                                 X="Device"
                                 Y="Number of Tweets"
                                 width={halfPaperStyle.width}
@@ -187,6 +169,42 @@ function processSuburbTimes(data, allMelbourne = false) {
         }
     }
     return formattedSuburbs;
+}
+
+function processDeviceSentiment(data) {
+    console.log(data)
+    let devicesCounts = {};
+    let pos = [],
+        neg = [],
+        neu = [];
+
+    // Sum totals for each device
+    for (var d in data) {
+        let device = data[d].key[0];
+        let sent = data[d].key[1];
+        
+        if (!devicesCounts.hasOwnProperty(device)) {
+            devicesCounts[device] = 0
+        }
+
+        devicesCounts[device] +=  data[d].value        
+    }
+
+    // Structure data for stacked bar component 
+    for (var d in data) {
+        let device = data[d].key[0];
+        let sent = data[d].key[1];
+
+        if (sent === 1) {
+            pos.push({x: device, y: (data[d].value / devicesCounts[device]) * 100 })
+        } else if (sent === 0) {
+            neu.push({x: device, y: (data[d].value / devicesCounts[device]) * 100 })
+        } else if (sent === -1) {
+            neg.push({x: device, y: (data[d].value / devicesCounts[device]) * 100 })
+        }  
+    }
+
+    return {"Positive": pos, "Negative": neg, "Neutral": neu};
 }
 
 export default GraphicalAnalysis;

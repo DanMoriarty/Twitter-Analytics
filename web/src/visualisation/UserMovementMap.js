@@ -3,6 +3,10 @@ import { withGoogleMap, GoogleMap, Polyline } from "react-google-maps";
 import _ from "lodash";
 import * as Constants from '../Constants.js';
 import Loading from '../material/Loading.js';
+import AutoComplete from 'material-ui/AutoComplete';
+import Paper from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 const MelbourneMap = withGoogleMap(props => (
   <GoogleMap
@@ -32,23 +36,36 @@ class UserMovementMap extends Component {
       windowheight: '800px', 
       windowwidth: '2000px',
       userspeed: null,
+      selectedUser: null,
+      usernames: [],
     };
 
     this.handleMapLoad = this.handleMapLoad.bind(this);
     this.handleMapClick = this.handleMapClick.bind(this);
+    this.selectUser = this.selectUser.bind(this);
+    this.clearUser = this.clearUser.bind(this);
   }
 
   componentDidMount() {
     this.setState({ windowheight: window.innerHeight + 'px', windowwidth: window.innerWidth + 'px'});
 // TODO CHANGE THIS TO fetch USER'S SPEED DATA
 // NEED TO ADD ROUTES FIRST
-    fetch('http://localhost:4444/api/userlocations/thebrockmurley',Constants.INIT)
-        .then(result=>result.json()) 
-        .then(items=> this.setState({userspeed: processSpeeds(items.rows), error:false}))
-        .catch(error => console.log(error))
+    fetch('http://localhost:4444/api/usernames/', Constants.INIT)
+      .then(result=>result.json()) 
+      .then(items=> this.setState({usernames: processNames(items.rows)}))
+      .catch(error => console.log(error))
     
   }
+  selectUser(chosenRequest, index) {
+        if (index === -1)
+            return null;
 
+        this.setState({selectedUser: chosenRequest});
+  }
+
+  clearUser(chosenRequest, index) {
+        this.setState({selectedUser: null});
+  }
 
   handleMapLoad(map) {
     this._mapComponent = map;
@@ -58,16 +75,32 @@ class UserMovementMap extends Component {
     console.log("Clicked map at" + event.latLng)
   }
 
+  retrieveUser(user) {
+    fetch('http://localhost:4444/api/userLocations/' + user, Constants.INIT)
+        .then(result=>result.json()) 
+        .then(items=> this.setState({userspeed: processSpeeds(items.rows)}))
+        .catch(error => console.log(error))
+  }
+
   render() {     
 // TODO PUT THIS BACK ONCE FETCH IS ADDED
-    if (!this.state.userspeed){
-        console.log("loading")
-        return (<Loading />);
-    }
+    // if (!this.state.userspeed){
+    //     console.log("loading")
+    //     return (<Loading />);
+    // }
 
     console.log("LOADED");
+    console.log(this.state.usernames);
     return (
       <div style={{height: this.state.windowheight}}>
+        <AutoComplete
+          floatingLabelText="Enter username"
+          filter={ AutoComplete.caseInsensitiveFilter }
+          dataSource={ this.state.usernames }
+          maxSearchResults={ 5 }
+          onNewRequest={ this.selectUser }
+        />
+        <RaisedButton label="Search" secondary={true} onTouchTap={() => this.retrieveUser(this.state.selectedUser)} />
         <MelbourneMap
           containerElement={<div style={{width: this.state.windowwidth, height: this.state.windowheight }} />}
           mapElement={<div style={{ height: this.state.windowheight }} />}
@@ -108,6 +141,26 @@ function processSpeeds(data) {
   // ];
   // console.log(path3);
   return path;
+
+}
+
+function processNames(data) {
+  // TODO NEED TO REMOVE THIS WHEN FETCH REPLACES IT
+  
+  
+  
+  console.log("DATA ARRIVED");
+  // console.log(data);
+  // var polylines = [];
+  console.log(data[1].key)
+
+  var names = []
+  for (var i in data){
+    names.push(data[i].key);
+    console.log(names);
+    }
+
+  return names;
 
 }
 
