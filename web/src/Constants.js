@@ -4,6 +4,7 @@ export const SPEED = 'SPEED';
 export const LANGUAGE = 'LANGUAGE';
 export const GRAPHS = 'GRAPHS';
 export const AUTHORS = 'AUTHORS';
+export const USER = 'USER';
 
 // Load Data from the API
 var myHeaders = new Headers();

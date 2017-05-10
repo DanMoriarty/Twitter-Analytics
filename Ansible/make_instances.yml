@@ -44,14 +44,14 @@
           hostname: "node{{ item }}"
       register: os_hosts
       with_sequence: "start=1 end={{ settings.num_nodes }}"
-    # - name: print shit
-    #   debug: msg="{{ item.server.public_v4 }}"
-    #   with_items: "{{ os_hosts.results }}"
     - name: update inventory
       add_host:
-        groupname: webservers
+        groupname: "webservers,{{ item.server.name }}"
         hostname: "{{ item.server.public_v4 }}"
       with_items: "{{ os_hosts.results }}"
+    - name: wait a little while to ensure instances are available
+      wait_for:
+        timeout: 120
     # - name: create volume for each node
     #   os_volume:
     #     state: present
@@ -70,17 +70,6 @@
 - name: configure database
   hosts: webservers
   remote_user: ubuntu
-  vars:
-    twitter_env:
-      TWITTER_CONSUMERKEY1: "{{settings.credentials1.consumer_key}}"
-      TWITTER_CONSUMERSECRET1: "{{settings.credentials1.consumer_secret}}"
-      TWITTER_ACCESSTOKEN1: "{{settings.credentials1.access_token}}"
-      TWITTER_SECRETACCESSTOKEN1: "{{settings.credentials1.access_token_secret}}"
-      TWITTER_CONSUMERKEY2: "{{settings.credentials2.consumer_key}}"
-      TWITTER_CONSUMERSECRET2: "{{settings.credentials2.consumer_secret}}"
-      TWITTER_ACCESSTOKEN2: "{{settings.credentials2.access_token}}"
-      TWITTER_SECRETACCESSTOKEN2: "{{settings.credentials2.access_token_secret}}"
-      COUCH_SERVER: "{{ inventory_hostname }}:8888"
   tasks:
     - name: get ansible settings
       include_vars:
@@ -110,6 +99,7 @@
         - python-dev
         - python-numpy
         - python-scipy
+        - libgdal-dev
     - name: download and untar couchdb2.0 source
       unarchive:
         remote_src: yes
@@ -175,42 +165,59 @@
         replace: 'view_index_dir = /mnt/couchdb/data'
     - name: run couchdb in session
       command: tmux send -t couch 'sudo /etc/couchdb/couchdb/bin/couchdb' C-m
-    - name: set environment variables
-      become: true
-      become_method: sudo
-      blockinfile:
-        path: /home/ubuntu/.profile
-        insertafter: EOF
-        marker: "# {mark} ANSIBLE VARIABLES"
-        block: |
-          export TWITTER_CONSUMERKEY1="{{settings.credentials1.consumer_key}}"
-          export TWITTER_CONSUMERSECRET1="{{settings.credentials1.consumer_secret}}"
-          export TWITTER_ACCESSTOKEN1="{{settings.credentials1.access_token}}"
-          export TWITTER_SECRETACCESSTOKEN1="{{settings.credentials1.access_token_secret}}"
-          export TWITTER_CONSUMERKEY2="{{settings.credentials2.consumer_key}}"
-          export TWITTER_CONSUMERSECRET2="{{settings.credentials2.consumer_secret}}"
-          export TWITTER_ACCESSTOKEN2="{{settings.credentials2.access_token}}"
-          export TWITTER_SECRETACCESSTOKEN2="{{settings.credentials2.access_token_secret}}"
-          export COUCH_SERVER="{{ inventory_hostname }}:8888"
-    - name: transfer scrape script to remote host
-      unarchive:
-        src: for_server.tar.gz
-        dest: /home/ubuntu
-    - name: install python packages
-      become: true
-      become_method: sudo
-      pip:
-        name: "{{ item }}"
-      with_items:
-        - tweepy
-        - couchdb
-        - nltk
-        - sklearn
-        - fiona
-    - name: make harvester tmux session
-      command: tmux new-session -d -s scrape
-      ignore_errors: yes
-    - name: cd into harvester directory
-      command: tmux send -t scrape 'cd /home/ubuntu/for_server' C-m
-    - name: run harvester
-      command: tmux send -t scrape 'python harvest.py' C-m
+
+- name: get scraping
+  hosts: node1
+  remote_user: ubuntu
+  vars:
+    twitter_env:
+      TWITTER_CONSUMERKEY1: "{{settings.credentials1.consumer_key}}"
+      TWITTER_CONSUMERSECRET1: "{{settings.credentials1.consumer_secret}}"
+      TWITTER_ACCESSTOKEN1: "{{settings.credentials1.access_token}}"
+      TWITTER_SECRETACCESSTOKEN1: "{{settings.credentials1.access_token_secret}}"
+      TWITTER_CONSUMERKEY2: "{{settings.credentials2.consumer_key}}"
+      TWITTER_CONSUMERSECRET2: "{{settings.credentials2.consumer_secret}}"
+      TWITTER_ACCESSTOKEN2: "{{settings.credentials2.access_token}}"
+      TWITTER_SECRETACCESSTOKEN2: "{{settings.credentials2.access_token_secret}}"
+      COUCH_SERVER: "{{ inventory_hostname }}:8888"
+  tasks:
+  - name: set environment variables
+    become: true
+    become_method: sudo
+    blockinfile:
+      path: /home/ubuntu/.profile
+      insertafter: EOF
+      marker: "# {mark} ANSIBLE VARIABLES"
+      block: |
+        export TWITTER_CONSUMERKEY1="{{settings.credentials1.consumer_key}}"
+        export TWITTER_CONSUMERSECRET1="{{settings.credentials1.consumer_secret}}"
+        export TWITTER_ACCESSTOKEN1="{{settings.credentials1.access_token}}"
+        export TWITTER_SECRETACCESSTOKEN1="{{settings.credentials1.access_token_secret}}"
+        export TWITTER_CONSUMERKEY2="{{settings.credentials2.consumer_key}}"
+        export TWITTER_CONSUMERSECRET2="{{settings.credentials2.consumer_secret}}"
+        export TWITTER_ACCESSTOKEN2="{{settings.credentials2.access_token}}"
+        export TWITTER_SECRETACCESSTOKEN2="{{settings.credentials2.access_token_secret}}"
+        export COUCH_SERVER="{{ inventory_hostname }}:8888"
+  - name: transfer scrape script to remote host
+    unarchive:
+      src: scripts.tar.gz
+      dest: /home/ubuntu
+  - name: install python packages
+    become: true
+    become_method: sudo
+    pip:
+      name: "{{ item }}"
+    with_items:
+      - tweepy
+      - couchdb
+      - nltk
+      - sklearn
+      - fiona
+      - shapely
+  - name: make harvester tmux session
+    command: tmux new-session -d -s scrape
+    ignore_errors: yes
+  - name: cd into harvester directory
+    command: tmux send -t scrape 'cd /home/ubuntu/scripts' C-m
+  - name: run harvester
+    command: tmux send -t scrape 'python harvest.py' C-m

@@ -128,4 +128,21 @@ exports.getSpeed3k150k3m = function(req, res) {
 		res.send(body);
 	});
 }
+
+
+exports.getUserLocations = function(req, res) {
+	db.view(speeddesign, 'userspeed', {stale: "ok"}, function(err, body) {
+		res.send(body);
+	});
+}
+
+exports.getUserLocationsKey = function(req, res) {
+	// Make a unique key for this request
+	db.view(speeddesign, 'userspeed', {stale: "ok", 'keys': req.screen_name}, function(err, body) {
+		res.send(body);
+	});
+}
+
+
+
 //------------------------------  END  FILE  ------------------------------//
