@@ -144,7 +144,7 @@ exports.getUserLocationsKey = function(req, res) {
 }
 
 exports.getUserNames = function(req, res) {
-	db.view(speeddesign, 'userspeed-users', {stale: "ok", group_level: 0 }, function(err, body) {
+	db.view(speeddesign, 'userspeed-users', {stale: "ok" }, function(err, body) {
 		res.send(body);
 	});
 }
