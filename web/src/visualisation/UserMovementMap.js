@@ -50,11 +50,10 @@ class UserMovementMap extends Component {
     this.setState({ windowheight: window.innerHeight + 'px', windowwidth: window.innerWidth + 'px'});
 // TODO CHANGE THIS TO fetch USER'S SPEED DATA
 // NEED TO ADD ROUTES FIRST
-    fetch('http://localhost:4444/api/usernames/', Constants.INIT)
+    fetch('http://localhost:4444/api/userNames/', Constants.INIT)
       .then(result=>result.json()) 
       .then(items=> this.setState({usernames: processNames(items.rows)}))
       .catch(error => console.log(error))
-    
   }
   selectUser(chosenRequest, index) {
         if (index === -1)
@@ -146,7 +145,8 @@ function processSpeeds(data) {
 
 function processNames(data) {
   // TODO NEED TO REMOVE THIS WHEN FETCH REPLACES IT
-  
+  console.log("DATA ARRIVING");
+  console.log(data)
   
   
   console.log("DATA ARRIVED");
