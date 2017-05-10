@@ -97,8 +97,7 @@ class GraphicalAnalysis extends Component {
         if (this.state.error)
             return (<p>&nbsp;Failed retrieving data. Please try refreshing the page.</p>);
 
-        // if (!this.state.suburbSentimentTime || !this.state.sentimentTime || !this.state.deviceSentiment)
-        if (!this.state.sentimentTime || !this.state.deviceSentiment || !this.state.suburbSentiment)
+        if (!this.state.suburbSentimentTime || !this.state.sentimentTime || !this.state.deviceSentiment || !this.state.suburbSentiment)
             return (<Loading />);
 
         return (<div className="GraphPage">
@@ -121,26 +120,24 @@ class GraphicalAnalysis extends Component {
                     
                     <Paper style={paperStyle}>
                         <div>
-                        {
-                            // <h3>Tweet Sentiment vs Time (Suburbs)</h3>
-                            // <TimeGraph
-                            //     series={this.state.selectedSuburbs}
-                            //     data={this.state.suburbSentimentTime}
-                            //     X="Time of Day"
-                            //     Y="Proportion of Positive Tweets"
-                            //     width={paperStyle.width}
-                            //     xType={"ordinal"}
-                            //     lines={true}
-                            // />
-                            // <AutoComplete
-                            //     floatingLabelText="Add Suburb"
-                            //     filter={ AutoComplete.caseInsensitiveFilter }
-                            //     dataSource={ Object.keys(this.state.suburbSentimentTime) }
-                            //     maxSearchResults={ 5 }
-                            //     onNewRequest={ this.selectSuburb }
-                            // />
-                            // <RaisedButton label="Clear All" secondary={true} onTouchTap={this.clearSuburb} />
-                          }
+                            <h3>Tweet Sentiment vs Time (Suburbs)</h3>
+                            <TimeGraph
+                                series={this.state.selectedSuburbs}
+                                data={this.state.suburbSentimentTime}
+                                X="Time of Day"
+                                Y="Proportion of Positive Tweets"
+                                width={paperStyle.width}
+                                xType={"ordinal"}
+                                lines={true}
+                            />
+                            <AutoComplete
+                                floatingLabelText="Add Suburb"
+                                filter={ AutoComplete.caseInsensitiveFilter }
+                                dataSource={ Object.keys(this.state.suburbSentimentTime) }
+                                maxSearchResults={ 5 }
+                                onNewRequest={ this.selectSuburb }
+                            />
+                            <RaisedButton label="Clear All" secondary={true} onTouchTap={this.clearSuburb} />
                         </div>
                     </Paper>
 
