@@ -21,7 +21,9 @@ const MelbourneMap = withGoogleMap(props => (
     path={props.userspeed}
     options={{    strokeColor: 'red',
                   strokeOpacity: 0.8,
-                  strokeWeight: 2}}
+                  strokeWeight: 2,
+                  geodesic:true,
+                  lineCap:'blue'}}
   />
   </GoogleMap>
 ));
