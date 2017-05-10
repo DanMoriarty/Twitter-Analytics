@@ -29,7 +29,7 @@ module.exports = function(router) {
 	router.get('/sentimentTime', controller.getSentimentTime);
 	router.get('/languageModel/:tweet', controller.runLanguageModel);
 	router.get('/deviceSentiment/', controller.getDeviceSentiment);
-	router.get('/speed3k3m/', controller.getSpeed3k3m);
+	router.get('/speed3k/', controller.getSpeed3k);
 	router.get('/speed3k150k3m/', controller.getSpeed3k150k3m);
 	router.get('/userLocations', controller.getUserLocations);
 	router.get('/userLocations/:screen_name', controller.getUserLocationsKey);

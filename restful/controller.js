@@ -117,8 +117,8 @@ exports.getDeviceSentiment = function(req, res) {
 	});
 }
 
-exports.getSpeed3k3m = function(req, res) {
-	db.view(speeddesign, 'both-in-melb-over-3kph-within-3-minutes', {stale: "ok"}, function(err, body) {
+exports.getSpeed3k = function(req, res) {
+	db.view(speeddesign, 'both-in-melb-between-over-3ph', {stale: "ok",group_level: 0,reduce:false}, function(err, body) {
 		res.send(body);
 	});
 }
