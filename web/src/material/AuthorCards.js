@@ -18,31 +18,36 @@ function AuthorCards(props) {
         name="Tim Glennan"
         mainroles="NeCTAR / Sentiment / Node API / Web Design / Analytics"
         avatar="tim.jpg"
-        bio="Placeholder bio."
+        studentid="587082"
+        course="Master of Computer Science"
       />
       <AuthorCard
         name="Tom Lynch"
         mainroles="NeCTAR / Tweet Scraping / Database Management / Analytics"
         avatar="tom.jpg"
-        bio="Placeholder bio."
+        studentid="540621"
+        course="Master of Software Engineering"
       />
       <AuthorCard
         name="Daniel Moriarty"
         mainroles="Maps Visualisation / Analytics"
         avatar="dan.jpg"
-        bio="Placeholder bio."
+        studentid="590617"
+        course="Master of Mechanical Engineering"
       />
       <AuthorCard
         name="Steven Spratley"
         mainroles="Sentiment / Language Modelling"
         avatar="steve.jpg"
-        bio="Placeholder bio."
+        studentid=""
+        course="Master of Computer Science"
       />
       <AuthorCard
         name="Angus White"
         mainroles="NeCTAR / Tweet Scraping / Database Management / Automation"
         avatar="angus.jpg"
-        bio="Placeholder bio."
+        studentid="585042"
+        course="Master of Electrical Engineering"
       />
     </div>)
 }
