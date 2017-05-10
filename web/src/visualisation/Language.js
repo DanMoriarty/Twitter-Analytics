@@ -35,7 +35,7 @@ class Language extends Component {
     handleText   = (e) => { this.setState({userText: e.target.value}); }
     handleSubmit = ( ) => { 
         this.setState({open: true}); 
-        fetch('http://localhost:4444/api/languageModel/'.concat(this.state.userText), Constants.INIT)
+        fetch(Constants.APIPATH + 'languageModel/'.concat(this.state.userText), Constants.INIT)
             .then(result=>result.json()) 
             .then(items=> this.setState({scores: processScores(items.scores), 
                 topSuburbs: items.topfive,

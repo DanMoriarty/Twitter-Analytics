@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Polyline } from "react-google-maps";
+import { withGoogleMap, GoogleMap, Polyline, Circle } from "react-google-maps";
 import _ from "lodash";
 import * as Constants from '../Constants.js';
 import Loading from '../material/Loading.js';
 import AutoComplete from 'material-ui/AutoComplete';
 import Paper from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import {Card, CardHeader, CardTitle, CardText} from 'material-ui/Card';
+import TextField from 'material-ui/TextField';
+import Snackbar from 'material-ui/Snackbar';
 
 const MelbourneMap = withGoogleMap(props => (
   <GoogleMap
@@ -17,7 +19,9 @@ const MelbourneMap = withGoogleMap(props => (
   >
   <Polyline
     path={props.userspeed}
-    options={{strokeColor:"red"}}
+    options={{    strokeColor: 'red',
+                  strokeOpacity: 0.8,
+                  strokeWeight: 2}}
   />
   </GoogleMap>
 ));
@@ -50,7 +54,7 @@ class UserMovementMap extends Component {
     this.setState({ windowheight: window.innerHeight + 'px', windowwidth: window.innerWidth + 'px'});
 // TODO CHANGE THIS TO fetch USER'S SPEED DATA
 // NEED TO ADD ROUTES FIRST
-    fetch('http://localhost:4444/api/userNames/', Constants.INIT)
+    fetch(Constants.APIPATH + 'userNames/', Constants.INIT)
       .then(result=>result.json()) 
       .then(items=> this.setState({usernames: processNames(items.rows)}))
       .catch(error => console.log(error))
@@ -75,7 +79,7 @@ class UserMovementMap extends Component {
   }
 
   retrieveUser(user) {
-    fetch('http://localhost:4444/api/userLocations/' + user, Constants.INIT)
+    fetch(Constants.APIPATH + 'userLocations/' + user, Constants.INIT)
         .then(result=>result.json()) 
         .then(items=> this.setState({userspeed: processSpeeds(items.rows)}))
         .catch(error => console.log(error))
@@ -91,15 +95,10 @@ class UserMovementMap extends Component {
     console.log("LOADED");
     console.log(this.state.usernames);
     return (
+      <div className="container">
       <div style={{height: this.state.windowheight}}>
-        <AutoComplete
-          floatingLabelText="Enter username"
-          filter={ AutoComplete.caseInsensitiveFilter }
-          dataSource={ this.state.usernames }
-          maxSearchResults={ 5 }
-          onNewRequest={ this.selectUser }
-        />
-        <RaisedButton label="Search" secondary={true} onTouchTap={() => this.retrieveUser(this.state.selectedUser)} />
+        
+<div className="left">
         <MelbourneMap
           containerElement={<div style={{width: this.state.windowwidth, height: this.state.windowheight }} />}
           mapElement={<div style={{ height: this.state.windowheight }} />}
@@ -108,6 +107,40 @@ class UserMovementMap extends Component {
           userspeed={this.state.userspeed}
          >
         </MelbourneMap>
+</div>
+
+        <div className="right">
+                <Card>
+                    <CardTitle 
+                        title="User Tracker" 
+                        subtitle="No more just following their feed, now you can follow their exact locations"
+                    />
+                    <CardText style={{textAlign: 'justify',}}>
+            Twitter users that have their geocoordinates on leave a 
+            trail behind them. Using the power of the Twitter API, 
+            we can follow a users path and see each and every place they've been (as long as they tweeted about it!).
+                    </CardText>
+                    <div>
+                        <div style={{margin: '15'}}>
+                            <div style={{textAlign: 'center',}}>
+                            <AutoComplete
+                                floatingLabelText="Enter username"
+                                filter={ AutoComplete.caseInsensitiveFilter }
+                                dataSource={ this.state.usernames }
+                                maxSearchResults={ 10 }
+                                onNewRequest={ this.selectUser }
+                              />
+                            
+                           <RaisedButton label="Search" secondary={true} onTouchTap={() => this.retrieveUser(this.state.selectedUser)} />
+                            </div>
+                            <br/>
+                        </div>
+  
+                    </div>
+
+                </Card>
+                </div>
+      </div>
       </div>
     );
   }

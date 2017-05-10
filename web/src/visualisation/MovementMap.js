@@ -38,7 +38,7 @@ class MovementMap extends Component {
   componentDidMount() {
     this.setState({ windowheight: window.innerHeight + 'px', windowwidth: window.innerWidth + 'px'})
 
-    fetch('http://localhost:4444/api/speed3k150k3m', Constants.INIT)
+    fetch(Constants.APIPATH + 'speed3k150k3m', Constants.INIT)
         .then(result=>result.json()) 
         .then(items=> this.setState({speed3k150k3m: processSpeeds(items.rows), error:false}))
         .catch(error => console.log(error))
