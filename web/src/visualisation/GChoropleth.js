@@ -85,7 +85,7 @@ class GChoropleth extends Component {
   }
 
   handlePolyClick(target) {
-    if (!this.props.data.hasOwnProperty(target.key)) {
+    if (!this.props.data || !this.props.data.hasOwnProperty(target.key)) {
       return;
     }
 
