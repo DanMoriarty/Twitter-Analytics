@@ -3,7 +3,7 @@ Analysis of harvested Twitter data - web application
 
 A program for hosting an interactive ReSTful web application on the NeCTAR cloud within the Javascript React framework, to visualize Data Analysis scenarios of a Twitter Big Data space.
 
-A demo of the working program is visible at: ....
+A demo of the working program is visible at: https://www.youtube.com/watch?v=-BL7-9NsJ4M
 
 The web application allows the user to navigate between different interactive data analysis scenarios that were undertaken upon the harvested tweets:
 * Scenario 1 - Sentiment Analysis
